@@ -1,0 +1,69 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>140</x><y>70</y><w>270</w><h>280</h></coordinates><panel_attributes>Pokemon SO
+--
+# float hp_
+# float damage_
+# float defense_
+# float speed_
+# Type type_
+# float damageCoef
+# float defenseCoef
+--
++ float GetHp()
++ float GetDamage()
++ float GetDefense()
++ float GetSpeed()
++ Type GetType()
++ void TakeDamage(float damage, Type type)
++ void TakeDistraction()
++ void TakeFocus()
++ bool IsKO()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>110</y><w>100</w><h>90</h></coordinates><panel_attributes>EnumType : Type
+--
+fire
+water
+earth</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>500</x><y>70</y><w>260</w><h>210</h></coordinates><panel_attributes>Fight Manager (Design Pattern ???)
+--
+- WildPokemon enemy_
+- Pokemon playerPokemon_
+- bool playerTurn_
+--
+- SetFirst()
+- EnemyTurn()
++ Capture(Pokeball p) (si capturé hp max)
++ Heal(Potion p)
++ Attack(Pokemon p1, Pokemon p2)
++ Focus(Pokemon p)
++ Distract(Pokemon p1, Pokemon p2)
++ Run()
++ EndFight()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>490</x><y>390</y><w>260</w><h>220</h></coordinates><panel_attributes>Player
+--
+- float speed_
+- List&lt;Pokemon&gt; pokemons_
+- int posMainPokemon_
+--
++ Pokemon GetMainPokemon()
++ void SetMainPokemon(int posPokemon)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>800</x><y>460</y><w>210</w><h>220</h></coordinates><panel_attributes>Game Manager
+--
+- 
+--
++  </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>140</x><y>410</y><w>270</w><h>120</h></coordinates><panel_attributes>Wild Pokemon
+--
+- float attackingCoeff_
+- float defenseCoeff_
+- float focusCoeff_
+- Dictionnary&lt;int, GameObject&gt; objs_ (ordonné)
+--
++ GameObject GetObj()
+- void LaunchFight()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>340</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>UMLClass</id><coordinates><x>110</x><y>610</y><w>250</w><h>210</h></coordinates><panel_attributes>Data (truc avec un JSON)
+--
+class Pokeball {
+string name_;
+- float captureCoeff_;
+}
+
+class Potion {
+string name_;
+- float hp_;
+}
+
++ Potion LoadFromJson()
++ Pokeball LoadFromJson()</panel_attributes><additional_attributes></additional_attributes></element></diagram>
