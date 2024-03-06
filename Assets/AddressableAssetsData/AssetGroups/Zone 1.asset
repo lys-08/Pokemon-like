@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Zone 1
+  m_EditorClassIdentifier: 
+  m_GroupName: Zone 1
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 71dbf1b3bc95b9d49a3265b5014bb3b4
+  m_SerializeEntries:
+  - m_GUID: 579530f5c89aa2d4cbb5eaa73811e574
+    m_Address: Assets/Pokemon/Pokemon1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PokemonRuby
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 246bb01076e89d54187be7222dd1ea37, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: ceecc2df74c87b745868dae41d060352, type: 2}
+    - {fileID: 11400000, guid: 7e6334e5ccd5ac343af5fe9875d7ccfc, type: 2}

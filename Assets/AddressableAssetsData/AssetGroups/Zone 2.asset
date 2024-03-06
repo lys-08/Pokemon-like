@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Zone 2
+  m_EditorClassIdentifier: 
+  m_GroupName: Zone 2
+  m_Data:
+    m_SerializedData: []
+  m_GUID: c8b5e9152b2f3e743a6e4cdf69dc9a3e
+  m_SerializeEntries:
+  - m_GUID: bb53b3de35fb627478f692d93bdb73ec
+    m_Address: Assets/Pokemon/Pokemon3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PokemonSapphire
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 246bb01076e89d54187be7222dd1ea37, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: d2bdab82261a47046941a60b828114eb, type: 2}
+    - {fileID: 11400000, guid: fc9c50cae3395b744b805f460071c0d2, type: 2}

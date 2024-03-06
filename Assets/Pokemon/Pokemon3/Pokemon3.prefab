@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2325400087583040876, guid: 0a8eb4e3d32829a4d889527c314e4eb7, type: 3}
+      propertyPath: data_
+      value: 
+      objectReference: {fileID: 11400000, guid: 565aaa9edcf7b8942909eaf9e6209fec, type: 2}
     - target: {fileID: 4139021122897377625, guid: 0a8eb4e3d32829a4d889527c314e4eb7, type: 3}
       propertyPath: m_Name
       value: Pokemon3

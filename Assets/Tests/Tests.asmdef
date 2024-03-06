@@ -1,6 +1,25 @@
 {
     "name": "Tests",
-    "optionalUnityReferences": [
-        "TestAssemblies"
-    ]
+    "rootNamespace": "",
+    "references": [
+        "Unity.Addressables",
+        "Unity.TextMeshPro",
+        "Unity.ResourceManager",
+        "UnityEditor.TestRunner",
+        "UnityEngine.TestRunner",
+        "PokemonTests"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e9729bb491218f648987e3525495b57a, type: 2}
+  - {fileID: 2100000, guid: 361358493a9a15543949c878a0440b4b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -114,7 +114,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8905238321557773318}
-  - component: {fileID: 8350917098960043471}
+  - component: {fileID: 2325400087583040876}
   m_Layer: 0
   m_Name: PokemonBase
   m_TagString: Untagged
@@ -138,7 +138,7 @@ Transform:
   - {fileID: 2675294646871826144}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8350917098960043471
+--- !u!114 &2325400087583040876
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,4 +150,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac53c111c355c094ca794098a6512b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data_: {fileID: 11400000, guid: df6e5fac1c49914439538f688e571173, type: 2}
+  data_: {fileID: 0}

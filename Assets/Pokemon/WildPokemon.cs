@@ -10,7 +10,7 @@ public class WildPokemon : Pokemon
      * Coefficients that determined the percentage of the pokemon to attack, distract and
      * focus during a fight
      */
-    private float attackingCoeff_;
+    private float attackCoeff_;
     private float distractCoeff_;
     private float focusCoeff_;
     
@@ -21,9 +21,9 @@ public class WildPokemon : Pokemon
 
     #region Getters
 
-    public float GetAttackingCoeff()
+    public float GetAttackCoeff()
     {
-        return attackingCoeff_;
+        return attackCoeff_;
     }
 
     public float GetDistractCoeff()
@@ -73,9 +73,9 @@ public class WildPokemon : Pokemon
      */
     private void GenerateCoeffs()
     {
-        attackingCoeff_ = Random.Range(50, 70) / 100f;
-        focusCoeff_ = Random.Range(attackingCoeff_, 85) / 100f;
-        distractCoeff_ = 1f - attackingCoeff_ - focusCoeff_;
+        attackCoeff_ = Random.Range(50, 70) / 100f;
+        focusCoeff_ = Random.Range(5, 1 - attackCoeff_) / 100f;
+        distractCoeff_ = 1f - attackCoeff_ - focusCoeff_;
     }
 
 

@@ -8,18 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2325400087583040876, guid: 0a8eb4e3d32829a4d889527c314e4eb7, type: 3}
+      propertyPath: data_
+      value: 
+      objectReference: {fileID: 11400000, guid: f5b91638a079cf44794d419e8b5ee226, type: 2}
     - target: {fileID: 4139021122897377625, guid: 0a8eb4e3d32829a4d889527c314e4eb7, type: 3}
       propertyPath: m_Name
       value: Pokemon1
       objectReference: {fileID: 0}
-    - target: {fileID: 8350917098960043471, guid: 0a8eb4e3d32829a4d889527c314e4eb7, type: 3}
-      propertyPath: data_
-      value: 
-      objectReference: {fileID: 11400000, guid: f5b91638a079cf44794d419e8b5ee226, type: 2}
-    - target: {fileID: 8506467503412228255, guid: 0a8eb4e3d32829a4d889527c314e4eb7, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 361358493a9a15543949c878a0440b4b, type: 2}
     - target: {fileID: 8905238321557773318, guid: 0a8eb4e3d32829a4d889527c314e4eb7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

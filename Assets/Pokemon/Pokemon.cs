@@ -8,7 +8,7 @@ public class Pokemon : MonoBehaviour
      * Coefficients apply in a fight
      */
     private float damageCoef_ = 1f; 
-    private float defenseCoef_ = 1f;
+    public float defenseCoef_ = 1f;
 
     [SerializeField] private PokemonSO data_;
     
@@ -97,10 +97,10 @@ public class Pokemon : MonoBehaviour
          * -> For the condition, we can test only one out of the two value because they
          *    are modified at the same time, by the same percentage
          */
-        if (damageCoef_ <= 0.5f) return;
+        if (damageCoef_ >= 1.5f) return;
         
-        damageCoef_ -= 0.1f;
-        defenseCoef_ -= 0.1f;
+        damageCoef_ += 0.1f;
+        defenseCoef_ += 0.1f;
     }
 
     /**
@@ -114,10 +114,10 @@ public class Pokemon : MonoBehaviour
          * -> For the condition, we can test only one out of the two value because they
          *    are modified at the same time, by the same percentage
          */
-        if (damageCoef_ >= 1.5f) return;
+        if (damageCoef_ <= 0.5f) return;
         
-        damageCoef_ += 0.1f;
-        defenseCoef_ += 0.1f;
+        damageCoef_ -= 0.1f;
+        defenseCoef_ -= 0.1f;
     }
 
 
@@ -125,7 +125,7 @@ public class Pokemon : MonoBehaviour
      * Function that reset all values modified during a fight which are specific to a fight
      * This function is called at the end of a fight
      */
-    public void ResetCoeff()
+    public void ResetCoeffs()
     {
         damageCoef_ = 1f;
         defenseCoef_ = 1f;
