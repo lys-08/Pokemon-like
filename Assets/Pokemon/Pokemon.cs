@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 
 public class Pokemon : MonoBehaviour
 {
@@ -26,11 +28,6 @@ public class Pokemon : MonoBehaviour
         return data_.damage * damageCoef_;
     }
 
-    public float GetDefense()
-    {
-        return data_.defense * defenseCoef_;
-    }
-
     public float GetSpeed()
     {
         return data_.speed;
@@ -46,6 +43,7 @@ public class Pokemon : MonoBehaviour
         return data_.hp < 0f;
     }
     #endregion
+    
 
 
     /**
@@ -80,7 +78,7 @@ public class Pokemon : MonoBehaviour
         /*
          * We apply the damage according of the defense coefficient of the pokemon
          */
-        data_.hp -= damageInflicted * defenseCoef_;
+        data_.hp -= (damageInflicted - data_.defense * defenseCoef_);
         
         // The KO is handled in the Fight
     }
@@ -93,14 +91,14 @@ public class Pokemon : MonoBehaviour
     public void TakeDistraction()
     {
         /*
-         * If the coefficients are lesser or equal to 0.5f then we do nothing
+         * If the damage coefficient is lesser or equal to 0.5f then we do nothing
          * -> For the condition, we can test only one out of the two value because they
          *    are modified at the same time, by the same percentage
          */
         if (damageCoef_ >= 1.5f) return;
         
         damageCoef_ += 0.1f;
-        defenseCoef_ += 0.1f;
+        defenseCoef_ -= 0.1f;
     }
 
     /**
@@ -110,14 +108,14 @@ public class Pokemon : MonoBehaviour
     public void TakeFocus()
     {
         /*
-         * If the coefficients are greater or equal to 1.5f then we do nothing
+         * If the damage coefficient is greater or equal to 1.5f then we do nothing
          * -> For the condition, we can test only one out of the two value because they
          *    are modified at the same time, by the same percentage
          */
         if (damageCoef_ <= 0.5f) return;
         
         damageCoef_ -= 0.1f;
-        defenseCoef_ -= 0.1f;
+        defenseCoef_ += 0.1f;
     }
 
 

@@ -2,12 +2,11 @@
     "name": "Tests",
     "rootNamespace": "",
     "references": [
-        "Unity.Addressables",
-        "Unity.TextMeshPro",
-        "Unity.ResourceManager",
-        "UnityEditor.TestRunner",
         "UnityEngine.TestRunner",
-        "PokemonTests"
+        "UnityEditor.TestRunner",
+        "PokemonTest",
+        "Unity.Addressables",
+        "Unity.ResourceManager"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf2426c845f0dd741b6d5535a56d01bf, type: 3}
   m_Name: PokemonBase
   m_EditorClassIdentifier: 
-  name_: Pokemon1
-  hp_: 50
-  damage_: 10
-  defense_: 10
-  speed_: 5
-  type_: 0
+  name: 
+  hp: 100
+  damage: 10
+  defense: 5
+  speed: 5
+  type: 0

@@ -33,7 +33,7 @@ public class PokemonTest
             pokemonScript.TakeDistraction();
         }
         pokemonScript.TakeDamage(10f, Type.Ruby);
-        Assert.That(pokemonScript.GetHp(), Is.EqualTo(85f).Within(0.01)); // damage = 10 * 1 * 1.5
+        Assert.That(pokemonScript.GetHp(), Is.EqualTo(92.5f).Within(0.01)); // 100 - (10 - 5 * 0.5) = 92.5
         
         
         /*
@@ -41,7 +41,7 @@ public class PokemonTest
          */
         pokemonScript.ResetCoeffs();
         pokemonScript.TakeDamage(10f, Type.Ruby);
-        Assert.That(pokemonScript.GetHp(), Is.EqualTo(75f).Within(0.01));
+        Assert.That(pokemonScript.GetHp(), Is.EqualTo(87.5f).Within(0.01)); // 92.5 - (10 - 5 * 1) = 87.5
         
         
         /*
@@ -52,7 +52,9 @@ public class PokemonTest
             pokemonScript.TakeFocus();
         }
         pokemonScript.TakeDamage(10f, Type.Ruby);
-        Assert.That(pokemonScript.GetHp(), Is.EqualTo(70f).Within(0.01)); // damage = 10 * 1 * 0.5
+        Assert.That(pokemonScript.GetHp(), Is.EqualTo(85f).Within(0.01)); // 87.5 - (10 - 5 * 1.5) = 85
+        
+        pokemonScript.ResetCoeffs();
     }
     
 
@@ -63,16 +65,18 @@ public class PokemonTest
         
         pokemonScript.TakeDamage(20f, Type.Sapphire);
         /*
-         * hp = 70
+         * hp = 85
          * damage = 20
+         * defense = 5
          * type Sapphire contre type ruby donc damage * 1.5f
+         * total : 85 - (20 * 1.5 - 5) = 
          */
-        Assert.That(pokemonScript.GetHp(), Is.EqualTo(40f).Within(0.01));
+        Assert.That(pokemonScript.GetHp(), Is.EqualTo(60f).Within(0.01));
         
         pokemonScript.TakeDamage(10f, Type.Ruby);
-        Assert.That(pokemonScript.GetHp(), Is.EqualTo(30f).Within(0.01));
+        Assert.That(pokemonScript.GetHp(), Is.EqualTo(55f).Within(0.01)); // 60 - (10 * 1 - 5) = 55
         
         pokemonScript.TakeDamage(10f, Type.Emerald);
-        Assert.That(pokemonScript.GetHp(), Is.EqualTo(25f).Within(0.01));
+        Assert.That(pokemonScript.GetHp(), Is.EqualTo(55f).Within(0.01)); // 55 - (10 * 0.5 - 5) = 55
     }
 }
