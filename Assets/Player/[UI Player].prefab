@@ -8126,6 +8126,9 @@ MonoBehaviour:
   masterSlider: {fileID: 8244361057139445331}
   musicSlider: {fileID: 1389356710242922513}
   sfxSlider: {fileID: 5332460921374234379}
+  masterValue: {fileID: 991393772981266007}
+  musicValue: {fileID: 2086129245920363858}
+  sfxValue: {fileID: 8676951934601552552}
 --- !u!1 &7666291934710988183
 GameObject:
   m_ObjectHideFlags: 0
