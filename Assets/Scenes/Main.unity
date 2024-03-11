@@ -317,10 +317,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 323598693331616358, guid: f466543d5a0ae324b85345006643e687, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6566681158968153835, guid: f466543d5a0ae324b85345006643e687, type: 3}
       propertyPath: m_Name
       value: '[UI Player]'
