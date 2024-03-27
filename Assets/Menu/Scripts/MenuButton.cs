@@ -27,6 +27,6 @@ public class MenuButton : MonoBehaviour
     
     public void HoverExit()
     {
-        animator_.SetBool("isSelected", true);
+        animator_.SetBool("isSelected", false);
     }
 }

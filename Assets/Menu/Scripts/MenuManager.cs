@@ -12,30 +12,47 @@ public class MenuManager : MonoBehaviour
 
     public void Instructions()
     {
-        menuWindow.SetTrigger("isDisappearing");
-        instructionsWindow.SetTrigger("isAppearing");
+        StartCoroutine(Disappear(menuWindow));
+        Appear(instructionsWindow);
     }
 
-
+    
     public void Controls()
     {
-        menuWindow.SetTrigger("isDisappearing");
-        controlsWindow.SetTrigger("isAppearing");
+        StartCoroutine(Disappear(menuWindow));
+        Appear(controlsWindow);
     }
 
 
     public void Settings()
     {
-        menuWindow.SetTrigger("isDisappearing");
-        settingsWindow.SetTrigger("isAppearing");
+        StartCoroutine(Disappear(menuWindow));
+        Appear(settingsWindow);
     }
 
 
     public void Back()
     {
-        instructionsWindow.SetTrigger("isDisappearing");
-        controlsWindow.SetTrigger("isDisappearing");
-        settingsWindow.SetTrigger("isDisappearing");
-        menuWindow.SetTrigger("isAppearing");
+        StartCoroutine(Disappear(instructionsWindow));
+        StartCoroutine(Disappear(controlsWindow));
+        StartCoroutine(Disappear(settingsWindow));
+        
+        Appear(menuWindow);
+    }
+
+
+    private IEnumerator Disappear(Animator animator)
+    {
+        if (instructionsWindow.gameObject.activeInHierarchy) yield return null;
+        
+        animator.SetTrigger("isDisappearing");
+        yield return new WaitForSeconds(0.5f);
+        animator.gameObject.SetActive(false);
+    }
+    
+    private void Appear(Animator animator)
+    {
+        animator.gameObject.SetActive(true);
+        animator.SetTrigger("isAppearing");
     }
 }
