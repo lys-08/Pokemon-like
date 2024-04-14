@@ -10,5 +10,6 @@ public class InventorySO : ScriptableObject
     //public event Action<Dictionary<int, InventoryItem>> OnInventoryUpdate;
 
     //[SerializeField] private List<InventoryItem> inventoryItems_;
+    //public int Size { get; private set; } = 0;
     
 }
