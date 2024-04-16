@@ -25,26 +25,22 @@ public class PlayerController : MonoBehaviour
         if ( Time.timeScale > 0) // health.IsAlive &&
         {
             var timeScaledSpeed = speed * Time.deltaTime;
-            mover.Move(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized *
-                       timeScaledSpeed);
 
-            // var mousePosition = Input.mousePosition;
-            // if (mousePosition.x < 0 || mousePosition.x > Screen.width || mousePosition.y < 0 ||
-            //     mousePosition.y > Screen.height)
-            // {
-            //     return;
-            // }
+            var movement  =  transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical");
 
-            // var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            // var plane = new Plane(Vector3.up, new Vector3(0, 1, 0));
-            // if (plane.Raycast(ray, out var distance))
-            // {
-            //     var point = ray.GetPoint(distance);
-            //     mover.LookAt(point);
-            // }
+            mover.Move(movement.normalized * timeScaledSpeed);
+
+            var mousePosition = Input.mousePosition;
+            if (mousePosition.x < 0 || mousePosition.x > Screen.width || mousePosition.y < 0 ||
+                mousePosition.y > Screen.height)
+            {
+                return;
+            }
 
 
-            transform.Rotate(new Vector3(Input.GetAxis("Mouse Y")*3f, Input.GetAxis("Mouse X")*3f, 0));
+
+            transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X")*3f, 0)); // Input.GetAxis("Mouse Y")*3f
+            
         }
     }
 

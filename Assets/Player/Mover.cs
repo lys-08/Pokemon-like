@@ -16,8 +16,9 @@ public class Mover : MonoBehaviour
         gameObject.transform.position += direction;
     }
 
-    public void LookAt(Vector3 target)
-    {
-        mesh.LookAt(target);
-    }
+    // leagacy code probably not needed
+    // public void LookAt(Vector3 target)
+    // {
+    //     mesh.LookAt(target);
+    // }
 }
