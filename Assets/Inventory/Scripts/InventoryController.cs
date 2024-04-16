@@ -99,7 +99,7 @@ namespace Inventory
             }
 
             ItemSO item = inventoryItem.item;
-            inventoryUi.UpdateDescription(index, item.ItemImage, item.name, item.Description);
+            inventoryUi.UpdateDescription(index, item.ItemImage, item.Name, item.Description);
         }
 
         public void HandleSwapItems(int index1, int index2)
