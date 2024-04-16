@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Inventory.UI; // for UiInventoryPage
-using Inventory.Model; // for ItemSO
+using Inventory.Model;
+using UnityEngine.SocialPlatforms; // for ItemSO
 
 
 namespace Inventory
@@ -39,10 +40,12 @@ namespace Inventory
             {
                 if (inventoryUi.isActiveAndEnabled)
                 {
+                    Time.timeScale = 1f;
                     inventoryUi.Hide();
                 }
                 else
                 {
+                    Time.timeScale = 0f;
                     inventoryUi.Show();
                     // We Update our UI
                     foreach (var item in inventoryData.GetCurrentInventoryState())

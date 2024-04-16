@@ -50,8 +50,9 @@ namespace Inventory.UI
         {
             for (int i = 0; i < inventorySize; i++)
             {
-                UIInventoryItem uiItem = Instantiate(itemPrefab, Vector3.zero, Quaternion.identity);
-                uiItem.transform.SetParent(contentPanel);
+                UIInventoryItem uiItem = Instantiate(itemPrefab, Vector3.zero, Quaternion.identity, contentPanel);
+                uiItem.transform.localScale = Vector3.one;
+                //uiItem.transform.SetParent(contentPanel);
                 listUiItems.Add(uiItem);
 
                 uiItem.OnItemClicked += HandleItemSelection;
