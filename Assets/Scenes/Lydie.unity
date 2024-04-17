@@ -1529,10 +1529,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6365383336323416114, guid: 711b9b1c6ad8562478bf75deac611b54, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: dafcdf309dfb66045af6a1b7fb02c8c5, type: 3}
     - target: {fileID: 6791450313480568303, guid: 711b9b1c6ad8562478bf75deac611b54, type: 3}
       propertyPath: mouseFollower
       value: 

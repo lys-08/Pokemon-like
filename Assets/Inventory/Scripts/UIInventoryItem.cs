@@ -79,8 +79,8 @@ namespace Inventory.UI
         #region IPointerClickHandler
 
         /**
-     * Methods that inform our inventory page that an item has been clicked (left or right click)
-     */
+         * Methods that inform our inventory page that an item has been clicked (left or right click)
+         */
         public void OnPointerClick(PointerEventData eventData)
         {
             if (eventData.button == PointerEventData.InputButton.Right)
@@ -98,8 +98,8 @@ namespace Inventory.UI
         #region IBeginDragHandler
 
         /**
-     * Methods called when an item is being dragged (the drag is started)
-     */
+         * Methods called when an item is being dragged (the drag is started)
+         */
         public void OnBeginDrag(PointerEventData eventData)
         {
             if (empty_) return;
@@ -111,9 +111,9 @@ namespace Inventory.UI
         #region IEndDragHandler
 
         /**
-     * Methods called when a drag item has been dropped (the drag is ended)
-     * -> if the item is drop outside the inventory, we can reset parameters
-     */
+         * Methods called when a drag item has been dropped (the drag is ended)
+         * -> if the item is drop outside the inventory, we can reset parameters
+         */
         public void OnEndDrag(PointerEventData eventData)
         {
             OnItemEndDrag?.Invoke(this);
@@ -124,8 +124,8 @@ namespace Inventory.UI
         #region IDropHandler
 
         /**
-     * Methods called when an item is being dropped on a target that can accept the drop
-     */
+         * Methods called when an item is being dropped on a target that can accept the drop
+         */
         public void OnDrop(PointerEventData eventData)
         {
             OnItemDroppedOn?.Invoke(this);
