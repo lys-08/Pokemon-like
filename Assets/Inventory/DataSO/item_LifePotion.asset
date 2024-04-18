@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36f180eec6b987e498ebdf87138cdcad, type: 3}
+  m_Name: item_LifePotion
+  m_EditorClassIdentifier: 
+  <IsStackable>k__BackingField: 1
+  <MaxStackSize>k__BackingField: 99
+  <Name>k__BackingField: Life Potion
+  <Description>k__BackingField: "Life Potion is a magical concoction of a bright
+    red that seems to radiate life and power. Its bottle seems to contain all the
+    fiery energy of the fire itself. When you hold it, you can feel a comforting
+    warmth emanating from its walls, as if the power of regeneration was burning
+    inside.\r\n\r\nWhen she comes into contact with a Pok\xE9mon, even in a state
+    of extreme distress or having succumbed to combat, her healing energy instantly
+    diffuses through her body, reviving every fiber of her being. Wounds close instantly,
+    tired limbs regain strength, and Pok\xE9mon vitality is restored to its maximum.\r\n"
+  <ItemImage>k__BackingField: {fileID: 21300000, guid: 167479d2e17ac7f4a8325a7d66018df8, type: 3}
+  modifiersDatas: []

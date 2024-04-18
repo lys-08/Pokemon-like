@@ -85,8 +85,8 @@ public class Pokemon : MonoBehaviour
 
     
     /**
-     * Function used when the opposed pokemon uses a distraction attack. This function
-     * reduces the pokemon attack and defense by a percentage for battle duration
+     * Reduces the pokemon attack and defense by a percentage for battle duration
+     * -> used when the opposed pokemon uses a distraction attack
      */
     public void TakeDistraction()
     {
@@ -102,8 +102,8 @@ public class Pokemon : MonoBehaviour
     }
 
     /**
-     * Function used when the pokemon uses a focusing attack. This function
-     * increased the pokemon attack and defense by a percentage for battle duration
+     * Increased the pokemon attack and defense by a percentage for battle duration
+     * -> used when the pokemon uses a focusing attack
      */
     public void TakeFocus()
     {
@@ -120,7 +120,7 @@ public class Pokemon : MonoBehaviour
 
 
     /**
-     * Function that reset all values modified during a fight which are specific to a fight
+     * Reset all values modified during a fight which are specific to a fight
      * This function is called at the end of a fight
      */
     public void ResetCoeffs()

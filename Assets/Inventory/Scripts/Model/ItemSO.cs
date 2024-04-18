@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace Inventory.Model
 {
-    [CreateAssetMenu(fileName = "Item", menuName = "Inventory/Item")]
     public class ItemSO : ScriptableObject
     {
         [field: SerializeField] public bool IsStackable { get; set; } // Stack the item that can be stacked

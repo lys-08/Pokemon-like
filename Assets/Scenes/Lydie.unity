@@ -266,29 +266,7 @@ MonoBehaviour:
   inventoryUi: {fileID: 5075277347154339981}
   inventoryData: {fileID: 11400000, guid: 5367d8d7831edd14395c984f4d1f729f, type: 2}
   inventorySize: 10
-  initialItems:
-  - quantity: 0
-    item: {fileID: 11400000, guid: 8f4e2cefaad40cf40a8e64fd4dea4dcc, type: 2}
-  - quantity: 0
-    item: {fileID: 11400000, guid: 3fcd910f1bc238a4084e7733b7775e49, type: 2}
-  - quantity: 98
-    item: {fileID: 11400000, guid: c46bd7f19d5919442ab4923ec672bd02, type: 2}
-  - quantity: 0
-    item: {fileID: 11400000, guid: adf5f1e4e6c951d4fa01ecea0222fcc9, type: 2}
-  - quantity: 0
-    item: {fileID: 11400000, guid: e37d28ed8c73fa14ea7db575ef76ee03, type: 2}
-  - quantity: 0
-    item: {fileID: 11400000, guid: c7d1ac169a7b9774d932966f0af11eda, type: 2}
-  - quantity: 0
-    item: {fileID: 11400000, guid: 3f9426726ac815d428f5c6d44538ebc0, type: 2}
-  - quantity: 0
-    item: {fileID: 11400000, guid: ebf89a3b4af5ca045aa137f334141be6, type: 2}
-  - quantity: 0
-    item: {fileID: 11400000, guid: 7263e6dad7d172448b267161c7de06d0, type: 2}
-  - quantity: 0
-    item: {fileID: 11400000, guid: 97b1ee4b9a5e5f3478dff78fe7ded825, type: 2}
-  - quantity: 0
-    item: {fileID: 11400000, guid: ebf89a3b4af5ca045aa137f334141be6, type: 2}
+  initialItems: []
 --- !u!4 &52892078
 Transform:
   m_ObjectHideFlags: 0
