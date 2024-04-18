@@ -192,7 +192,10 @@ namespace Inventory.UI
         
         private void HandleShowItemActions(UIInventoryItem obj)
         {
+            int index = listUiItems.IndexOf(obj);
+            if (index == -1) return;
             
+            OnItemActionRequested?.Invoke(index);
         }
 
         #endregion

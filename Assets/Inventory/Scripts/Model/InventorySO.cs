@@ -19,7 +19,7 @@ namespace Inventory.Model
 
         
         /**
-         * Methods that initialize the inventory by initializing the list of inventory items
+         * Initialize the inventory by initializing the list of inventory items
          */
         public void Initialize()
         {
@@ -31,7 +31,7 @@ namespace Inventory.Model
         }
 
         /**
-         * Methods that add an item to the list of inventory items
+         * Add an item to the list of inventory items
          */
         public int AddItem(ItemSO item, int quantity)
         {
@@ -54,7 +54,7 @@ namespace Inventory.Model
         }
 
         /**
-         * Methods that add an item to the list
+         * Add an item to the list
          */
         public void AddItem(InventoryItem item)
         {
@@ -62,7 +62,29 @@ namespace Inventory.Model
         }
 
         /**
-         * Methods that add an item that wasn't in the inventory
+         * Remove nb item (determine by its index)
+         */
+        public void RemoveItem(int index, int nb)
+        {
+            if (inventoryItems.Count > index)
+            {
+                if (inventoryItems[index].IsEmpty) return;
+
+                int amount = inventoryItems[index].quantity - nb;
+                if (amount < 0)
+                {
+                    inventoryItems[index] = InventoryItem.GetEmptyItem();
+                }
+                else
+                {
+                    inventoryItems[index] = inventoryItems[index].ChangeQuantity(amount);
+                    InformAboutChange();
+                }
+            }
+        }
+
+        /**
+         * Add an item that wasn't in the inventory
          */
         private int AddNonStackableItem(ItemSO item, int quantity)
         {
@@ -81,7 +103,7 @@ namespace Inventory.Model
         }
 
         /**
-         * Methods that add an item that is already in the inventory (by increasing
+         * Add an item that is already in the inventory (by increasing
          * its quantity)
          */
         private int AddStackableItem(ItemSO item, int quantity)
@@ -123,7 +145,7 @@ namespace Inventory.Model
         }
         
         /**
-         * Methods that returns the item associated with the index passed in parameter
+         * Returns the item associated with the index passed in parameter
          */
         public InventoryItem GetItemAt(int index)
         {
@@ -131,7 +153,7 @@ namespace Inventory.Model
         }
 
         /**
-         * Methods that swap 2 items knowing their indexes
+         * Swap 2 items knowing their indexes
          */
         internal void SwapItems(int index1, int index2)
         {
@@ -147,7 +169,7 @@ namespace Inventory.Model
         private bool IsInventoryFull() => !inventoryItems.Where(item => item.IsEmpty).Any();
 
         /**
-         * Methods that inform that the inventory has changed
+         * Inform that the inventory has changed
          */
         private void InformAboutChange()
         {
@@ -183,7 +205,7 @@ namespace Inventory.Model
         
 
         /**
-         * Methods that change the quantity of an item and return a new item
+         * MChange the quantity of an item and return a new item
          */
         public InventoryItem ChangeQuantity(int newQuantity)
         {
@@ -191,7 +213,7 @@ namespace Inventory.Model
         }
 
         /**
-         * Methods that return an empty item
+         * Return an empty item
          */
         public static InventoryItem GetEmptyItem() => new InventoryItem { item = null, quantity = 0 };
     }

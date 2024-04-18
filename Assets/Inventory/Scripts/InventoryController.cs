@@ -121,7 +121,21 @@ namespace Inventory
 
         public void HandleItemActionRequest(int index)
         {
-
+            InventoryItem inventoryItem = inventoryData.GetItemAt(index);
+            if (inventoryItem.IsEmpty) return;
+            
+            IItemAction itemAction = inventoryItem.item as IItemAction;
+            if (itemAction != null)
+            {
+                Debug.Log("perform");
+                //itemAction.Perfom(pokemon);
+            }
+            
+            IDestroyableItem destroyableItem = inventoryItem.item as IDestroyableItem;
+            if (destroyableItem != null)
+            {
+                inventoryData.RemoveItem(index, 1);
+            }
         }
 
         public void UpdateInventoryUI(Dictionary<int, InventoryItem> inventoryState)
