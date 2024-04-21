@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 52892080}
   - component: {fileID: 52892079}
   - component: {fileID: 52892083}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player (test Lydie)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -418,7 +418,7 @@ GameObject:
   - component: {fileID: 164235854}
   - component: {fileID: 164235853}
   - component: {fileID: 164235852}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -1161,7 +1161,7 @@ GameObject:
   - component: {fileID: 911931209}
   - component: {fileID: 911931213}
   - component: {fileID: 911931212}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}

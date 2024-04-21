@@ -92,8 +92,7 @@ public class WildPokemon : Pokemon
         /*
          * If the player is in the range of the pokemon, than a fight start
          */
-        if (Vector3.Distance(transform.position, player_.transform.position) > 5f) return;
-        LaunchFight();
+        if (Physics.OverlapSphere(transform.position, 5f, 3) != null) LaunchFight();
     }
 
     #endregion

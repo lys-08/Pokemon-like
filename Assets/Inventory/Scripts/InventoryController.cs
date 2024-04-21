@@ -56,8 +56,8 @@ namespace Inventory
                     Time.timeScale = 0f;
                     Cursor.visible = true;
                     Cursor.lockState = CursorLockMode.Confined;
-                    
                     inventoryUi.Show();
+                    
                     // We Update our UI
                     foreach (var item in inventoryData.GetCurrentInventoryState())
                     {
