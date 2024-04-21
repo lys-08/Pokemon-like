@@ -18,16 +18,36 @@ public class Pokemon : MonoBehaviour
     
     #region Getter & Setter
 
+    public string GetName()
+    {
+        return data_.name;
+    }
+
+    public void SetName(string newName)
+    {
+        data_.name = newName;
+    }
+    
+    public string GetDescription()
+    {
+        return data_.description;
+    }
+    
     public float GetHp()
     {
         return data_.hp;
+    }
+    
+    public void SetHp(float newHp)
+    {
+        data_.hp = newHp;
     }
 
     public float GetDamage()
     {
         return data_.damage * damageCoef_;
     }
-
+    
     public float GetSpeed()
     {
         return data_.speed;
@@ -42,6 +62,12 @@ public class Pokemon : MonoBehaviour
     {
         return data_.ko;
     }
+
+    public void Revive()
+    {
+        data_.ko = false;
+    }
+    
     #endregion
     
 
@@ -83,7 +109,6 @@ public class Pokemon : MonoBehaviour
         // KO
         if (data_.hp < 0) data_.ko = true;
     }
-
     
     /**
      * Reduces the pokemon attack and defense by a percentage for battle duration

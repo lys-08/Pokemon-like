@@ -13,12 +13,18 @@ public enum Type
 [CreateAssetMenu(fileName = "NewPokemon", menuName = "Pokemon")]
 public class PokemonSO : ScriptableObject
 {
+    // features
     public string name;
+    public string description;
+    public Type type;
+    public Sprite image;
+    
+    // Base stats
     public float hp;
     public float hpMax;
-    public bool ko;
     public float damage;
     public float defense;
     public float speed;
-    public Type type;
+    
+    public bool ko;
 }
