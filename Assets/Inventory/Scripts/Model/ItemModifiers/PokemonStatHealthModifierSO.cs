@@ -11,7 +11,12 @@ namespace Inventory.Model
     {
         public override void AffectPokemon(GameObject pokemon, float value)
         {
-            pokemon.GetComponent<PokemonSO>().hp += value;
+            PokemonSO pokemonSo = pokemon.GetComponent<PokemonSO>();
+            if (pokemonSo.ko) return;
+
+            float amount = pokemonSo.hp + value;
+            if (amount > pokemonSo.hpMax) pokemonSo.hp = pokemonSo.hpMax;
+            else pokemonSo.hp += value;
         }
     }
 }

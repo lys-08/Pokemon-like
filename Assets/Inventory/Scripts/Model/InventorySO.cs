@@ -71,15 +71,16 @@ namespace Inventory.Model
                 if (inventoryItems[index].IsEmpty) return;
 
                 int amount = inventoryItems[index].quantity - nb;
-                if (amount < 0)
+                if (amount <= 0)
                 {
                     inventoryItems[index] = InventoryItem.GetEmptyItem();
                 }
                 else
                 {
                     inventoryItems[index] = inventoryItems[index].ChangeQuantity(amount);
-                    InformAboutChange();
                 }
+                
+                InformAboutChange();
             }
         }
 

@@ -16,11 +16,10 @@ MonoBehaviour:
   <MaxStackSize>k__BackingField: 99
   <Name>k__BackingField: Glow Ball
   <Description>k__BackingField: 'Glow Ball was created from simple materials. It
-    is said that it was the combination of sky and sun that gave it its color. His
-    zebras are very appreciate.
+    is said that it was the combination of sky and sun that gave it its color.
 
-    
 
-    Allows to capture a pokemon'
+    Allows
+    to capture a pokemon'
   <ItemImage>k__BackingField: {fileID: 21300000, guid: 80990113985b47f4c90fda66056b2d88, type: 3}
   modifiersDatas: []

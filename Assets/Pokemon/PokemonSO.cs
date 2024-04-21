@@ -15,6 +15,8 @@ public class PokemonSO : ScriptableObject
 {
     public string name;
     public float hp;
+    public float hpMax;
+    public bool ko;
     public float damage;
     public float defense;
     public float speed;

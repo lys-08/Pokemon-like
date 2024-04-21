@@ -19,14 +19,9 @@ MonoBehaviour:
     the bewitching depth of distant seas. Its color recalls the changing shades of
     the ocean.
 
-    When shaken gently, the potion comes to life with an undulating
-    grace. Its swirling movement evokes marine currents, creating a sensation of
-    fluidity and deep calm. It has the smell of a sweet marine scent and its flavor
-    is refreshing and invigorating, with subtle notes of sea salt and spray.
 
-    
-
-    Restore
-    half of the health'
+    Restore 50 points of life'
   <ItemImage>k__BackingField: {fileID: 21300000, guid: 75cfc3a7b20c6d04791db028f79e6eba, type: 3}
-  modifiersDatas: []
+  modifiersDatas:
+  - statModifier: {fileID: 11400000, guid: b9221cc671175e8408405767e299b603, type: 2}
+    value: 50

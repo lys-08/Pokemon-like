@@ -29,8 +29,8 @@ namespace Inventory.UI
         }
 
         /**
-     * Methods that print the description of the clicked item
-     */
+         * Methods that print the description of the clicked item
+         */
         public void SetDescription(Sprite sprite, string itemName, string itemDescription)
         {
             this.itemImage_.gameObject.SetActive(true);

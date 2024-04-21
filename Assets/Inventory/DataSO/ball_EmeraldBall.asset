@@ -15,15 +15,13 @@ MonoBehaviour:
   <IsStackable>k__BackingField: 1
   <MaxStackSize>k__BackingField: 99
   <Name>k__BackingField: Emerald Ball
-  <Description>k__BackingField: 'Emerald Ball was created in the depths of a cave
-    where the nature surrounding it is lush. Its smooth surface, bright emerald green,
-    evokes the splendor of green forests and exotic jungles. Each gradient of green
-    that adorns its perfect sphere seems to capture sunlight, creating shimmering
-    reflections like rays passing through the leaves.
+  <Description>k__BackingField: 'Emerald Ball evokes the splendor of green forests
+    and exotic jungles. Each gradient of green that adorns its perfect sphere seems
+    to capture sunlight, creating shimmering reflections like rays passing through
+    the leaves.
 
-    
 
-    It increases the
-    capture capacity if the pokemon is Emerald type'
+    It increases the capture capacity if the pokemon is Emerald
+    type'
   <ItemImage>k__BackingField: {fileID: 21300000, guid: 59d73ce5a4e44a84eba471174e8cdfec, type: 3}
   modifiersDatas: []

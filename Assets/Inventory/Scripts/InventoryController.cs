@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Inventory.UI; // for UiInventoryPage
 using Inventory.Model;
+using UnityEditor.IMGUI.Controls;
 using UnityEngine.SocialPlatforms; // for ItemSO
 
 
@@ -13,6 +14,12 @@ namespace Inventory
     {
         [SerializeField] private UIInventoryPage inventoryUi;
         [SerializeField] private InventorySO inventoryData;
+
+        /***
+         * TODO : Sound
+         */
+        //[SerializeField] private AudioClip dropClip;
+        //[SerializeField] private AudioSource audioSource;
 
         public int inventorySize = 80;
 
@@ -64,7 +71,7 @@ namespace Inventory
 
         
         /**
-         * Methods that prepares the inventory UI by adding all actions and initializing the UI with the correct size
+         * Prepares the inventory UI by adding all actions and initializing the UI with the correct size
          */
         private void PrepareUI()
         {
@@ -72,11 +79,10 @@ namespace Inventory
             this.inventoryUi.OnDescriptionRequested += HandleDescriptionRequest;
             this.inventoryUi.OnSwapItems += HandleSwapItems;
             this.inventoryUi.OnStartDragging += HandleDragging;
-            this.inventoryUi.OnItemActionRequested += HandleItemActionRequest;
         }
 
         /**
-         * Methods that prepare the inventory Data
+         * Prepares the inventory Data
          */
         private void PrepareInventoryData()
         {
@@ -92,8 +98,31 @@ namespace Inventory
 
 
         #region Actions
+        
+        private void UpdateInventoryUI(Dictionary<int, InventoryItem> inventoryState)
+        {
+            inventoryUi.ResetAllItems();
 
-        public void HandleDescriptionRequest(int index)
+            foreach (var item in inventoryState)
+            {
+                inventoryUi.UpdateData(item.Key, item.Value.item.ItemImage, item.Value.quantity);
+            }
+        }
+
+        private void HandleSwapItems(int index1, int index2)
+        {
+            inventoryData.SwapItems(index1, index2);
+        }
+
+        private void HandleDragging(int index)
+        {
+            InventoryItem inventoryItem = inventoryData.GetItemAt(index);
+            if (inventoryItem.IsEmpty) return;
+            
+            inventoryUi.CreateDraggedItem(inventoryItem.item.ItemImage, inventoryItem.quantity);
+        }
+        
+        private void HandleDescriptionRequest(int index)
         {
             InventoryItem inventoryItem = inventoryData.GetItemAt(index);
             if (inventoryItem.IsEmpty)
@@ -104,22 +133,30 @@ namespace Inventory
 
             ItemSO item = inventoryItem.item;
             inventoryUi.UpdateDescription(index, item.ItemImage, item.Name, item.Description);
-        }
-
-        public void HandleSwapItems(int index1, int index2)
-        {
-            inventoryData.SwapItems(index1, index2);
-        }
-
-        public void HandleDragging(int index)
-        {
-            InventoryItem inventoryItem = inventoryData.GetItemAt(index);
-            if (inventoryItem.IsEmpty) return;
             
-            inventoryUi.CreateDraggedItem(inventoryItem.item.ItemImage, inventoryItem.quantity);
+            if (inventoryItem.IsEmpty) return;
+        
+            IItemAction itemAction = inventoryItem.item as IItemAction;
+            if (itemAction != null)
+            {
+                inventoryUi.ShowItemAction(index);
+                inventoryUi.AddAction(itemAction.ActionName, () => PerformAction(index));
+                Debug.Log("HandleItemActionRequest");
+            }
+        
+            IDestroyableItem destroyableItem = inventoryItem.item as IDestroyableItem;
+            if (destroyableItem != null)
+            {
+                inventoryUi.AddAction("Drop", () => DropItem(index, 1));
+                
+                // TODO : sfx sound
+                // audioSource.PlayOneShot(itemAction.actionSFX);
+                
+                //if (inventoryData.GetItemAt(index).IsEmpty) inventoryUi.ResetSelection();
+            }
         }
 
-        public void HandleItemActionRequest(int index)
+        private void PerformAction(int index)
         {
             InventoryItem inventoryItem = inventoryData.GetItemAt(index);
             if (inventoryItem.IsEmpty) return;
@@ -127,25 +164,25 @@ namespace Inventory
             IItemAction itemAction = inventoryItem.item as IItemAction;
             if (itemAction != null)
             {
-                Debug.Log("perform");
+                Debug.Log("Perform Action");
                 //itemAction.Perfom(pokemon);
             }
             
             IDestroyableItem destroyableItem = inventoryItem.item as IDestroyableItem;
             if (destroyableItem != null)
             {
+                if (inventoryItem.quantity == 1) inventoryUi.ResetSelection();
                 inventoryData.RemoveItem(index, 1);
             }
         }
 
-        public void UpdateInventoryUI(Dictionary<int, InventoryItem> inventoryState)
+        private void DropItem(int itemIndex, int quantity)
         {
-            inventoryUi.ResetAllItems();
-
-            foreach (var item in inventoryState)
-            {
-                inventoryUi.UpdateData(item.Key, item.Value.item.ItemImage, item.Value.quantity);
-            }
+            inventoryData.RemoveItem(itemIndex, quantity);
+            if (inventoryData.GetItemAt(itemIndex).IsEmpty) inventoryUi.ResetSelection();
+            
+            // TODO : drop audio
+            //audioSource.PlayOneShot(dropClip);
         }
 
         #endregion

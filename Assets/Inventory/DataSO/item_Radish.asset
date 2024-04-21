@@ -15,14 +15,12 @@ MonoBehaviour:
   <IsStackable>k__BackingField: 1
   <MaxStackSize>k__BackingField: 99
   <Name>k__BackingField: Radish
-  <Description>k__BackingField: 'A radish. It is a root vegetable characterized by
-    its small size and oblong shape. Its skin is bright pink (although some varieties
-    may be red, white or black). Its flesh is crisp and its flavor is slightly spicy
-    and fresh, bringing a touch of vivacity to the dishes.
+  <Description>k__BackingField: 'A radish whose flesh is crisp and its flavor is
+    slightly spicy and fresh, bringing a touch of vivacity to the dishes.
 
 
-    Restore 10 life
-    points'
+    Restore
+    10 life points'
   <ItemImage>k__BackingField: {fileID: 21300000, guid: d57f23c422739d840a031480410d5afa, type: 3}
   modifiersDatas:
   - statModifier: {fileID: 11400000, guid: b9221cc671175e8408405767e299b603, type: 2}

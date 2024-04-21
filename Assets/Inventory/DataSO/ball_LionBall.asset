@@ -15,11 +15,9 @@ MonoBehaviour:
   <IsStackable>k__BackingField: 1
   <MaxStackSize>k__BackingField: 99
   <Name>k__BackingField: Lion Ball
-  <Description>k__BackingField: 'Lion Ball was created from very precious crystals
-    from a mine that has now collapsed. It is said to contain a diamond inside. This
-    one would make its properties incredible
+  <Description>k__BackingField: 'Lion Ball is said to contain a diamond inside. This
+    one would make its properties incredible.
 
-    
 
     Catch a hit on the pokemon'
   <ItemImage>k__BackingField: {fileID: 21300000, guid: ed224067fe569e2478023a7b718973c5, type: 3}

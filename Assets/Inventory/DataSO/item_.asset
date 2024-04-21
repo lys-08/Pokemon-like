@@ -12,9 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f180eec6b987e498ebdf87138cdcad, type: 3}
   m_Name: item_
   m_EditorClassIdentifier: 
-  <IsStackable>k__BackingField: 0
-  <MaxStackSize>k__BackingField: 1
-  <Name>k__BackingField: 
-  <Description>k__BackingField: 
+  <IsStackable>k__BackingField: 1
+  <MaxStackSize>k__BackingField: 99
+  <Name>k__BackingField: Coffee Seed
+  <Description>k__BackingField: 'A coffee seed. Pokemons love it and become very
+    energetic after consuming it !
+
+
+    Retore 20 life points'
   <ItemImage>k__BackingField: {fileID: 0}
-  modifiersDatas: []
+  modifiersDatas:
+  - statModifier: {fileID: 11400000, guid: b9221cc671175e8408405767e299b603, type: 2}
+    value: 20

@@ -16,7 +16,10 @@ namespace Inventory.Model
 
         public string ActionName => "Consume";
         
-        // public AudioClip actionSFX {get; private set;};
+        /**
+         * TODO : Sound
+         */
+        // [field: SerializeField] public AudioClip actionSFX {get; private set;};
         
         public bool Perfom(GameObject pokemon)
         {

@@ -13,7 +13,6 @@ public class PickUpSystem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("trigger");
         Item item = other.GetComponent<Item>();
         if (item != null)
         {

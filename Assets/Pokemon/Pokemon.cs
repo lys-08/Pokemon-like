@@ -10,7 +10,7 @@ public class Pokemon : MonoBehaviour
      * Coefficients apply in a fight
      */
     private float damageCoef_ = 1f; 
-    public float defenseCoef_ = 1f;
+    private float defenseCoef_ = 1f;
 
     [SerializeField] private PokemonSO data_;
     
@@ -40,7 +40,7 @@ public class Pokemon : MonoBehaviour
 
     public bool IsKO()
     {
-        return data_.hp < 0f;
+        return data_.ko;
     }
     #endregion
     
@@ -80,7 +80,8 @@ public class Pokemon : MonoBehaviour
          */
         data_.hp -= (damageInflicted - data_.defense * defenseCoef_);
         
-        // The KO is handled in the Fight
+        // KO
+        if (data_.hp < 0) data_.ko = true;
     }
 
     

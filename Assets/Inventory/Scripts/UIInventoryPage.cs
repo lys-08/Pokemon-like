@@ -9,6 +9,7 @@ namespace Inventory.UI
     {
         [SerializeField] private UIInventoryItem itemPrefab;
         [SerializeField] private RectTransform contentPanel;
+        [SerializeField] private ItemActionPanel actionPanel;
         [SerializeField] private UIInventoryDescription itemDescription;
         [SerializeField] private MouseFollower mouseFollower;
 
@@ -23,7 +24,6 @@ namespace Inventory.UI
          * Actions that takes the index of the item for parameter
          */
         public event Action<int> OnDescriptionRequested, // When we left click on our item (border + description)
-                                OnItemActionRequested,  // When we right click on our item (show the item actions)
                                 OnStartDragging; // To know what to show when an element is dragged
         /**
          * Action for swapping two items => We need both index that are our parameters
@@ -44,7 +44,7 @@ namespace Inventory.UI
         
 
         /**
-         * Methods to initialize our inventory with a given size
+         * Initialize our inventory with a given size
          */
         public void InitializeInventoryUI(int inventorySize)
         {
@@ -59,12 +59,11 @@ namespace Inventory.UI
                 uiItem.OnItemBeginDrag += HandleBeginDrag;
                 uiItem.OnItemDroppedOn += HandleSwap;
                 uiItem.OnItemEndDrag += HandleEndDrag;
-                uiItem.OnRightMouseButtonClick += HandleShowItemActions;
             }
         }
 
         /**
-         * Methods that update our inventory with all items data we have
+         * Update our inventory with all items data we have
          * -> Set the image and quantity of all items
          */
         public void UpdateData(int itemIndex, Sprite itemImage, int itemQuantity)
@@ -76,7 +75,7 @@ namespace Inventory.UI
         }
 
         /**
-         * Methods that reset the dragged item
+         * Reset the dragged item
          */
         private void ResetDraggedItem()
         {
@@ -85,7 +84,7 @@ namespace Inventory.UI
         }
 
         /**
-         * Methods that create/activate and set our mouse follower
+         * Create/activate and set our mouse follower
          */
         public void CreateDraggedItem(Sprite sprite, int quantity)
         {
@@ -94,7 +93,23 @@ namespace Inventory.UI
         }
 
         /**
-         * Methods that reset the selection. This methods reset the current description and selection
+         * Add an action button to the action panel
+         */
+        public void AddAction(string actionName, Action performAction)
+        {
+            actionPanel.AddButton(actionName, performAction);
+        }
+
+        /**
+         * Show the action panel that contains all action buttons associated with the item
+         */
+        public void ShowItemAction(int index)
+        {
+            actionPanel.Toggle(true);
+        }
+
+        /**
+         * Reset the selection. This methods reset the current description and selection
          */
         public void ResetSelection()
         {
@@ -103,7 +118,7 @@ namespace Inventory.UI
         }
 
         /**
-         * Methods that deselct all items in the inventory
+         * Deselect all items in the inventory
          */
         private void DeselectAllItems()
         {
@@ -111,10 +126,11 @@ namespace Inventory.UI
             {
                 item.Deselect();
             }
+            actionPanel.Toggle(false);
         }
 
         /**
-         * Methods that reset all of the items
+         * Reset all of the items
          */
         internal void ResetAllItems()
         {
@@ -126,7 +142,7 @@ namespace Inventory.UI
         }
 
         /**
-         * Methods that update the description according to the new clicked item (the previous one is deselected)
+         * Update the description according to the new clicked item (the previous one is deselected)
          */
         internal void UpdateDescription(int index, Sprite image, string name, string description)
         {
@@ -136,7 +152,7 @@ namespace Inventory.UI
         }
 
         /**
-         * Methods that show the inventory page
+         * Show the inventory page
          */
         public void Show()
         {
@@ -147,10 +163,11 @@ namespace Inventory.UI
         }
         
         /**
-         * Methods that hides the inventory page
+         * Hides the inventory page
          */
         public void Hide()
         {
+            actionPanel.Toggle(false);
             gameObject.SetActive(false);
             ResetDraggedItem();
         }
@@ -188,14 +205,6 @@ namespace Inventory.UI
         private void HandleEndDrag(UIInventoryItem obj)
         {
             ResetDraggedItem();
-        }
-        
-        private void HandleShowItemActions(UIInventoryItem obj)
-        {
-            int index = listUiItems.IndexOf(obj);
-            if (index == -1) return;
-            
-            OnItemActionRequested?.Invoke(index);
         }
 
         #endregion
