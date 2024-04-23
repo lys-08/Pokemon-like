@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Inventory.UI; // UIInventoryPage
 
-namespace DesignPattern.State.Game
+namespace DesignPattern.State
 {
     public class PlayState : IState
     {
@@ -29,15 +29,22 @@ namespace DesignPattern.State.Game
             {
                 game.GamestateMachine.TransitionTo(game.GamestateMachine.pauseState);
             }
+            
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                game.battle.playerPokemon = game.poke1;
+                game.battle.wildPokemon = game.poke2;
+                game.GamestateMachine.TransitionTo(game.GamestateMachine.battleState);
+            }
 
 
-            var colliders = Physics.OverlapSphere(game.player.transform.position, 5f, 6);
+            /*var colliders = Physics.OverlapSphere(game.player.transform.position, 5f, 6);
             if (colliders != null)
             {
                 //game.GamestateMachine.battleState.playerPokemon = game.player.GetMainPokemon();
                 //game.GamestateMachine.battleState.wildPokemon = colliders[0].GetComponent<PokemonSO>();
                 game.GamestateMachine.TransitionTo(game.GamestateMachine.battleState);
-            }
+            }*/
         }
 
         public void Exit()

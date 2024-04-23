@@ -110,10 +110,10 @@ RectTransform:
   - {fileID: 3811491255837309927}
   m_Father: {fileID: 5741063400465469573}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 739.99994, y: -135.11488}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2669462409046888052
 CanvasRenderer:
@@ -245,10 +245,10 @@ RectTransform:
   - {fileID: 7371166642856918058}
   m_Father: {fileID: 5741063400465469573}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 959.99994, y: -135.11488}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6041167225901430226
 CanvasRenderer:
@@ -589,10 +589,10 @@ RectTransform:
   - {fileID: 8076337919472128104}
   m_Father: {fileID: 5741063400465469573}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 739.99994, y: -65.11488}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5453338163637905084
 CanvasRenderer:
@@ -1799,10 +1799,10 @@ RectTransform:
   - {fileID: 686375080412600270}
   m_Father: {fileID: 5741063400465469573}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1180, y: -135.11488}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1907236665314899836
 CanvasRenderer:
@@ -2124,7 +2124,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6888312441202223942}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!1 &7327558153603681097
 GameObject:
   m_ObjectHideFlags: 0
@@ -2269,7 +2269,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2042590022444954036}
   - component: {fileID: 7222750716805143502}
-  - component: {fileID: 3060071115193305817}
+  - component: {fileID: 4974347161116750034}
   m_Layer: 0
   m_Name: '[Battle System]'
   m_TagString: Untagged
@@ -2312,7 +2312,7 @@ MonoBehaviour:
   pokemonName: {fileID: 211146440583442149}
   pokemonBar: {fileID: 8335389511594923554}
   pokemonImage: {fileID: 7462014824140702303}
---- !u!114 &3060071115193305817
+--- !u!114 &4974347161116750034
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2321,13 +2321,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7647704597072050262}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0aa9d386fcfa84e4c993f9d4c291a307, type: 3}
+  m_Script: {fileID: 11500000, guid: 0efcc66bbaba90448929e9f59bb9fa02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   battleHUD: {fileID: 7222750716805143502}
   dialogBox: {fileID: 1666957852489986703}
   playerPokemon: {fileID: 11400000, guid: d663c0c2d8a83534f8e2d278ec89887d, type: 2}
   wildPokemon: {fileID: 11400000, guid: f14a25f2aa5c23c45893fe162b487a17, type: 2}
+  combatEnded: 0
 --- !u!1 &7770444876139612041
 GameObject:
   m_ObjectHideFlags: 0
@@ -2744,10 +2745,10 @@ RectTransform:
   - {fileID: 2981626195957433510}
   m_Father: {fileID: 5741063400465469573}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 959.99994, y: -65.11488}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3601048545350261772
 CanvasRenderer:
@@ -2879,10 +2880,10 @@ RectTransform:
   - {fileID: 771714978468079997}
   m_Father: {fileID: 5741063400465469573}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1180, y: -65.11488}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8885341421424045996
 CanvasRenderer:

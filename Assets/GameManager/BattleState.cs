@@ -1,11 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace DesignPattern.State.Game
+
+namespace DesignPattern.State
 {
-    public class BattleState : IState
+    public class BattleState : MonoBehaviour, IState
     {
         private Game game;
     
@@ -13,23 +15,36 @@ namespace DesignPattern.State.Game
         {
             this.game = game;
         }
+        
+
+
+        private void Awake()
+        {
+            
+        }
 
 
         #region IState
 
         public void Enter()
         {
-            Debug.Log("Battle");
+            game.battle.SetUpBattle();
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
         }
 
         public void Update()
         {
-            //game.GameStateMachine.TransitionTo(game.GameStateMachine.playState);
+            if (game.battle.combatEnded)
+            {
+                game.battle.combatEnded = false;
+                game.GamestateMachine.TransitionTo(game.GamestateMachine.playState);
+            }
         }
 
         public void Exit()
         {
-        
+            Cursor.visible = false;
         }
 
         #endregion

@@ -7,13 +7,13 @@ using System;
 using Inventory.UI; // UIInventoryPage
 
 
-namespace DesignPattern.State.Game
+namespace DesignPattern.State
 {
    public class Game : MonoBehaviour
    {
        private UnityEvent<bool> onPause = new UnityEvent<bool>();
        [field: SerializeField] public UIInventoryPage inventory;
-       [field: SerializeField] public BattleSystem battleSystem;
+       [field: SerializeField] public BattleSystem battle;
        [field: SerializeField] public Player player;
        
        // SINGLETON
@@ -23,6 +23,10 @@ namespace DesignPattern.State.Game
        private StateMachine stateMachine_;
        public StateMachine GamestateMachine => stateMachine_;
 
+       
+       // TODO temporary
+       [field: SerializeField] public PokemonSO poke1;
+       [field: SerializeField] public WildPokemonSO poke2;
 
        
        #region Singleton
@@ -58,6 +62,7 @@ namespace DesignPattern.State.Game
            stateMachine_ = new StateMachine(this);
 
            player = FindObjectOfType<Player>();
+           inventory.gameObject.SetActive(false);
        }
        
        private static void SetupInstance()

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace DesignPattern.State.Game
+namespace DesignPattern.State
 {
     public class PauseState : IState
     {

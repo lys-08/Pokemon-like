@@ -72,8 +72,6 @@ public class PokemonSO : ScriptableObject
         /*
          * We apply the damage according of the defense coefficient of the pokemon
          */
-        Debug.Log($"damage {damageInflicted}");
-        Debug.Log($"damage {damageInflicted}");
         hp -= (damageInflicted - defense * defenseCoef);
         
         // KO

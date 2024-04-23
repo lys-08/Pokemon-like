@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.Events;
 
-namespace DesignPattern.State.Battle
+namespace DesignPattern.State
 {
     public class BattleStateMachine : MonoBehaviour
     {
@@ -12,7 +12,7 @@ namespace DesignPattern.State.Battle
        
         // reference to state objects
         public StartState startState;
-        public BusyState busyState;
+        public EndState endState;
         public EnemyMoveState enemyMoveState;
         public PlayerMoveState playerMoveState;
        
@@ -24,11 +24,11 @@ namespace DesignPattern.State.Battle
         /**
          * Constructor
          */
-        public BattleStateMachine(Battle battle)
+        public BattleStateMachine(BattleSystem battle)
         {
             // create an instance for each state
             this.startState = new StartState(battle);
-            this.busyState = new BusyState(battle);
+            this.endState = new EndState(battle);
             this.enemyMoveState = new EnemyMoveState(battle);
             this.playerMoveState = new PlayerMoveState(battle);
         }

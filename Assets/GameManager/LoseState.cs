@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-namespace DesignPattern.State.Game
+namespace DesignPattern.State
 {
     public class LoseState : IState
     {
