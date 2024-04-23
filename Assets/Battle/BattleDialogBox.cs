@@ -33,6 +33,7 @@ public class BattleDialogBox : MonoBehaviour
      */
     public IEnumerator TypeDialog(string dialog)
     {
+        Debug.Log("Type Dialog");
         dialogText.text = "";
         foreach (char letter in dialog.ToCharArray())
         {

@@ -10,7 +10,7 @@ public enum Type
     Sapphire
 }
 
-[CreateAssetMenu(fileName = "NewPokemon", menuName = "Pokemon")]
+[CreateAssetMenu(fileName = "NewPokemon", menuName = "NewPokemon/Pokemon")]
 public class PokemonSO : ScriptableObject
 {
     // features
@@ -72,6 +72,8 @@ public class PokemonSO : ScriptableObject
         /*
          * We apply the damage according of the defense coefficient of the pokemon
          */
+        Debug.Log($"damage {damageInflicted}");
+        Debug.Log($"damage {damageInflicted}");
         hp -= (damageInflicted - defense * defenseCoef);
         
         // KO
@@ -89,9 +91,9 @@ public class PokemonSO : ScriptableObject
          * -> For the condition, we can test only one out of the two value because they
          *    are modified at the same time, by the same percentage
          */
-        if (damageCoef >= 1.5f) return;
+        if (damageCoef <= 0.5f) return;
         
-        damageCoef += 0.1f;
+        damageCoef -= 0.1f;
         defenseCoef -= 0.1f;
     }
 
@@ -99,16 +101,16 @@ public class PokemonSO : ScriptableObject
      * Increased the pokemon attack and defense by a percentage for battle duration
      * -> used when the pokemon uses a focusing attack
      */
-    public void TakeFocus()
+    public void Focus()
     {
         /*
          * If the damage coefficient is greater or equal to 1.5f then we do nothing
          * -> For the condition, we can test only one out of the two value because they
          *    are modified at the same time, by the same percentage
          */
-        if (damageCoef <= 0.5f) return;
+        if (damageCoef >= 1.5f) return;
         
-        damageCoef -= 0.1f;
+        damageCoef += 0.1f;
         defenseCoef += 0.1f;
     }
 

@@ -2327,7 +2327,7 @@ MonoBehaviour:
   battleHUD: {fileID: 7222750716805143502}
   dialogBox: {fileID: 1666957852489986703}
   playerPokemon: {fileID: 11400000, guid: d663c0c2d8a83534f8e2d278ec89887d, type: 2}
-  wildPokemon: {fileID: 11400000, guid: 565aaa9edcf7b8942909eaf9e6209fec, type: 2}
+  wildPokemon: {fileID: 11400000, guid: f14a25f2aa5c23c45893fe162b487a17, type: 2}
 --- !u!1 &7770444876139612041
 GameObject:
   m_ObjectHideFlags: 0

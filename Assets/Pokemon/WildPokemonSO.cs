@@ -4,40 +4,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class WildPokemon : Pokemon
+
+[CreateAssetMenu(fileName = "NewWildPokemon", menuName = "NewPokemon/WildPokemon")]
+public class WildPokemonSO : PokemonSO
 {
     /*
      * Coefficients that determined the percentage of the pokemon to attack, distract and
      * focus during a fight
      */
-    private float attackCoeff_;
-    private float distractCoeff_;
-    private float focusCoeff_;
+    public float attackCoeff_;
+    public float distractCoeff_;
+    public float focusCoeff_;
+    public float runCoeff_;
     
-    private Dictionary<int, GameObject> objs_; // Possible objects that can be given when the pokemon is KO
+    public Dictionary<int, GameObject> objs_; // Possible objects that can be given when the pokemon is KO
 
-    private GameObject player_;
-
-
-    #region Getters
-
-    public float GetAttackCoeff()
-    {
-        return attackCoeff_;
-    }
-
-    public float GetDistractCoeff()
-    {
-        return distractCoeff_;
-    }
-
-    public float GetFocusCoeff()
-    {
-        return focusCoeff_;
-    }
-
-    #endregion
-    
     
     
     /**
@@ -59,15 +40,6 @@ public class WildPokemon : Pokemon
 
 
     /**
-     * Function that detects if the player is in the pokemon range. If he is, than a fight is launch
-     */
-    private void LaunchFight()
-    {
-        // TODO
-    }
-
-
-    /**
      *  Function that generate the coefficients of the attack the pokemon do in a fight
      * -> this function is called at the creation of the pokemon
      */
@@ -75,24 +47,25 @@ public class WildPokemon : Pokemon
     {
         attackCoeff_ = Random.Range(50, 70) / 100f;
         focusCoeff_ = Random.Range(5, 1 - attackCoeff_) / 100f;
-        distractCoeff_ = 1f - attackCoeff_ - focusCoeff_;
+        runCoeff_ = Random.Range(2, 4) / 100f;
+        distractCoeff_ = 1f - attackCoeff_ - focusCoeff_ - runCoeff_;
     }
 
 
     #region Unity Event Function
 
-    private void Awake()
+    private void Start()
     {
-        player_ = GameObject.FindWithTag("Player");
         GenerateCoeffs();
+        Debug.Log("Awake wild pokemon");
     }
 
     private void Update()
     {
         /*
-         * If the player is in the range of the pokemon, than a fight start
+         * If the player is in the range of the pokemon, than a fight start TODO player
          */
-        if (Physics.OverlapSphere(transform.position, 5f, 3) != null) LaunchFight();
+        // if (Physics.OverlapSphere(transform.position, 5f, 3) != null) LaunchFight();
     }
 
     #endregion
