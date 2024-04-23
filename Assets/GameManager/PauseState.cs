@@ -1,15 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DesignPatterns.Singleton;
-using Inventory.UI; // UIInventoryPage
 
-namespace DesignPatterns.State
+
+namespace DesignPattern.State.Game
 {
     public class PauseState : IState
     {
         private Game game;
-        [SerializeField] private UIInventoryPage inventory;
     
         
         public PauseState(Game game)
@@ -25,7 +23,7 @@ namespace DesignPatterns.State
             Time.timeScale = 0f;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
-            inventory.Show();
+            game.inventory.Show();
         }
 
         public void Update()
@@ -40,7 +38,7 @@ namespace DesignPatterns.State
         {
             Time.timeScale = 1f;
             Cursor.visible = false;
-            inventory.Hide();
+            game.inventory.Hide();
         }
 
         #endregion

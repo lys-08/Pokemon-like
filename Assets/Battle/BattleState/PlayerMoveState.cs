@@ -4,16 +4,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-namespace DesignPattern.State.Game
+namespace DesignPattern.State.Battle
 {
-    public class LoseState : IState
+    public class PlayerMoveState : IState
     {
-        private Game game;
+        private Battle battle;
     
         
-        public LoseState(Game game)
+        public PlayerMoveState(Battle battle)
         {
-            this.game = game;
+            this.battle = battle;
         }
 
 
@@ -21,8 +21,7 @@ namespace DesignPattern.State.Game
 
         public void Enter()
         {   
-            Debug.Log("Game Over");
-            SceneManager.LoadScene("Menu");
+            Debug.Log("Player Turn");
         }
 
         public void Update()

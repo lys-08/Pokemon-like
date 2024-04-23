@@ -1,34 +1,28 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-using System.Collections;
-using System.Collections.Generic;
 using System;
-using Inventory.UI; // UIInventoryPage
 
 
-namespace DesignPattern.State.Game
+namespace DesignPattern.State.Battle
 {
-   public class Game : MonoBehaviour
+   public class Battle : MonoBehaviour
    {
        private UnityEvent<bool> onPause = new UnityEvent<bool>();
-       [field: SerializeField] public UIInventoryPage inventory;
-       [field: SerializeField] public BattleSystem battleSystem;
-       [field: SerializeField] public Player player;
        
        // SINGLETON
-       private static Game instance_;
+       private static Battle instance_;
        
        // STATE
-       private StateMachine stateMachine_;
-       public StateMachine GamestateMachine => stateMachine_;
+       private BattleStateMachine battleStateMachine_;
+       public BattleStateMachine GamestateMachine => battleStateMachine_;
 
 
        
        #region Singleton
 
        // global access
-       public static Game Instance
+       public static Battle Instance
        {
            get
            {
@@ -55,22 +49,20 @@ namespace DesignPattern.State.Game
            }
            
            // STATE
-           stateMachine_ = new StateMachine(this);
-
-           player = FindObjectOfType<Player>();
+           battleStateMachine_ = new BattleStateMachine(this);
        }
        
        private static void SetupInstance()
        {
            // lazy instantiation
-           instance_ = FindObjectOfType<Game>();
+           instance_ = FindObjectOfType<Battle>();
 
 
            if (instance_ == null)
            {
                GameObject gameObj = new GameObject();
-               gameObj.name = "Singleton Game";
-               instance_ = gameObj.AddComponent<Game>();
+               gameObj.name = "Singleton Battle System";
+               instance_ = gameObj.AddComponent<Battle>();
                DontDestroyOnLoad(gameObj);
            }
        }
@@ -81,13 +73,12 @@ namespace DesignPattern.State.Game
        
        private void Start()
        {
-           //STATE
-           stateMachine_.Initialize(stateMachine_.playState);
+           battleStateMachine_.Initialize(battleStateMachine_.startState);
        }
   
        private void Update()
        {
-           stateMachine_.Update();
+           battleStateMachine_.Update();
        }
 
        public void AddOnPauseListener(UnityAction<bool> listener)
@@ -95,9 +86,9 @@ namespace DesignPattern.State.Game
            onPause.AddListener(listener);
        }
   
-       private void EndGame()
+       private void EndFight()
        {
-           Debug.Log("Game Over");
+           Debug.Log("The fight is over");
        }
    }
 }

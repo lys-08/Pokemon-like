@@ -4,17 +4,17 @@ using UnityEngine;
 using System;
 using UnityEngine.Events;
 
-namespace DesignPattern.State.Game
+namespace DesignPattern.State.Battle
 {
-    public class StateMachine : MonoBehaviour
+    public class BattleStateMachine : MonoBehaviour
     {
         public IState CurrentState { get; private set; }
        
         // reference to state objects
-        [field: SerializeField] public PlayState playState;
-        [field: SerializeField] public PauseState pauseState;
-        [field: SerializeField] public BattleState battleState;
-        [field: SerializeField] public LoseState loseState;
+        public StartState startState;
+        public BusyState busyState;
+        public EnemyMoveState enemyMoveState;
+        public PlayerMoveState playerMoveState;
        
         // event to notify other objects of the state change
         private UnityEvent<IState> stateChanged;
@@ -24,13 +24,13 @@ namespace DesignPattern.State.Game
         /**
          * Constructor
          */
-        public StateMachine(Game game)
+        public BattleStateMachine(Battle battle)
         {
             // create an instance for each state
-            this.playState = new PlayState(game);
-            this.loseState = new LoseState(game);
-            this.battleState = new BattleState(game);
-            this.pauseState = new PauseState(game);
+            this.startState = new StartState(battle);
+            this.busyState = new BusyState(battle);
+            this.enemyMoveState = new EnemyMoveState(battle);
+            this.playerMoveState = new PlayerMoveState(battle);
         }
         
         public void AddStateChangedListener(UnityAction<IState> listener)

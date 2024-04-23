@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using DesignPatterns.Singleton;
 
-namespace DesignPatterns.State
+namespace DesignPattern.State.Game
 {
     public class BattleState : IState
     {

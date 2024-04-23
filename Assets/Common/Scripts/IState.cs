@@ -1,8 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DesignPatterns.State
+
+namespace DesignPattern.State
 {
     public interface IState
     {

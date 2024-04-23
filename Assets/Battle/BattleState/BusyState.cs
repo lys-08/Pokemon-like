@@ -3,26 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
-namespace DesignPattern.State.Game
+namespace DesignPattern.State.Battle
 {
-    public class LoseState : IState
+    public class BusyState : IState
     {
-        private Game game;
+        private Battle battle;
     
-        
-        public LoseState(Game game)
+        public BusyState(Battle battle)
         {
-            this.game = game;
+            this.battle = battle;
         }
 
 
         #region IState
 
         public void Enter()
-        {   
-            Debug.Log("Game Over");
-            SceneManager.LoadScene("Menu");
+        {
+            Debug.Log("Busy");
         }
 
         public void Update()
@@ -32,7 +29,7 @@ namespace DesignPattern.State.Game
 
         public void Exit()
         {
-            
+        
         }
 
         #endregion

@@ -1,33 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using Inventory.UI; 
 
-
-namespace DesignPattern.State.Game
+namespace DesignPattern.State.Battle
 {
-    public class LoseState : IState
+    public class StartState : IState
     {
-        private Game game;
+        private Battle battle;
     
         
-        public LoseState(Game game)
+        public StartState(Battle battle)
         {
-            this.game = game;
+            this.battle = battle;
         }
 
-
+        
         #region IState
 
         public void Enter()
-        {   
-            Debug.Log("Game Over");
-            SceneManager.LoadScene("Menu");
+        {
+            
         }
 
         public void Update()
         {
-            
+
         }
 
         public void Exit()

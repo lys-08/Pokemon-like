@@ -18,7 +18,7 @@ namespace Inventory.UI
         /**
          * Add a button and the on click action associated in the panel
          */
-        public void AddButton(string name, Action onClickAction)
+        public void AddButton(string name, System.Action onClickAction)
         {
             GameObject button = Instantiate(buttonPrefab, transform);
             button.GetComponent<Button>().onClick.AddListener(() => onClickAction()); // We set the action to apply when the button is cliqued

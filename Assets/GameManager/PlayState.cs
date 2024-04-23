@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DesignPatterns.Singleton;
 using Inventory.UI; // UIInventoryPage
 
-namespace DesignPatterns.State
+namespace DesignPattern.State.Game
 {
     public class PlayState : IState
     {
@@ -29,6 +28,15 @@ namespace DesignPatterns.State
             if (Input.GetKeyDown(KeyCode.E))
             {
                 game.GamestateMachine.TransitionTo(game.GamestateMachine.pauseState);
+            }
+
+
+            var colliders = Physics.OverlapSphere(game.player.transform.position, 5f, 6);
+            if (colliders != null)
+            {
+                //game.GamestateMachine.battleState.playerPokemon = game.player.GetMainPokemon();
+                //game.GamestateMachine.battleState.wildPokemon = colliders[0].GetComponent<PokemonSO>();
+                game.GamestateMachine.TransitionTo(game.GamestateMachine.battleState);
             }
         }
 

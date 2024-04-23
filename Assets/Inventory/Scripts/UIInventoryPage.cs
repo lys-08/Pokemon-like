@@ -95,7 +95,7 @@ namespace Inventory.UI
         /**
          * Add an action button to the action panel
          */
-        public void AddAction(string actionName, Action performAction)
+        public void AddAction(string actionName, System.Action performAction)
         {
             actionPanel.AddButton(actionName, performAction);
         }
