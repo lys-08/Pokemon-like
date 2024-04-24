@@ -28,6 +28,7 @@ namespace DesignPattern.State
 
         public void Enter()
         {
+            game.mainCamera.gameObject.SetActive(false);
             game.battle.SetUpBattle();
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
@@ -45,6 +46,7 @@ namespace DesignPattern.State
         public void Exit()
         {
             Cursor.visible = false;
+            game.mainCamera.gameObject.SetActive(true);
         }
 
         #endregion

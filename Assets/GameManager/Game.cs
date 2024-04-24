@@ -15,6 +15,8 @@ namespace DesignPattern.State
        [field: SerializeField] public UIInventoryPage inventory;
        [field: SerializeField] public BattleSystem battle;
        [field: SerializeField] public Player player;
+       private PlayerController playerController;
+       public Camera mainCamera;
        
        // SINGLETON
        private static Game instance_;
@@ -29,7 +31,6 @@ namespace DesignPattern.State
        [field: SerializeField] public WildPokemonSO poke2;
 
        
-       #region Singleton
 
        // global access
        public static Game Instance
@@ -43,6 +44,25 @@ namespace DesignPattern.State
                return instance_;
            }
        }
+       
+       private static void SetupInstance()
+       {
+           // lazy instantiation
+           instance_ = FindObjectOfType<Game>();
+
+
+           if (instance_ == null)
+           {
+               GameObject gameObj = new GameObject();
+               gameObj.name = "Singleton Game";
+               instance_ = gameObj.AddComponent<Game>();
+               DontDestroyOnLoad(gameObj);
+           }
+       }
+
+
+
+       #region Unity Events Methods
 
        private void Awake()
        {
@@ -62,27 +82,10 @@ namespace DesignPattern.State
            stateMachine_ = new StateMachine(this);
 
            player = FindObjectOfType<Player>();
+           playerController = player.gameObject.GetComponent<PlayerController>();
+           mainCamera = Camera.main;
            inventory.gameObject.SetActive(false);
        }
-       
-       private static void SetupInstance()
-       {
-           // lazy instantiation
-           instance_ = FindObjectOfType<Game>();
-
-
-           if (instance_ == null)
-           {
-               GameObject gameObj = new GameObject();
-               gameObj.name = "Singleton Game";
-               instance_ = gameObj.AddComponent<Game>();
-               DontDestroyOnLoad(gameObj);
-           }
-       }
-
-       #endregion
-       
-  
        
        private void Start()
        {
@@ -95,14 +98,6 @@ namespace DesignPattern.State
            stateMachine_.Update();
        }
 
-       public void AddOnPauseListener(UnityAction<bool> listener)
-       {
-           onPause.AddListener(listener);
-       }
-  
-       private void EndGame()
-       {
-           Debug.Log("Game Over");
-       }
+       #endregion
    }
 }

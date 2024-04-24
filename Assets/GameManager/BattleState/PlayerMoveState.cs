@@ -16,7 +16,9 @@ namespace DesignPattern.State
             this.battle = battle;
         }
         
-        
+        /**
+         * Action : activate when the player choose an action to do
+         */
         private void OnRequestedAction(BattleAction obj)
         {
             battle.dialogBox.ToggleDialogText(true);
@@ -45,7 +47,7 @@ namespace DesignPattern.State
                     break;
                 case ("Run"):
                     Debug.Log("Run");
-                    battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.endState);
+                    battle.StartCoroutine(Run());
                     break;
             }
         }
@@ -55,16 +57,14 @@ namespace DesignPattern.State
          */
         private IEnumerator Run()
         {
-            battle.StartCoroutine(battle.dialogBox.TypeDialog($"You ran."));
-            yield return new WaitForSeconds(1f);
+            yield return battle.dialogBox.TypeDialog($"You ran.");
 
             while (true)
             {
-                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Mouse0))
-                {
-                    battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.endState);
-                    yield break;
-                }
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Mouse0)) continue;
+                
+                battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.endState);
+                yield break;
             }
         }
         
@@ -74,8 +74,7 @@ namespace DesignPattern.State
         private IEnumerator PerformAction(string action)
         {
             Debug.Log("Perform Action");
-            battle.StartCoroutine(battle.dialogBox.TypeDialog($"{battle.playerPokemon.name} used {action}."));
-            yield return new WaitForSeconds(1f);
+            yield return battle.dialogBox.TypeDialog($"{battle.playerPokemon.name} used {action}.");
         
             while (true)
             {
