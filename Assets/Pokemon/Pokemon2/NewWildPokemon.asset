@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d3f892d333973d44adb2543533a732f, type: 3}
   m_Name: NewWildPokemon
   m_EditorClassIdentifier: 
-  name: Pokemon 2
+  name: Wild Pokemon 2
   description: poke 2
   type: 1
   image: {fileID: 21300000, guid: 285c0a20474e8c24798c9742dd53bfa8, type: 3}
-  hp: 71.5
-  hpMax: 100
+  hp: 350
+  hpMax: 350
   damage: 10
   defense: 5
   speed: 5
   damageCoef: 1
-  defenseCoef: 0.5999999
+  defenseCoef: 1
   ko: 0
   attackCoeff_: 0
   distractCoeff_: 0

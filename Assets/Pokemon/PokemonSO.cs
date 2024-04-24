@@ -43,8 +43,10 @@ public class PokemonSO : ScriptableObject
     /**
      * Pokemon damage function. The damage dealt depends on the type of the attacking pokémon relative
      * to the type of the current pokemon, as well as the original power of the attack
+     *
+     * Return the new hp of the pokemon
      */
-    public void TakeDamage(float damage, Type type)
+    public float TakeDamage(float damage, Type type)
     {
         float damageInflicted;
         switch (type)
@@ -76,6 +78,8 @@ public class PokemonSO : ScriptableObject
         
         // KO
         if (hp < 0) ko = true;
+
+        return hp;
     }
     
     /**

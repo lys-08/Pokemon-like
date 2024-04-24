@@ -36,4 +36,21 @@ public class BattleHUD : MonoBehaviour
         pokemonBar.SetPokemon(wildPokemon);
         pokemonImage.sprite = wildPokemon.image;
     }
+
+    /**
+     * Update the hp of the player pokemon
+     */
+    public IEnumerator UpdatePlayerPokemonBar(float newHp)
+    {
+     yield return playerPokemonBar.UpdateBar(newHp);
+    }
+    
+ 
+    /**
+     * Update the hp of the wild pokemon
+     */
+    public IEnumerator UpdateWildPokemonBar(float newHp)
+    {
+     yield return pokemonBar.UpdateBar(newHp);
+    }
 }

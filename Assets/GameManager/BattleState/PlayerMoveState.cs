@@ -19,13 +19,14 @@ namespace DesignPattern.State
         
         private void OnRequestedAction(BattleAction obj)
         {
-            battle.dialogBox.ToggleAction(true);
+            battle.dialogBox.ToggleDialogText(true);
             battle.dialogBox.ToggleAction(false);
-            
+
             switch (obj.name)
             {
                 case ("Fight"):
-                    battle.wildPokemon.TakeDamage(battle.playerPokemon.GetDamage(), battle.playerPokemon.type);
+                    float newHp = battle.wildPokemon.TakeDamage(battle.playerPokemon.GetDamage(), battle.playerPokemon.type);
+                    battle.StartCoroutine(battle.battleHUD.UpdateWildPokemonBar(newHp));
                     battle.StartCoroutine(PerformAction("Fight"));
                     break;
                 case ("Distract"):
@@ -55,6 +56,7 @@ namespace DesignPattern.State
         private IEnumerator Run()
         {
             battle.StartCoroutine(battle.dialogBox.TypeDialog($"You ran."));
+            yield return new WaitForSeconds(1f);
 
             while (true)
             {
@@ -71,11 +73,14 @@ namespace DesignPattern.State
          */
         private IEnumerator PerformAction(string action)
         {
+            Debug.Log("Perform Action");
             battle.StartCoroutine(battle.dialogBox.TypeDialog($"{battle.playerPokemon.name} used {action}."));
+            yield return new WaitForSeconds(1f);
         
             while (true)
             {
-                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Mouse0)) continue;
+                // TODO : transition à revoir (y'a un porblème)
+                if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.Mouse0)) continue;
                 
                 if (battle.wildPokemon.ko)
                 {
@@ -88,13 +93,13 @@ namespace DesignPattern.State
                 yield break;
             }
         }
-
-
+        
         #region IState
 
         public void Enter()
         {   
             Debug.Log("Player Turn");
+            
             foreach (BattleAction action in battle.dialogBox.actions.gameObject.GetComponentsInChildren<BattleAction>())
             {
                 action.OnItemClicked += OnRequestedAction;
@@ -111,7 +116,10 @@ namespace DesignPattern.State
 
         public void Exit()
         {
-            
+            foreach (BattleAction action in battle.dialogBox.actions.gameObject.GetComponentsInChildren<BattleAction>())
+            {
+                action.OnItemClicked -= OnRequestedAction;
+            }
         }
 
         #endregion

@@ -43,22 +43,12 @@ namespace DesignPattern.State
        */
        public void SetUpBattle()
        {
-           Debug.Log("Battle");
-            
            dialogBox.ToggleAction(false);
            dialogBox.ToggleDialogText(false);
            
            this.gameObject.SetActive(true); 
            battleHUD.SetData(playerPokemon, wildPokemon);
            battleStateMachine_.Initialize(battleStateMachine_.startState);
-       }
-
-       /**
-        * Hide the battle stage
-        */
-       public void Hide()
-       {
-           this.gameObject.SetActive(false);
        }
    }
 }

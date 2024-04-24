@@ -38,9 +38,11 @@ namespace DesignPattern.State
         private IEnumerator PerformAction(string action)
         {
             battle.StartCoroutine(battle.dialogBox.TypeDialog($"{battle.wildPokemon.name} used {action}."));
+            yield return new WaitForSeconds(1f);
         
             while (true)
             {
+                // TODO : transition à revoir (y'a un porblème)
                 if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Mouse0)) continue;
                 
                 if (battle.playerPokemon.ko)
@@ -66,10 +68,11 @@ namespace DesignPattern.State
             //Debug.Log($"run {battle.wildPokemon.runCoeff_} fight {battle.wildPokemon.attackCoeff_} " +
             //          $"disctrac {battle.wildPokemon.distractCoeff_} focus {battle.wildPokemon.focusCoeff_}"); ;
 
-            switch (Random.Range(0, 1)) // TODO : temporary
+            switch (0) // TODO : temporary
             {
                 case (0):
-                    battle.playerPokemon.TakeDamage(battle.wildPokemon.GetDamage(), battle.wildPokemon.type);
+                    float newHp = battle.playerPokemon.TakeDamage(battle.wildPokemon.GetDamage(), battle.wildPokemon.type);
+                    battle.StartCoroutine(battle.battleHUD.UpdatePlayerPokemonBar(newHp));
                     battle.StartCoroutine(PerformAction("Fight"));
                     break;
                 case (1):
