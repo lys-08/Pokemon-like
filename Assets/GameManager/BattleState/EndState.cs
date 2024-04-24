@@ -32,6 +32,8 @@ namespace DesignPattern.State
 
         public void Exit()
         {
+            Debug.Log("Exit");
+            battle.combatEnded = true;
         }
 
         #endregion

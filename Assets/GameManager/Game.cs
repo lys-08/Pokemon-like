@@ -15,6 +15,8 @@ namespace DesignPattern.State
        [field: SerializeField] public UIInventoryPage inventory;
        [field: SerializeField] public BattleSystem battle;
        [field: SerializeField] public Player player;
+       private PlayerController playerController;
+       private Camera mainCamera;
        
        // SINGLETON
        private static Game instance_;
@@ -29,9 +31,7 @@ namespace DesignPattern.State
        [field: SerializeField] public WildPokemonSO poke2;
 
        
-       #region Singleton
 
-       // global access
        public static Game Instance
        {
            get
@@ -42,27 +42,6 @@ namespace DesignPattern.State
                }
                return instance_;
            }
-       }
-
-       private void Awake()
-       {
-           // if this is the first instance, make this the persistent singleton
-           if (instance_ == null)
-           {
-               instance_ = this;
-               DontDestroyOnLoad(this.gameObject);
-           }
-           // otherwise, remove any duplicates
-           else
-           {
-               Destroy(gameObject);
-           }
-           
-           // STATE
-           stateMachine_ = new StateMachine(this);
-
-           player = FindObjectOfType<Player>();
-           inventory.gameObject.SetActive(false);
        }
        
        private static void SetupInstance()
@@ -79,30 +58,76 @@ namespace DesignPattern.State
                DontDestroyOnLoad(gameObj);
            }
        }
+       
+       
 
-       #endregion
+       /**
+        * Launch the battle state
+        * -> Disable the main camera to use the battle camera
+        */
+       private void StartBattle()
+       {
+           GamestateMachine.TransitionTo(GamestateMachine.battleState);
+           mainCamera.gameObject.SetActive(false);
+       }
        
-  
+       /**
+        * Stop the battle state
+        * -> Activate the main camera
+        */
+       private void EndBattle(bool b)
+       {
+           GamestateMachine.TransitionTo(GamestateMachine.playState);
+           mainCamera.gameObject.SetActive(true);
+       }
        
+       
+       
+       #region Unity Events Methods
+       
+       private void Awake()
+       {
+           // if this is the first instance, make this the persistent singleton
+           if (instance_ == null)
+           {
+               instance_ = this;
+               DontDestroyOnLoad(this.gameObject);
+           }
+           // otherwise, remove any duplicates
+           else
+           {
+               Destroy(gameObject);
+           }
+           
+           // STATE
+           stateMachine_ = new StateMachine(this);
+           
+
+           player = FindObjectOfType<Player>();
+           playerController = player.gameObject.GetComponent<PlayerController>();
+           mainCamera = Camera.main;
+           inventory.gameObject.SetActive(false);
+       }
+
        private void Start()
        {
            //STATE
            stateMachine_.Initialize(stateMachine_.playState);
+
+           player.OnEncountered += StartBattle;
+           stateMachine_.battleState.OnBattleOver += EndBattle;
        }
   
        private void Update()
        {
            stateMachine_.Update();
+
+           if (stateMachine_.CurrentState == stateMachine_.playState)
+           {
+               playerController.HandleUpdate();
+           }
        }
 
-       public void AddOnPauseListener(UnityAction<bool> listener)
-       {
-           onPause.AddListener(listener);
-       }
-  
-       private void EndGame()
-       {
-           Debug.Log("Game Over");
-       }
+       #endregion
    }
 }

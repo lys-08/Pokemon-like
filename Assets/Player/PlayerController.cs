@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Plastic.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -20,28 +21,23 @@ public class PlayerController : MonoBehaviour
         // health.AddOnDeathListener(DestroyOnDeath);
     }
 
-    private void Update()
+    public void HandleUpdate()
     {
-        if ( Time.timeScale > 0) // health.IsAlive &&
+        var timeScaledSpeed = speed * Time.deltaTime;
+        var movement  =  transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical");
+
+        mover.Move(movement.normalized * timeScaledSpeed);
+
+        var mousePosition = Input.mousePosition;
+        if (mousePosition.x < 0 || mousePosition.x > Screen.width || mousePosition.y < 0 ||
+            mousePosition.y > Screen.height)
         {
-            var timeScaledSpeed = speed * Time.deltaTime;
-
-            var movement  =  transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical");
-
-            mover.Move(movement.normalized * timeScaledSpeed);
-
-            var mousePosition = Input.mousePosition;
-            if (mousePosition.x < 0 || mousePosition.x > Screen.width || mousePosition.y < 0 ||
-                mousePosition.y > Screen.height)
-            {
-                return;
-            }
-
-
-
-            transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X")*3f, 0)); // Input.GetAxis("Mouse Y")*3f
-            
+            return;
         }
+
+
+
+        transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X")*3f, 0)); // Input.GetAxis("Mouse Y")*3f
     }
 
     private void DestroyOnDeath()
