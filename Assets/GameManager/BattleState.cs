@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Net;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,7 +10,6 @@ namespace DesignPattern.State
     public class BattleState : MonoBehaviour, IState
     {
         private Game game;
-        public event Action<bool> OnBattleOver; 
     
         public BattleState(Game game)
         {
@@ -40,14 +38,13 @@ namespace DesignPattern.State
             if (game.battle.combatEnded)
             {
                 game.battle.combatEnded = false;
-                Exit();
+                game.GamestateMachine.TransitionTo(game.GamestateMachine.playState);
             }
         }
 
         public void Exit()
         {
             Cursor.visible = false;
-            OnBattleOver?.Invoke(true);
         }
 
         #endregion

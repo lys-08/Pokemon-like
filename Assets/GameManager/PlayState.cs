@@ -36,6 +36,15 @@ namespace DesignPattern.State
                 game.battle.wildPokemon = game.poke2;
                 game.GamestateMachine.TransitionTo(game.GamestateMachine.battleState);
             }
+
+
+            /*var colliders = Physics.OverlapSphere(game.player.transform.position, 5f, 6);
+            if (colliders != null)
+            {
+                //game.GamestateMachine.battleState.playerPokemon = game.player.GetMainPokemon();
+                //game.GamestateMachine.battleState.wildPokemon = colliders[0].GetComponent<PokemonSO>();
+                game.GamestateMachine.TransitionTo(game.GamestateMachine.battleState);
+            }*/
         }
 
         public void Exit()

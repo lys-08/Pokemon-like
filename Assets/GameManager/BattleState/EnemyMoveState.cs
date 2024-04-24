@@ -37,11 +37,12 @@ namespace DesignPattern.State
          */
         private IEnumerator PerformAction(string action)
         {
-            yield return battle.StartCoroutine(battle.dialogBox.TypeDialog($"{battle.wildPokemon.name} used {action}."));
+            battle.StartCoroutine(battle.dialogBox.TypeDialog($"{battle.wildPokemon.name} used {action}."));
+            yield return new WaitForSeconds(1f);
         
             while (true)
             {
-                // TODO : problème avec la condition
+                // TODO : transition à revoir (y'a un porblème)
                 if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Mouse0)) continue;
                 
                 if (battle.playerPokemon.ko)

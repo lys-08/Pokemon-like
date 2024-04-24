@@ -33,6 +33,16 @@ namespace DesignPattern.State
             this.playerMoveState = new PlayerMoveState(battle);
         }
         
+        public void AddStateChangedListener(UnityAction<IState> listener)
+        {
+            stateChanged.AddListener(listener);
+        }
+    
+        public void RemoveStateChangedListener(UnityAction<IState> listener)
+        {
+            stateChanged.RemoveListener(listener);
+        }
+        
         /**
          * Set the starting state
          */
