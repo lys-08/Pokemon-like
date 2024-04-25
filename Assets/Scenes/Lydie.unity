@@ -422,6 +422,8 @@ MonoBehaviour:
   inventory: {fileID: 5075277347154339981}
   battle: {fileID: 1577586839}
   player: {fileID: 52892081}
+  playerController: {fileID: 0}
+  mainCamera: {fileID: 0}
   poke1: {fileID: 11400000, guid: d663c0c2d8a83534f8e2d278ec89887d, type: 2}
   poke2: {fileID: 11400000, guid: f14a25f2aa5c23c45893fe162b487a17, type: 2}
 --- !u!1 &164235851
@@ -530,7 +532,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 315253641148709053, guid: 3c839cc92340b804b96416ce6a7a9ce5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5081471457999347170, guid: 3c839cc92340b804b96416ce6a7a9ce5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1405,7 +1407,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1429402956
 Transform:
   m_ObjectHideFlags: 0

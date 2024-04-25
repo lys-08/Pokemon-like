@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
         // health.AddOnDeathListener(DestroyOnDeath);
     }
 
-    private void Update()
+    public void HandleUpdate()
     {
         var timeScaledSpeed = speed * Time.deltaTime;
         var movement  =  transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical");

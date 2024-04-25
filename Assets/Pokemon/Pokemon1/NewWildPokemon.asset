@@ -9,18 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf2426c845f0dd741b6d5535a56d01bf, type: 3}
-  m_Name: Pokemon1
+  m_Script: {fileID: 11500000, guid: 1d3f892d333973d44adb2543533a732f, type: 3}
+  m_Name: NewWildPokemon
   m_EditorClassIdentifier: 
-  name: Zircon
-  description: "in\xE0p"
+  name: Ruby
+  description: dqefvsbg
   type: 0
   image: {fileID: 21300000, guid: 14171fff267887348824b33e1da0e15f, type: 3}
   hp: 200
   hpMax: 200
-  damage: 10
-  defense: 5
-  speed: 5
+  damage: 15
+  defense: 10
+  speed: 3
   damageCoef: 1
   defenseCoef: 1
   ko: 0
+  attackCoeff_: 0
+  distractCoeff_: 0
+  focusCoeff_: 0
+  runCoeff_: 0

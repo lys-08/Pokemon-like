@@ -15,7 +15,7 @@ namespace DesignPattern.State
        [field: SerializeField] public UIInventoryPage inventory;
        [field: SerializeField] public BattleSystem battle;
        [field: SerializeField] public Player player;
-       private PlayerController playerController;
+       [field: SerializeField] public PlayerController playerController;
        public Camera mainCamera;
        
        // SINGLETON
@@ -60,6 +60,16 @@ namespace DesignPattern.State
            }
        }
 
+       /**
+        *
+        */
+       private void StartBattle(WildPokemonSO wildPokemon)
+       {
+           battle.playerPokemon = poke1;
+           battle.wildPokemon = wildPokemon;
+           GamestateMachine.TransitionTo(GamestateMachine.battleState);
+       }
+
 
 
        #region Unity Events Methods
@@ -85,6 +95,8 @@ namespace DesignPattern.State
            playerController = player.gameObject.GetComponent<PlayerController>();
            mainCamera = Camera.main;
            inventory.gameObject.SetActive(false);
+
+           player.OnEncountered += StartBattle;
        }
        
        private void Start()

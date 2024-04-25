@@ -18,12 +18,6 @@ namespace DesignPattern.State
         
 
 
-        private void Awake()
-        {
-            
-        }
-
-
         #region IState
 
         public void Enter()

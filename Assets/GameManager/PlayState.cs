@@ -25,6 +25,9 @@ namespace DesignPattern.State
 
         public void Update()
         {
+            game.playerController.HandleUpdate();
+            game.player.HandleUpdate();
+            
             if (Input.GetKeyDown(KeyCode.E))
             {
                 game.GamestateMachine.TransitionTo(game.GamestateMachine.pauseState);
