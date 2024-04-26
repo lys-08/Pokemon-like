@@ -21,9 +21,8 @@ namespace Inventory.UI
             OnItemClicked, // Left click => selection of the item to print it's description
             OnItemDroppedOn,
             OnItemBeginDrag,
-            OnItemEndDrag,
-            OnRightMouseButtonClick; // Right click => show what we can do (main pokemon, use potion, free, ...)
-
+            OnItemEndDrag;
+        
         private bool empty_ = true;
 
 
@@ -83,11 +82,7 @@ namespace Inventory.UI
          */
         public void OnPointerClick(PointerEventData eventData)
         {
-            if (eventData.button == PointerEventData.InputButton.Right)
-            {
-                OnRightMouseButtonClick?.Invoke(this);
-            }
-            else
+            if (eventData.button == PointerEventData.InputButton.Left)
             {
                 OnItemClicked?.Invoke(this);
             }
