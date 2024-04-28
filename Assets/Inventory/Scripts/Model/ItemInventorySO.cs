@@ -9,8 +9,8 @@ using UnityEngine;
 
 namespace Inventory.Model
 {
-    [CreateAssetMenu(fileName = "Inventory", menuName = "Inventory/Inventory")]
-    public class InventorySO : ScriptableObject
+    [CreateAssetMenu(fileName = "Inventory", menuName = "Inventory/ItemInventory")]
+    public class ItemInventorySO : ScriptableObject
     {
         [SerializeField] private List<InventoryItem> inventoryItems;
         [field: SerializeField] public int Size { get; set; } = 10;
@@ -156,7 +156,7 @@ namespace Inventory.Model
         /**
          * Swap 2 items knowing their indexes
          */
-        internal void SwapItems(int index1, int index2)
+        public void SwapItems(int index1, int index2)
         {
             InventoryItem item1 = inventoryItems[index1];
             inventoryItems[index1] = inventoryItems[index2];

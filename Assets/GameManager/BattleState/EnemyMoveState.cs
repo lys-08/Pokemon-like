@@ -25,10 +25,11 @@ namespace DesignPattern.State
 
             while (true)
             {
-                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Mouse0)) continue;
-                    
-                battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.endState);
-                yield break;
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.endState);
+                    yield break;
+                }
             }
         }
         
@@ -43,17 +44,18 @@ namespace DesignPattern.State
             while (true)
             {
                 // TODO : transition à revoir (y'a un porblème)
-                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Mouse0)) continue;
-                
-                if (battle.playerPokemon.ko)
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Mouse0))
                 {
-                    battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.endState);
+                    if (battle.playerPokemon.ko)
+                    {
+                        battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.endState);
+                    }
+                    else
+                    {
+                        battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.playerMoveState);
+                    }
+                    yield break;
                 }
-                else
-                {
-                    battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.playerMoveState);
-                }
-                yield break;
             }
         }
         

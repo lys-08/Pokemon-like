@@ -5,9 +5,10 @@ using UnityEngine;
 
 namespace Inventory.UI
 {
-    public class UIInventoryPage : MonoBehaviour
+    public class UIInventoryItemPage : MonoBehaviour
     {
         [SerializeField] private UIInventoryItem itemPrefab;
+        [SerializeField] private GameObject content;
         [SerializeField] private RectTransform contentPanel;
         [SerializeField] private ItemActionPanel actionPanel;
         [SerializeField] private UIInventoryDescription itemDescription;
@@ -35,7 +36,7 @@ namespace Inventory.UI
 
         private void Awake()
         {
-            Hide();
+            Show();
             mouseFollower.Toggle(false);
             itemDescription.ResetDescription();
         }
@@ -52,13 +53,12 @@ namespace Inventory.UI
             {
                 UIInventoryItem uiItem = Instantiate(itemPrefab, Vector3.zero, Quaternion.identity, contentPanel);
                 uiItem.transform.localScale = Vector3.one;
-                //uiItem.transform.SetParent(contentPanel);
                 listUiItems.Add(uiItem);
 
                 uiItem.OnItemClicked += HandleItemSelection;
-                uiItem.OnItemBeginDrag += HandleBeginDrag;
-                uiItem.OnItemDroppedOn += HandleSwap;
-                uiItem.OnItemEndDrag += HandleEndDrag;
+                uiItem.OnItemBeginDrag += HandleBeginDragItem;
+                uiItem.OnItemDroppedOn += HandleSwapItem;
+                uiItem.OnItemEndDrag += HandleEndDragItem;
             }
         }
 
@@ -132,7 +132,7 @@ namespace Inventory.UI
         /**
          * Reset all of the items
          */
-        internal void ResetAllItems()
+        public void ResetAllItems()
         {
             foreach (var item in listUiItems)
             {
@@ -144,7 +144,7 @@ namespace Inventory.UI
         /**
          * Update the description according to the new clicked item (the previous one is deselected)
          */
-        internal void UpdateDescription(int index, Sprite image, string name, string description)
+        public void UpdateDescription(int index, Sprite image, string name, string description)
         {
             itemDescription.SetDescription(image, name, description);
             DeselectAllItems();
@@ -156,9 +156,8 @@ namespace Inventory.UI
          */
         public void Show()
         {
-            gameObject.SetActive(true);
+            content.SetActive(true);
             // To be sure nothing is printed when we have select something in the previous time we had had shown the inventory
-            itemDescription.ResetDescription();
             ResetSelection();
         }
         
@@ -168,7 +167,7 @@ namespace Inventory.UI
         public void Hide()
         {
             actionPanel.Toggle(false);
-            gameObject.SetActive(false);
+            content.SetActive(false);
             ResetDraggedItem();
         }
 
@@ -183,7 +182,7 @@ namespace Inventory.UI
             OnDescriptionRequested?.Invoke(index);
         }
 
-        private void HandleBeginDrag(UIInventoryItem obj)
+        private void HandleBeginDragItem(UIInventoryItem obj)
         {
             int index = listUiItems.IndexOf(obj);
             if (index == -1) return;
@@ -193,7 +192,7 @@ namespace Inventory.UI
             OnStartDragging?.Invoke(index);
         }
         
-        private void HandleSwap(UIInventoryItem obj)
+        private void HandleSwapItem(UIInventoryItem obj)
         {
             int index = listUiItems.IndexOf(obj);
             if (index == -1) return;
@@ -202,7 +201,7 @@ namespace Inventory.UI
             HandleItemSelection(obj);
         }
 
-        private void HandleEndDrag(UIInventoryItem obj)
+        private void HandleEndDragItem(UIInventoryItem obj)
         {
             ResetDraggedItem();
         }

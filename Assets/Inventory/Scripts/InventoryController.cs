@@ -12,73 +12,89 @@ namespace Inventory
 {
     public class InventoryController : MonoBehaviour
     {
-        [SerializeField] private UIInventoryPage inventoryUi;
-        [SerializeField] private InventorySO inventoryData;
+        [SerializeField] private UIInventoryItemPage itemInventoryUi;
+        [SerializeField] private UIInventoryPokemonPage pokemonInventoryUi;
+        [SerializeField] private ItemInventorySO itemInventoryData;
+        [SerializeField] private PokemonInventorySO pokemonInventoryData;
 
+        private bool itemUiVisible = true;
+        
         /***
          * TODO : Sound
          */
         //[SerializeField] private AudioClip dropClip;
         //[SerializeField] private AudioSource audioSource;
 
-        public int inventorySize = 80;
+        public int itemInventorySize = 10;
+        public int pokemonInventorySize = 25;
 
         // TODO : Temporary
         public List<InventoryItem> initialItems = new List<InventoryItem>();
+        public List<PokemonSO> initialPokemonItems = new List<PokemonSO>();
 
 
         #region Unity Events Methods
 
-        private void Start()
+        private void Awake()
         {
             // We initialize our inventory
             PrepareUI();
             PrepareInventoryData();
         }
 
-
-        public void Update()
-        {
-            /*
-             * When the E Key is pressed, we checked if the inventory UI is active or not and
-             * we activated or disabled it depending on it's previous state
-             */
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                if (inventoryUi.isActiveAndEnabled)
-                {
-                    Time.timeScale = 1f;
-                    Cursor.visible = false;
-                    inventoryUi.Hide();
-                }
-                else
-                {
-                    Time.timeScale = 0f;
-                    Cursor.visible = true;
-                    Cursor.lockState = CursorLockMode.Confined;
-                    inventoryUi.Show();
-                    
-                    // We Update our UI
-                    foreach (var item in inventoryData.GetCurrentInventoryState())
-                    {
-                        inventoryUi.UpdateData(item.Key, item.Value.item.ItemImage, item.Value.quantity);
-                    }
-                }
-            }
-        }
-
         #endregion
 
+        /**
+         * Show the inventory
+         */
+        public void Show()
+        {
+            itemInventoryUi.gameObject.SetActive(true);
+        }
+        
+        /**
+         * Hide the inventory
+         */
+        public void Hide()
+        {
+            itemInventoryUi.gameObject.SetActive(false);
+        }
+
+        /**
+         * Set up the information
+         * -> called after the inventoriUI.Show()
+         */
+        public void SetUpInventoryUI()
+        {
+            // itemInventoryUI
+            foreach (var item in itemInventoryData.GetCurrentInventoryState())
+            {
+                itemInventoryUi.UpdateData(item.Key, item.Value.item.ItemImage, item.Value.quantity);
+            }
+            
+            // pokemonInventoryUI
+            foreach (var item in pokemonInventoryData.GetCurrentInventoryState())
+            {
+                pokemonInventoryUi.UpdateData(item.Key, item.Value.image);
+            }
+        }
         
         /**
          * Prepares the inventory UI by adding all actions and initializing the UI with the correct size
          */
         private void PrepareUI()
         {
-            inventoryUi.InitializeInventoryUI(inventoryData.Size);
-            this.inventoryUi.OnDescriptionRequested += HandleDescriptionRequest;
-            this.inventoryUi.OnSwapItems += HandleSwapItems;
-            this.inventoryUi.OnStartDragging += HandleDragging;
+            // itemInventoryUI
+            itemInventoryUi.InitializeInventoryUI(itemInventoryData.Size);
+            this.itemInventoryUi.OnDescriptionRequested += HandleDescriptionRequest;
+            this.itemInventoryUi.OnSwapItems += HandleSwapItems;
+            this.itemInventoryUi.OnStartDragging += HandleDragging;
+            
+            // pokemonInventoryUI
+            pokemonInventoryUi.InitializeInventoryUI(pokemonInventoryData.Size);
+            this.pokemonInventoryUi.OnDescriptionRequested += HandleDescriptionRequest;
+            this.pokemonInventoryUi.OnSwapItems += HandleSwapItems;
+            this.pokemonInventoryUi.OnStartDragging += HandleDragging;
         }
 
         /**
@@ -86,13 +102,25 @@ namespace Inventory
          */
         private void PrepareInventoryData()
         {
-            inventoryData.Initialize();
-            inventoryData.OnInventoryUpdated += UpdateInventoryUI;
+            // itemInventoryUI
+            itemInventoryData.Initialize();
+            itemInventoryData.OnInventoryUpdated += UpdateInventoryUI;
 
             foreach (InventoryItem item in initialItems)
             {
                 if (item.IsEmpty) continue;
-                inventoryData.AddItem(item);
+                itemInventoryData.AddItem(item);
+            }
+            
+            
+            // pokemonInventoryUI
+            pokemonInventoryData.Initialize();
+            pokemonInventoryData.OnInventoryUpdated += UpdatePokemonInventoryUI;
+
+            foreach (PokemonSO item in initialPokemonItems)
+            {
+                if (item == null) continue;
+                pokemonInventoryData.AddItem(item);
             }
         }
 
@@ -101,88 +129,213 @@ namespace Inventory
         
         private void UpdateInventoryUI(Dictionary<int, InventoryItem> inventoryState)
         {
-            inventoryUi.ResetAllItems();
+            itemInventoryUi.ResetAllItems();
 
             foreach (var item in inventoryState)
             {
-                inventoryUi.UpdateData(item.Key, item.Value.item.ItemImage, item.Value.quantity);
+                itemInventoryUi.UpdateData(item.Key, item.Value.item.ItemImage, item.Value.quantity);
+            }
+        }
+        
+        private void UpdatePokemonInventoryUI(Dictionary<int, PokemonSO> inventoryState)
+        {
+            pokemonInventoryUi.ResetAllItems();
+
+            foreach (var item in inventoryState)
+            {
+                pokemonInventoryUi.UpdateData(item.Key, item.Value.image);
             }
         }
 
         private void HandleSwapItems(int index1, int index2)
         {
-            inventoryData.SwapItems(index1, index2);
+            if (itemUiVisible) itemInventoryData.SwapItems(index1, index2);
+            else pokemonInventoryData.SwapItems(index1, index2);
         }
 
         private void HandleDragging(int index)
         {
-            InventoryItem inventoryItem = inventoryData.GetItemAt(index);
-            if (inventoryItem.IsEmpty) return;
+            if (itemUiVisible)
+            {
+                InventoryItem inventoryItem = itemInventoryData.GetItemAt(index);
+                if (inventoryItem.IsEmpty) return;
             
-            inventoryUi.CreateDraggedItem(inventoryItem.item.ItemImage, inventoryItem.quantity);
+                itemInventoryUi.CreateDraggedItem(inventoryItem.item.ItemImage, inventoryItem.quantity);
+            }
+
+            else
+            {
+                PokemonSO inventoryItem = pokemonInventoryData.GetItemAt(index);
+                if (inventoryItem == null) return;
+            
+                pokemonInventoryUi.CreateDraggedItem(inventoryItem.image);
+            }
         }
         
         private void HandleDescriptionRequest(int index)
         {
-            InventoryItem inventoryItem = inventoryData.GetItemAt(index);
-            if (inventoryItem.IsEmpty)
+            if (itemUiVisible)
             {
-                inventoryUi.ResetSelection();
-                return;
+                InventoryItem inventoryItem = itemInventoryData.GetItemAt(index);
+                if (inventoryItem.IsEmpty)
+                {
+                    itemInventoryUi.ResetSelection();
+                    return;
+                }
+
+                ItemSO item = inventoryItem.item;
+                itemInventoryUi.UpdateDescription(index, item.ItemImage, item.Name, item.Description);
+            
+                if (inventoryItem.IsEmpty) return;
+        
+                IItemAction itemAction = inventoryItem.item as IItemAction;
+                if (itemAction != null)
+                {
+                    itemInventoryUi.ShowItemAction(index);
+                    itemInventoryUi.AddAction(itemAction.ActionName, () => PerformAction(index));
+                }
+        
+                IDestroyableItem destroyableItem = inventoryItem.item as IDestroyableItem;
+                if (destroyableItem != null)
+                {
+                    itemInventoryUi.AddAction("Drop", () => DropItem(index, 1));
+                
+                    // TODO : sfx sound
+                    // audioSource.PlayOneShot(itemAction.actionSFX);
+                
+                    //if (inventoryData.GetItemAt(index).IsEmpty) inventoryUi.ResetSelection();
+                }
             }
 
-            ItemSO item = inventoryItem.item;
-            inventoryUi.UpdateDescription(index, item.ItemImage, item.Name, item.Description);
+            else
+            {
+                PokemonSO inventoryItem = pokemonInventoryData.GetItemAt(index);
+                if (inventoryItem == null)
+                {
+                    pokemonInventoryUi.ResetSelection();
+                    return;
+                }
+                pokemonInventoryUi.UpdateDescription(index, inventoryItem.image, inventoryItem.name, inventoryItem.description);
             
-            if (inventoryItem.IsEmpty) return;
+                if (inventoryItem == null) return;
         
-            IItemAction itemAction = inventoryItem.item as IItemAction;
-            if (itemAction != null)
-            {
-                inventoryUi.ShowItemAction(index);
-                inventoryUi.AddAction(itemAction.ActionName, () => PerformAction(index));
-                Debug.Log("HandleItemActionRequest");
-            }
+                /* TODO
+                IItemAction itemAction = inventoryItem as IItemAction;
+                if (itemAction != null)
+                {
+                    pokemonInventoryUi.ShowItemAction(index);
+                    pokemonInventoryUi.AddAction(itemAction.ActionName, () => PerformAction(index));
+                    Debug.Log("HandleItemActionRequest");
+                }*/
         
-            IDestroyableItem destroyableItem = inventoryItem.item as IDestroyableItem;
-            if (destroyableItem != null)
-            {
-                inventoryUi.AddAction("Drop", () => DropItem(index, 1));
+                IDestroyableItem destroyableItem = inventoryItem as IDestroyableItem;
+                if (destroyableItem != null)
+                {
+                    pokemonInventoryUi.AddAction("Free", () => DropItem(index));
                 
-                // TODO : sfx sound
-                // audioSource.PlayOneShot(itemAction.actionSFX);
+                    // TODO : sfx sound
+                    // audioSource.PlayOneShot(itemAction.actionSFX);
                 
-                //if (inventoryData.GetItemAt(index).IsEmpty) inventoryUi.ResetSelection();
+                    //if (inventoryData.GetItemAt(index).IsEmpty) inventoryUi.ResetSelection();
+                }
             }
         }
 
+        /**
+         * Perform the action of an item
+         */
         private void PerformAction(int index)
         {
-            InventoryItem inventoryItem = inventoryData.GetItemAt(index);
-            if (inventoryItem.IsEmpty) return;
-            
-            IItemAction itemAction = inventoryItem.item as IItemAction;
-            if (itemAction != null)
+            if (itemUiVisible)
             {
-                Debug.Log("Perform Action");
-                //itemAction.Perfom(pokemon);
+                InventoryItem inventoryItem = itemInventoryData.GetItemAt(index);
+                if (inventoryItem.IsEmpty) return;
+            
+                IItemAction itemAction = inventoryItem.item as IItemAction;
+                if (itemAction != null)
+                {
+                    Debug.Log("Perform Action");
+                    //itemAction.Perfom(pokemon);
+                }
+            
+                IDestroyableItem destroyableItem = inventoryItem.item as IDestroyableItem;
+                if (destroyableItem != null)
+                {
+                    if (inventoryItem.quantity == 1) itemInventoryUi.ResetSelection();
+                    itemInventoryData.RemoveItem(index, 1);
+                }
             }
-            
-            IDestroyableItem destroyableItem = inventoryItem.item as IDestroyableItem;
-            if (destroyableItem != null)
+
+            else
             {
-                if (inventoryItem.quantity == 1) inventoryUi.ResetSelection();
-                inventoryData.RemoveItem(index, 1);
+                PokemonSO inventoryItem = pokemonInventoryData.GetItemAt(index);
+                if (inventoryItem == null) return;
+            
+                /* TODO
+                IItemAction itemAction = inventoryItem as IItemAction;
+                if (itemAction != null)
+                {
+                    Debug.Log("Perform Action");
+                    //itemAction.Perfom(pokemon);
+                }
+            
+                IDestroyableItem destroyableItem = inventoryItem as IDestroyableItem;
+                if (destroyableItem != null)
+                {
+                    pokemonInventoryUi.ResetSelection();
+                    pokemonInventoryUi.RemoveItem(index);
+                }
+                */
             }
         }
 
-        private void DropItem(int itemIndex, int quantity)
+        /**
+         * Drop an item or pokemon that is in the inventory
+         */
+        private void DropItem(int itemIndex, int quantity = 0)
         {
-            inventoryData.RemoveItem(itemIndex, quantity);
-            if (inventoryData.GetItemAt(itemIndex).IsEmpty) inventoryUi.ResetSelection();
+            if (itemUiVisible)
+            {
+                itemInventoryData.RemoveItem(itemIndex, quantity);
+                if (itemInventoryData.GetItemAt(itemIndex).IsEmpty) itemInventoryUi.ResetSelection();
             
-            // TODO : drop audio
-            //audioSource.PlayOneShot(dropClip);
+                // TODO : drop audio
+                //audioSource.PlayOneShot(dropClip);
+            }
+
+            else
+            {
+                pokemonInventoryData.RemoveItem(itemIndex);
+                if (pokemonInventoryData.GetItemAt(itemIndex) == null) pokemonInventoryUi.ResetSelection();
+            
+                // TODO : drop audio
+                //audioSource.PlayOneShot(dropClip);
+            }
+        }
+
+        #endregion
+
+
+        #region Button click
+
+        /**
+         * Show the item inventory
+         */
+        public void ShowItemUI()
+        {
+            itemUiVisible = true;
+            itemInventoryUi.Show();
+            pokemonInventoryUi.Hide();
+        }
+        
+        /**
+         * Show the pokemon inventory
+         */
+        public void ShowPokemonUI()
+        {
+            itemUiVisible = false;
+            itemInventoryUi.Hide();
+            pokemonInventoryUi.Show();
         }
 
         #endregion

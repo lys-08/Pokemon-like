@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Inventory;
 using UnityEngine;
 
 
@@ -24,6 +25,9 @@ namespace DesignPattern.State
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
             game.inventory.Show();
+            
+            // We set the UI
+            game.player.GetComponent<InventoryController>().SetUpInventoryUI();
         }
 
         public void Update()

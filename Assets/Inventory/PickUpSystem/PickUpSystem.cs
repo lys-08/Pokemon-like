@@ -6,7 +6,7 @@ using Inventory.Model;
 
 public class PickUpSystem : MonoBehaviour
 {
-    [SerializeField] private InventorySO inventoryData;
+    [SerializeField] private ItemInventorySO inventoryData;
 
 
     #region Unity Events Methods

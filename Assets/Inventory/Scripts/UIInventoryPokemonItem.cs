@@ -9,15 +9,15 @@ using UnityEngine.UI;
 
 namespace Inventory.UI
 {
-    public class UIInventoryItem : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IEndDragHandler,
+    public class UIInventoryPokemonItem : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IEndDragHandler,
         IDropHandler, IDragHandler
     {
         [SerializeField] private Image itemImage_;
-        [SerializeField] private TextMeshProUGUI quantityText_;
         [SerializeField] private Image borderImage_;
+        [SerializeField] private GameObject mainText_;
 
 
-        public event Action<UIInventoryItem>
+        public event Action<UIInventoryPokemonItem>
             OnItemClicked, // Left click => selection of the item to print it's description
             OnItemDroppedOn,
             OnItemBeginDrag,
@@ -40,9 +40,6 @@ namespace Inventory.UI
 
         public void ResetData()
         {
-            /*
-             * We desable the image so the quantity is also disabled
-             */
             this.itemImage_.gameObject.SetActive(false);
             empty_ = true;
         }
@@ -50,11 +47,10 @@ namespace Inventory.UI
         /**
          * Set the data of our inventory item added to the inventory
          */
-        public void SetData(Sprite sprite, int quantity)
+        public void SetData(Sprite sprite)
         {
             this.itemImage_.gameObject.SetActive(true);
             this.itemImage_.sprite = sprite;
-            this.quantityText_.text = quantity + "";
             empty_ = false;
         }
 
@@ -74,11 +70,27 @@ namespace Inventory.UI
             borderImage_.enabled = true;
         }
 
+        /**
+         * Set the pokemon as the main pokemon
+         */
+        public void SetMainPokemon()
+        {
+            mainText_.SetActive(true);
+        }
+
+        /**
+         * Deselect the current main pokemon
+         */
+        public void ResetMainPokemon()
+        {
+            mainText_.SetActive(false);
+        }
+
 
         #region IPointerClickHandler
 
         /**
-         * Methods that inform our inventory page that an item has been clicked (left or right click)
+         * Inform our inventory page that an item has been clicked (left or right click)
          */
         public void OnPointerClick(PointerEventData eventData)
         {

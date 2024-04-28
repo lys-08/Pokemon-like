@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using Inventory;
 using Inventory.UI; // UIInventoryPage
 
 
@@ -12,11 +13,11 @@ namespace DesignPattern.State
    public class Game : MonoBehaviour
    {
        private UnityEvent<bool> onPause = new UnityEvent<bool>();
-       [field: SerializeField] public UIInventoryPage inventory;
+       [field: SerializeField] public InventoryController inventory;
        [field: SerializeField] public BattleSystem battle;
        [field: SerializeField] public Player player;
        [field: SerializeField] public PlayerController playerController;
-       public Camera mainCamera;
+       [field: SerializeField] public Camera mainCamera;
        
        // SINGLETON
        private static Game instance_;
@@ -94,7 +95,7 @@ namespace DesignPattern.State
            player = FindObjectOfType<Player>();
            playerController = player.gameObject.GetComponent<PlayerController>();
            mainCamera = Camera.main;
-           inventory.gameObject.SetActive(false);
+           inventory.Hide();
 
            player.OnEncountered += StartBattle;
        }

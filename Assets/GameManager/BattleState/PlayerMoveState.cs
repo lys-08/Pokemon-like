@@ -61,10 +61,11 @@ namespace DesignPattern.State
 
             while (true)
             {
-                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Mouse0)) continue;
-                
-                battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.endState);
-                yield break;
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.endState);
+                    yield break;
+                }
             }
         }
         
