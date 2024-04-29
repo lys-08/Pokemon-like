@@ -40,6 +40,7 @@ namespace DesignPattern.State
 
         public void Exit()
         {
+            game.battle.OutBattle();
             Cursor.visible = false;
             game.mainCamera.gameObject.SetActive(true);
         }

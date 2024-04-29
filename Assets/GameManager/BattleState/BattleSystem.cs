@@ -55,5 +55,19 @@ namespace DesignPattern.State
            battleHUD.SetData(playerPokemon, wildPokemon);
            battleStateMachine_.Initialize(battleStateMachine_.startState);
        }
+
+
+       /**
+       * Initialize the UI for the battle to come
+       */
+       public void OutBattle()
+       {
+        //    dialogBox.ToggleAction(false);
+        //    dialogBox.ToggleDialogText(false);
+           
+           this.gameObject.SetActive(false); 
+        //    battleHUD.SetData(playerPokemon, wildPokemon);
+        //    battleStateMachine_.Initialize(battleStateMachine_.startState);
+       }
    }
 }

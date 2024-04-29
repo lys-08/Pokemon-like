@@ -40,12 +40,15 @@ namespace DesignPattern.State
         {
             yield return battle.dialogBox.TypeDialog($"{battle.wildPokemon.name} used {action}.");
             yield return new WaitForSeconds(1f);
-        
-            while (true)
+
+
+            bool pressed = false;
+
+            while(!pressed)
             {
-                // TODO : transition à revoir (y'a un porblème)
-                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Mouse0))
+                if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
+                    pressed = true;
                     if (battle.playerPokemon.ko)
                     {
                         battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.endState);
@@ -54,9 +57,27 @@ namespace DesignPattern.State
                     {
                         battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.playerMoveState);
                     }
-                    yield break;
+                    break;
                 }
+                yield return null;
             }
+        
+            // while (true)
+            // {
+            //     // TODO : transition à revoir (y'a un porblème)
+            //     if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Mouse0))
+            //     {
+            //         if (battle.playerPokemon.ko)
+            //         {
+            //             battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.endState);
+            //         }
+            //         else
+            //         {
+            //             battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.playerMoveState);
+            //         }
+            //         yield break;
+            //     }
+            // }
         }
         
 

@@ -57,17 +57,18 @@ namespace DesignPattern.State
         private IEnumerator Run()
         {
             yield return battle.dialogBox.TypeDialog("You ran.");
-            Debug.Log("oui ??");
-            
-            while (true)
+
+            bool pressed = false;
+
+            while(!pressed)
             {
-                Debug.Log("bloqué");
-                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Mouse0))
+                if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
-                    Debug.Log("vers end state");
+                    pressed = true;
                     battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.endState);
-                    yield break;
+                    break;
                 }
+                yield return null;
             }
         }
         
