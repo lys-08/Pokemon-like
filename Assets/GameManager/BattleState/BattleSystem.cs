@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using System;
+using Inventory;
+using Inventory.Model;
 
 
 namespace DesignPattern.State
@@ -21,6 +23,8 @@ namespace DesignPattern.State
        private BattleStateMachine battleStateMachine_;
        public BattleStateMachine BattleStateMachine => battleStateMachine_;
 
+       [field: SerializeField] public PokemonInventorySO pokemonInventory;
+
        public bool combatEnded = false;
 
 
@@ -30,6 +34,7 @@ namespace DesignPattern.State
        {
            // STATE
            battleStateMachine_ = new BattleStateMachine(this);
+           pokemonInventory = FindObjectOfType<PokemonInventorySO>();
        }
   
        private void Update()

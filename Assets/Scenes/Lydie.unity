@@ -267,8 +267,6 @@ MonoBehaviour:
   pokemonInventoryUi: {fileID: 5075277347154339982}
   itemInventoryData: {fileID: 11400000, guid: 5367d8d7831edd14395c984f4d1f729f, type: 2}
   pokemonInventoryData: {fileID: 11400000, guid: 65a945f8d84b7d544ae4c3b2649ea348, type: 2}
-  itemInventorySize: 10
-  pokemonInventorySize: 25
   initialItems:
   - quantity: 2
     item: {fileID: 11400000, guid: c647de799dd29c44aa4fd9ae0bc6862e, type: 2}

@@ -144,9 +144,9 @@ namespace Inventory.UI
         /**
          * Update the description according to the new clicked item (the previous one is deselected)
          */
-        public void UpdateDescription(int index, Sprite image, string name, string description)
+        public void UpdateDescription(int index, PokemonSO pokemon)
         {
-            itemDescription.SetDescription(image, name, description);
+            itemDescription.SetPokemonDescription(pokemon);
             DeselectAllItems();
             listPokemonItems[index].Select();
         }

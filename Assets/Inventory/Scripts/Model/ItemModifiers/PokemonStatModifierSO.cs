@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class PokemonStatModifierSO : ScriptableObject
 {
-    public abstract void AffectPokemon(GameObject pokemon, float value = 0);
+    public abstract void AffectPokemon(PokemonSO pokemon, float value = 0);
 }

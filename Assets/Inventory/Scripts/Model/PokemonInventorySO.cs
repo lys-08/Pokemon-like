@@ -13,7 +13,7 @@ namespace Inventory.Model
     public class PokemonInventorySO : ScriptableObject
     {
         [SerializeField] private List<PokemonSO> inventoryItems;
-        [field: SerializeField] public int Size { get; set; } = 20;
+        [field: SerializeField] public int Size { get; set; } = 50;
 
         public event Action<Dictionary<int, PokemonSO>> OnInventoryUpdated; // inform that the inventorySO state has changed
 

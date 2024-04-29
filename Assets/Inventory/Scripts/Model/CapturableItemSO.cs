@@ -6,27 +6,9 @@ using UnityEngine;
 namespace Inventory.Model
 {
     [CreateAssetMenu(fileName = "CaptureItem", menuName = "Inventory/CaptureItem")]
-    public class CaptureItemSO : ScriptableObject
+    public class CaptureItemSO : ItemSO, IDestroyableItem
     {
-        [SerializeField] private ModifierData modifiersData;
-
-
-        #region IItemAction
-
-        public string ActionName => "Lauch";
-
-        /**
-         * TODO : Sound
-         */
-        // [field: SerializeField] public AudioClip actionSFX {get; private set;};
-
-        public bool Perfom(GameObject pokemon)
-        {
-            //modifiersData.statModifier.AffectPokemon(pokemon, data.value);
-
-            return true;
-        }
-
-        #endregion
+        [field: SerializeField] public Type type;
+        [field: SerializeField] public float value = 0f;
     }
 }

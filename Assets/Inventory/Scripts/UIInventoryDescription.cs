@@ -38,6 +38,22 @@ namespace Inventory.UI
             this.title_.text = itemName;
             this.description_.text = itemDescription;
         }
+        
+        /**
+         * Methods that print the description of the clicked item
+         */
+        public void SetPokemonDescription(PokemonSO pokemon)
+        {
+            this.itemImage_.gameObject.SetActive(true);
+            this.itemImage_.sprite = pokemon.image;
+            this.title_.text = pokemon.name;
+            string itemDescription = pokemon.description + "\n\n"
+                                     + "<b>Type</b> : " + pokemon.type + "\n"
+                                     + "<b>Damage</b> : " + pokemon.damage + "\n"
+                                     + "<b>Defense</b> : " + pokemon.defense + "\n"
+                                     + "<b>Speed</b> : " + pokemon.speed + "\n";
+            this.description_.text = itemDescription;
+        }
     }
 
 }

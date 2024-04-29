@@ -23,6 +23,7 @@ namespace DesignPattern.State
         public void Enter()
         {
             battle.playerPokemon.ResetCoeffs(); // We reset the coefficients associated with the defense and attack of the player pokemon
+            battle.wildPokemon.ResetCoeffs();
             battle.StartCoroutine(battle.dialogBox.TypeDialog($"The fight is over."));
         }
 

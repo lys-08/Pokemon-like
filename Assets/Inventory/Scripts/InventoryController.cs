@@ -25,9 +25,6 @@ namespace Inventory
         //[SerializeField] private AudioClip dropClip;
         //[SerializeField] private AudioSource audioSource;
 
-        public int itemInventorySize = 10;
-        public int pokemonInventorySize = 25;
-
         // TODO : Temporary
         public List<InventoryItem> initialItems = new List<InventoryItem>();
         public List<PokemonSO> initialPokemonItems = new List<PokemonSO>();
@@ -191,6 +188,8 @@ namespace Inventory
                 IItemAction itemAction = inventoryItem.item as IItemAction;
                 if (itemAction != null)
                 {
+                    Debug.Log(item.Name);
+                    Debug.Log(itemAction);
                     itemInventoryUi.ShowItemAction(index);
                     itemInventoryUi.AddAction(itemAction.ActionName, () => PerformAction(index));
                 }
@@ -215,7 +214,7 @@ namespace Inventory
                     pokemonInventoryUi.ResetSelection();
                     return;
                 }
-                pokemonInventoryUi.UpdateDescription(index, inventoryItem.image, inventoryItem.name, inventoryItem.description);
+                pokemonInventoryUi.UpdateDescription(index, inventoryItem);
             
                 if (inventoryItem == null) return;
         

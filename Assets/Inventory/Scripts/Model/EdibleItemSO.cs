@@ -6,10 +6,10 @@ using UnityEngine;
 
 namespace Inventory.Model
 {
-    [CreateAssetMenu(fileName = "EdibleItem", menuName = "Inventory/EdibleItem")]
+    [CreateAssetMenu(fileName = "ConsumableItem", menuName = "Inventory/ConsumableItem")]
     public class EdibleItemSO : ItemSO, IDestroyableItem, IItemAction
     {
-        [SerializeField] private List<ModifierData> modifiersDatas = new List<ModifierData>();
+        [SerializeField] private ModifierData modifiersData;
         
         
         #region IItemAction
@@ -21,12 +21,9 @@ namespace Inventory.Model
          */
         // [field: SerializeField] public AudioClip actionSFX {get; private set;};
         
-        public bool Perfom(GameObject pokemon)
+        public bool Perform(PokemonSO pokemon)
         {
-            foreach (ModifierData data in modifiersDatas)
-            {
-                data.statModifier.AffectPokemon(pokemon, data.value);
-            }
+            modifiersData.statModifier.AffectPokemon(pokemon, modifiersData.value);
 
             return true;
         }

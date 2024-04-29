@@ -8,7 +8,7 @@ namespace Inventory.Model
     {
         public string ActionName { get; }
         // public AudioClip actionSFX { get; }
-        public bool Perfom(GameObject pokemon);
+        public bool Perform(PokemonSO pokemon);
     }
 
     [Serializable]
@@ -16,6 +16,7 @@ namespace Inventory.Model
     {
         public PokemonStatModifierSO statModifier;
         public float value;
+        public Type type = Type.Simple;
     }
 
 }

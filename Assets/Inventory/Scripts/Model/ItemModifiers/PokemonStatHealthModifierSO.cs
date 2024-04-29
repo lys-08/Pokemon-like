@@ -9,9 +9,8 @@ namespace Inventory.Model
     [CreateAssetMenu(fileName = "HealthModifier", menuName = "Inventory/HealthModifier")]
     public class PokemonStatHealthModifierSO : PokemonStatModifierSO
     {
-        public override void AffectPokemon(GameObject pokemon, float value)
+        public override void AffectPokemon(PokemonSO pokemonSo, float value)
         {
-            PokemonSO pokemonSo = pokemon.GetComponent<PokemonSO>();
             if (pokemonSo.ko) return;
 
             float amount = pokemonSo.hp + value;
