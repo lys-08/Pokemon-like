@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36f180eec6b987e498ebdf87138cdcad, type: 3}
+  m_Script: {fileID: 11500000, guid: 36e96e88e873cdb4d8e8c50cc84b8682, type: 3}
   m_Name: ball_EmeraldBall
   m_EditorClassIdentifier: 
   <IsStackable>k__BackingField: 1

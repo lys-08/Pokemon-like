@@ -19,10 +19,10 @@ MonoBehaviour:
     red that seems to radiate life and power. Its bottle seems to contain all the
     fiery energy of the fire itself.
 
-    
 
     Restore all stats of a pokemon'
   <ItemImage>k__BackingField: {fileID: 21300000, guid: 167479d2e17ac7f4a8325a7d66018df8, type: 3}
-  modifiersDatas:
-  - statModifier: {fileID: 11400000, guid: 0f219ba49d2556d49b9bdc6089d8b8ea, type: 2}
+  modifiersData:
+    statModifier: {fileID: 11400000, guid: 0f219ba49d2556d49b9bdc6089d8b8ea, type: 2}
     value: 0
+    type: 0

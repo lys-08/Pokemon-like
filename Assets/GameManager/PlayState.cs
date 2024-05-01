@@ -36,6 +36,9 @@ namespace DesignPattern.State
             if (Input.GetKeyDown(KeyCode.H))
             {
                 game.battle.playerPokemon = game.inventory.GetMainPokemon();
+                /*
+                 * TODO : récupérer le pokémon que le joueur à rencontré
+                 */
                 game.battle.wildPokemon = game.poke2;
                 game.GamestateMachine.TransitionTo(game.GamestateMachine.battleState);
             }

@@ -27,8 +27,7 @@ namespace DesignPattern.State
        public StateMachine GamestateMachine => stateMachine_;
 
        
-       // TODO temporary
-       [field: SerializeField] public PokemonSO poke1;
+       // TODO temporary : voir PlayState
        [field: SerializeField] public WildPokemonSO poke2;
 
        
@@ -66,7 +65,6 @@ namespace DesignPattern.State
         */
        private void StartBattle(WildPokemonSO wildPokemon)
        {
-           battle.playerPokemon = poke1;
            battle.wildPokemon = wildPokemon;
            GamestateMachine.TransitionTo(GamestateMachine.battleState);
        }

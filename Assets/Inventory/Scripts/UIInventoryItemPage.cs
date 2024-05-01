@@ -5,6 +5,8 @@ using UnityEngine;
 
 namespace Inventory.UI
 {
+    public enum ItemInventoryState { ItemSelection, PokemonSelection}
+    
     public class UIInventoryItemPage : MonoBehaviour
     {
         [SerializeField] private UIInventoryItem itemPrefab;
@@ -20,6 +22,7 @@ namespace Inventory.UI
         private List<UIInventoryItem> listUiItems = new List<UIInventoryItem>();
 
         private int currentDragItem_ = -1;
+        private ItemInventoryState currentState;
 
         /**
          * Actions that takes the index of the item for parameter
@@ -39,6 +42,7 @@ namespace Inventory.UI
             Show();
             mouseFollower.Toggle(false);
             itemDescription.ResetDescription();
+            currentState = ItemInventoryState.ItemSelection;
         }
 
         #endregion

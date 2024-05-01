@@ -23,13 +23,15 @@ namespace DesignPattern.State
         {
             yield return battle.dialogBox.TypeDialog($"The wild {battle.wildPokemon.name} ran.");
 
-            while (true)
+            bool pressed = false;
+            while (!pressed)
             {
-                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Mouse0))
+                if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
+                    pressed = true;
                     battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.endState);
-                    yield break;
                 }
+                yield return null;
             }
         }
         
@@ -69,8 +71,6 @@ namespace DesignPattern.State
 
         public void Enter()
         {
-            Debug.Log("Enemy Turn");
-            
             // TODO : Coefs
             //Debug.Log($"run {battle.wildPokemon.runCoeff_} fight {battle.wildPokemon.attackCoeff_} " +
             //          $"disctrac {battle.wildPokemon.distractCoeff_} focus {battle.wildPokemon.focusCoeff_}"); ;

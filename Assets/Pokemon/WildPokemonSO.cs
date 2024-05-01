@@ -60,13 +60,5 @@ public class WildPokemonSO : PokemonSO
         Debug.Log("Awake wild pokemon");
     }
 
-    private void Update()
-    {
-        /*
-         * If the player is in the range of the pokemon, than a fight start TODO player
-         */
-        // if (Physics.OverlapSphere(transform.position, 5f, 3) != null) LaunchFight();
-    }
-
     #endregion
 }

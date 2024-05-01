@@ -22,7 +22,6 @@ namespace DesignPattern.State
 
         public void Enter()
         {
-            Debug.Log("Battle : Start State");
             battle.StartCoroutine(battle.dialogBox.TypeDialog($"A wild {battle.wildPokemon.name} appeared."));
         }
 

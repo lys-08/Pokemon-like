@@ -18,8 +18,11 @@ namespace Inventory
         [SerializeField] private ItemInventorySO itemInventoryData;
         [SerializeField] private PokemonInventorySO pokemonInventoryData;
 
+        [SerializeField] private GameObject pokemonInventoryButton;
+
         private bool itemUiVisible = true;
         private int mainPokemonIndex = 0;
+        public Action<InventoryItem> OnPerformActionInBattle;
         
         /***
          * TODO : Sound
@@ -221,11 +224,9 @@ namespace Inventory
                 if (inventoryItem.IsEmpty) return;
                 itemInventoryUi.ShowItemAction(index);
         
-                IItemAction itemAction = inventoryItem.item as IItemAction;
+                EdibleItemSO itemAction = inventoryItem.item as EdibleItemSO;
                 if (itemAction != null)
                 {
-                    Debug.Log(item.Name);
-                    Debug.Log(itemAction);
                     itemInventoryUi.AddAction(itemAction.ActionName, () => PerformAction(index));
                 }
         
@@ -264,53 +265,85 @@ namespace Inventory
                 pokemonInventoryUi.AddAction("Free", () => DropItem(index));
             }
         }
+        
+        private void HandleDescriptionRequestInBattle(int index)
+        {
+            InventoryItem inventoryItem = itemInventoryData.GetItemAt(index);
+            if (inventoryItem.IsEmpty)
+            {
+                itemInventoryUi.ResetSelection();
+                return;
+            }
+
+            ItemSO item = inventoryItem.item;
+            itemInventoryUi.UpdateDescription(index, item.ItemImage, item.Name, item.Description);
+        
+            if (inventoryItem.IsEmpty) return;
+            itemInventoryUi.ShowItemAction(index);
+    
+            IItemAction itemAction = inventoryItem.item as IItemAction;
+            if (itemAction != null)
+            {
+                itemInventoryUi.AddAction(itemAction.ActionName, () => PerformActionInBattle(index));
+            }
+        }
+
+        /**
+         * Activate the action of the pokeball
+         */
+        public void ActionBattle(bool val)
+        {
+            if (val)
+            {
+                pokemonInventoryButton.SetActive(false);
+                this.itemInventoryUi.OnDescriptionRequested -= HandleDescriptionRequest;
+                this.itemInventoryUi.OnDescriptionRequested += HandleDescriptionRequestInBattle;
+            }
+            else
+            {
+                pokemonInventoryButton.SetActive(true);
+                this.itemInventoryUi.OnDescriptionRequested -= HandleDescriptionRequestInBattle;
+                this.itemInventoryUi.OnDescriptionRequested += HandleDescriptionRequest;
+            }
+        }
 
         /**
          * Perform the action of an item
          */
         private void PerformAction(int index)
         {
-            if (itemUiVisible)
+            InventoryItem inventoryItem = itemInventoryData.GetItemAt(index);
+            if (inventoryItem.IsEmpty) return;
+        
+            EdibleItemSO edibleItemAction = inventoryItem.item as EdibleItemSO;
+            if (edibleItemAction != null)
             {
-                InventoryItem inventoryItem = itemInventoryData.GetItemAt(index);
-                if (inventoryItem.IsEmpty) return;
-            
-                IItemAction itemAction = inventoryItem.item as IItemAction;
-                if (itemAction != null)
-                {
-                    Debug.Log("Perform Action");
-                    //itemAction.Perfom(pokemon);
-                }
-            
-                IDestroyableItem destroyableItem = inventoryItem.item as IDestroyableItem;
-                if (destroyableItem != null)
-                {
-                    if (inventoryItem.quantity == 1) itemInventoryUi.ResetSelection();
-                    itemInventoryData.RemoveItem(index, 1);
-                }
+                edibleItemAction.Perform(pokemonInventoryData.GetItemAt(mainPokemonIndex));
             }
+        
+            IDestroyableItem destroyableItem = inventoryItem.item as IDestroyableItem;
+            if (destroyableItem != null)
+            {
+                if (inventoryItem.quantity == 1) itemInventoryUi.ResetSelection();
+                itemInventoryData.RemoveItem(index, 1);
+            }
+        }
+        
+        /**
+         * Perform the action of an item in battle and returns the name of the object use
+         */
+        private void PerformActionInBattle(int index)
+        {
+            OnPerformActionInBattle?.Invoke(itemInventoryData.GetItemAt(index));
+        }
 
-            else
-            {
-                PokemonSO inventoryItem = pokemonInventoryData.GetItemAt(index);
-                if (inventoryItem == null) return;
-            
-                /* TODO
-                IItemAction itemAction = inventoryItem as IItemAction;
-                if (itemAction != null)
-                {
-                    Debug.Log("Perform Action");
-                    //itemAction.Perfom(pokemon);
-                }
-            
-                IDestroyableItem destroyableItem = inventoryItem as IDestroyableItem;
-                if (destroyableItem != null)
-                {
-                    pokemonInventoryUi.ResetSelection();
-                    pokemonInventoryUi.RemoveItem(index);
-                }
-                */
-            }
+        /**
+         * Add a pokemon to the collection
+         * -> used in battle
+         */
+        public void AddPokemonToCollection(PokemonSO pokemon)
+        {
+            pokemonInventoryData.AddItem(pokemon);
         }
 
         /**

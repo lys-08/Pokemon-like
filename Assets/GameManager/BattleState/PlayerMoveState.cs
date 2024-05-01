@@ -16,6 +16,7 @@ namespace DesignPattern.State
         public PlayerMoveState(BattleSystem battle)
         {
             this.battle = battle;
+            battle.inventoryController.OnPerformActionInBattle += PerformActionInBattle;
         }
         
         /**
@@ -42,15 +43,15 @@ namespace DesignPattern.State
                     battle.StartCoroutine(PerformAction("Focus"));
                     break;
                 case ("Bag"):
-                    Debug.Log("Capture : TODO");
+                    battle.inventoryController.ActionBattle(true);
+                    battle.inventoryController.Show();
                     break;
                 case ("Run"):
-                    Debug.Log("Run");
                     battle.StartCoroutine(Run());
                     break;
             }
         }
-
+        
         /**
          * Coroutine for the run case
          */
@@ -59,93 +60,15 @@ namespace DesignPattern.State
             yield return battle.dialogBox.TypeDialog("You ran.");
 
             bool pressed = false;
-
             while(!pressed)
             {
                 if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
                     pressed = true;
                     battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.endState);
-                    break;
                 }
                 yield return null;
             }
-        }
-        
-        /**
-         * Coroutine for the use of a pokeball
-         */
-        private IEnumerator ThrowPokeball(CaptureItemSO pokeball)
-        {
-            bool isCatched = false;
-            /*
-             * If the pokeball hasn't have a value, we define the rate of catching the pokemon
-             * -> the rate change according to the type of the ball and the pokemon
-             */
-            if (pokeball.value == 0)
-            {
-                float rate = 1 - battle.wildPokemon.hp / battle.wildPokemon.hpMax;
-            
-                if (pokeball.type == battle.wildPokemon.type) // The ball as the same type as the pokemon
-                {
-                    isCatched = CatchPokemon(rate * 1.5f);
-                }
-                else if (pokeball.type == Type.Simple) // The ball doesn't have any type
-                {
-                    isCatched = CatchPokemon(rate);
-                }
-                else
-                {
-                    isCatched = CatchPokemon(rate * 0.5f);
-                }
-            }
-            /*
-             * If the pokeball has a value, we try to catch the pokemon with the ball rate
-             */
-            else
-            {
-                isCatched = CatchPokemon(pokeball.value);
-            }
-            
-            
-            yield return battle.dialogBox.TypeDialog($"You used a {pokeball.Name}.");
-
-            while (isCatched)
-            {
-                battle.pokemonInventory.AddItem(battle.wildPokemon);
-                Debug.Log("The pokemon is catched");
-                yield return battle.dialogBox.TypeDialog($"You catched {battle.wildPokemon.name}.");
-                yield return battle.dialogBox.TypeDialog($"{battle.wildPokemon.name} has been added to your collection.");
-                
-                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Mouse0))
-                {
-                    battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.endState);
-                    yield break;
-                }
-            }
-            
-            while (!isCatched)
-            {
-                Debug.Log("The pokemon get out of the ball");
-                yield return battle.dialogBox.TypeDialog($"{battle.wildPokemon.name} broke free.");
-                
-                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Mouse0))
-                {
-                    battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.enemyMoveState);
-                    yield break;
-                }
-            }
-        }
-
-        /**
-         * Return true if the pokemon is catched
-         */
-        private bool CatchPokemon(float value)
-        {
-            if (value >= 1f) return true;
-            
-            // TODO
-            return false;
         }
         
         /**
@@ -153,23 +76,103 @@ namespace DesignPattern.State
          */
         private IEnumerator PerformAction(string action)
         {
-            Debug.Log("Perform Action");
             yield return battle.dialogBox.TypeDialog($"{battle.playerPokemon.name} used {action}.");
-        
-            while (true)
+
+            bool pressed = false;
+            while (!pressed)
             {
-                // TODO : transition à revoir (y'a un porblème)
-                if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.Mouse0)) continue;
+                if (Input.GetKey(KeyCode.Mouse0))
+                {
+                    pressed = true;
+                    if (battle.wildPokemon.ko)
+                    {
+                        battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.endState);
+                    }
+                    else
+                    {
+                        battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.enemyMoveState);
+                    }
+                    yield return null;
+                }
+            }
+        }
+
+        /**
+         * Called a coroutine that determine which item had been used
+         */
+        private void PerformActionInBattle(InventoryItem item)
+        {
+            battle.inventoryController.ActionBattle(false);
+            battle.StartCoroutine(PerformActionInBattleCoroutine(item));
+        }
+
+        private IEnumerator PerformActionInBattleCoroutine(InventoryItem item)
+        {
+            if (item.IsEmpty) yield return battle.dialogBox.TypeDialog($"You didn't choose an item.");
+            bool pressed = false;
+            
+            EdibleItemSO edibleItemAction = item.item as EdibleItemSO;
+            if (edibleItemAction != null)
+            {
+                edibleItemAction.Perform(battle.playerPokemon);
+                yield return battle.dialogBox.TypeDialog($"You used a {item.item.Name} on {battle.playerPokemon}.");
                 
-                if (battle.wildPokemon.ko)
+                while (!pressed)
                 {
-                    battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.endState);
+                    if (Input.GetKey(KeyCode.Mouse0)) pressed = true;
+                    yield return null;
                 }
-                else
+            }
+            
+            CaptureItemSO captureItemAction = item.item as CaptureItemSO;
+            if (captureItemAction != null)
+            {
+                var isCaptured = captureItemAction.Perform(battle.wildPokemon);
+                yield return battle.dialogBox.TypeDialog($"You launch a {item.item.Name} at {battle.wildPokemon}.");
+                
+                while (!pressed)
                 {
-                    battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.enemyMoveState);
+                    if (Input.GetKey(KeyCode.Mouse0))
+                    {
+                        pressed = true;
+                        if (isCaptured)
+                        {
+                            battle.wildPokemon.hp = battle.wildPokemon.hpMax; // Th epokemon gets all it's pv back
+                            battle.inventoryController.AddPokemonToCollection(battle.wildPokemon);
+                            yield return battle.dialogBox.TypeDialog($"You catched {battle.wildPokemon.name}.");
+                            yield return battle.dialogBox.TypeDialog($"{battle.wildPokemon.name} has been added to your collection.");
+
+                            bool pressed2 = false;
+                            while (!pressed2)
+                            {
+                                if (Input.GetKeyDown(KeyCode.Mouse0))
+                                {
+                                    pressed2 = true;
+                                    battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.endState);
+                                }
+
+                                yield return null;
+                            }
+                        }
+                        else
+                        {
+                            yield return battle.dialogBox.TypeDialog($"{battle.wildPokemon.name} broke free.");
+                            
+                            bool pressed2 = false;
+                            while (!pressed2)
+                            {
+                                if (Input.GetKeyDown(KeyCode.Mouse0))
+                                {
+                                    pressed2 = true;
+                                    battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.enemyMoveState);
+                                }
+
+                                yield return null;
+                            }
+                        }
+                    }
+                    yield return null;
                 }
-                yield break;
             }
         }
         
@@ -177,8 +180,6 @@ namespace DesignPattern.State
 
         public void Enter()
         {   
-            Debug.Log("Player Turn");
-            
             foreach (BattleAction action in battle.dialogBox.actions.gameObject.GetComponentsInChildren<BattleAction>())
             {
                 action.OnItemClicked += OnRequestedAction;

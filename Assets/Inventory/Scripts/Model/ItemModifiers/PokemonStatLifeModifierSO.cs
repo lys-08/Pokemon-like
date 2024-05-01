@@ -7,10 +7,11 @@ namespace Inventory.Model
     [CreateAssetMenu(fileName = "LifeModifier", menuName = "Inventory/LifeModifier")]
     public class PokemonStatLifeModifierSO : PokemonStatModifierSO
     {
-        public override void AffectPokemon(PokemonSO pokemonSo, float value)
+        public override bool AffectPokemon(PokemonSO pokemonSo, float value, Type type)
         {
             pokemonSo.ko = false;
             pokemonSo.hp = pokemonSo.hpMax;
+            return true;
         }
     }
 }

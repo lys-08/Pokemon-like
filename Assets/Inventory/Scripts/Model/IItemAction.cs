@@ -7,7 +7,7 @@ namespace Inventory.Model
     public interface IItemAction
     {
         public string ActionName { get; }
-        // public AudioClip actionSFX { get; }
+        // TODO : public AudioClip actionSFX { get; }
         public bool Perform(PokemonSO pokemon);
     }
 

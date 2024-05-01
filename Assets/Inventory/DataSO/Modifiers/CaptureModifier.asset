@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5218b7cea6a25b748ba23099d64c21d9, type: 3}
+  m_Script: {fileID: 11500000, guid: 92899692175fd884485912d98566b26b, type: 3}
   m_Name: CaptureModifier
   m_EditorClassIdentifier: 
