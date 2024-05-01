@@ -25,7 +25,6 @@ namespace DesignPattern.State
         {
             battle.playerPokemon.ResetCoeffs(); // We reset the coefficients associated with the defense and attack of the player pokemon
             battle.wildPokemon.ResetCoeffs();
-            battle.inventoryController.UpdateMainPokemon(); // Update the main pokemon if the player's oen is ko
             
             battle.StartCoroutine(battle.dialogBox.TypeDialog($"The fight is over."));
         }

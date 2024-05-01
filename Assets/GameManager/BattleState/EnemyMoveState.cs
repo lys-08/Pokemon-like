@@ -51,6 +51,7 @@ namespace DesignPattern.State
                     pressed = true;
                     if (battle.playerPokemon.ko)
                     {
+                        battle.inventoryController.UpdateMainPokemon(); // Update the main pokemon
                         battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.endState);
                     }
                     else
@@ -61,23 +62,6 @@ namespace DesignPattern.State
                 }
                 yield return null;
             }
-        
-            // while (true)
-            // {
-            //     // TODO : transition à revoir (y'a un porblème)
-            //     if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Mouse0))
-            //     {
-            //         if (battle.playerPokemon.ko)
-            //         {
-            //             battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.endState);
-            //         }
-            //         else
-            //         {
-            //             battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.playerMoveState);
-            //         }
-            //         yield break;
-            //     }
-            // }
         }
         
 
