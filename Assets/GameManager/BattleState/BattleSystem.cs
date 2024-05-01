@@ -24,6 +24,7 @@ namespace DesignPattern.State
        public BattleStateMachine BattleStateMachine => battleStateMachine_;
 
        [field: SerializeField] public PokemonInventorySO pokemonInventory;
+       [field: SerializeField] public InventoryController inventoryController;
 
        public bool combatEnded = false;
 
@@ -35,6 +36,7 @@ namespace DesignPattern.State
            // STATE
            battleStateMachine_ = new BattleStateMachine(this);
            pokemonInventory = FindObjectOfType<PokemonInventorySO>();
+           inventoryController = FindObjectOfType<InventoryController>();
        }
   
        private void Update()

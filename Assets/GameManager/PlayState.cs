@@ -35,7 +35,7 @@ namespace DesignPattern.State
             
             if (Input.GetKeyDown(KeyCode.H))
             {
-                game.battle.playerPokemon = game.poke1;
+                game.battle.playerPokemon = game.inventory.GetMainPokemon();
                 game.battle.wildPokemon = game.poke2;
                 game.GamestateMachine.TransitionTo(game.GamestateMachine.battleState);
             }

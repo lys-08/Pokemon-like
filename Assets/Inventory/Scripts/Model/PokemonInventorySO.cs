@@ -109,5 +109,10 @@ namespace Inventory.Model
 
             return dic;
         }
+        
+        public List<PokemonSO> GetCurrentInventoryState2()
+        {
+            return inventoryItems;
+        }
     }
 }

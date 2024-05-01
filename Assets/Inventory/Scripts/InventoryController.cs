@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Mail;
 using UnityEngine;
 using Inventory.UI; // for UiInventoryPage
 using Inventory.Model;
@@ -18,6 +19,7 @@ namespace Inventory
         [SerializeField] private PokemonInventorySO pokemonInventoryData;
 
         private bool itemUiVisible = true;
+        private int mainPokemonIndex = 0;
         
         /***
          * TODO : Sound
@@ -37,6 +39,8 @@ namespace Inventory
             // We initialize our inventory
             PrepareUI();
             PrepareInventoryData();
+            
+            SetMainPokemon(mainPokemonIndex);
         }
 
         #endregion
@@ -55,6 +59,28 @@ namespace Inventory
         public void Hide()
         {
             itemInventoryUi.gameObject.SetActive(false);
+        }
+        
+        /**
+         * Update the main pokemon if the current one is ko
+         */
+        public void UpdateMainPokemon()
+        {
+            if (pokemonInventoryData.GetItemAt(mainPokemonIndex) == null || pokemonInventoryData.GetItemAt(mainPokemonIndex).ko)
+            {
+                int i = 0;
+                foreach (var item in pokemonInventoryData.GetCurrentInventoryState())
+                {
+                    if (item.Value == null) continue;
+                    if (!item.Value.ko)
+                    {
+                        SetMainPokemon(item.Key);
+                        break;
+                    }
+
+                    i++;
+                }
+            }
         }
 
         /**
@@ -121,6 +147,15 @@ namespace Inventory
             }
         }
 
+        /**
+         * Returns the main pokemon
+         */
+        public PokemonSO GetMainPokemon()
+        {
+            pokemonInventoryData.GetCurrentInventoryState().TryGetValue(mainPokemonIndex, out PokemonSO mainPokemon);
+            return mainPokemon;
+        }
+
 
         #region Actions
         
@@ -184,13 +219,13 @@ namespace Inventory
                 itemInventoryUi.UpdateDescription(index, item.ItemImage, item.Name, item.Description);
             
                 if (inventoryItem.IsEmpty) return;
+                itemInventoryUi.ShowItemAction(index);
         
                 IItemAction itemAction = inventoryItem.item as IItemAction;
                 if (itemAction != null)
                 {
                     Debug.Log(item.Name);
                     Debug.Log(itemAction);
-                    itemInventoryUi.ShowItemAction(index);
                     itemInventoryUi.AddAction(itemAction.ActionName, () => PerformAction(index));
                 }
         
@@ -217,26 +252,16 @@ namespace Inventory
                 pokemonInventoryUi.UpdateDescription(index, inventoryItem);
             
                 if (inventoryItem == null) return;
+                itemInventoryUi.ShowItemAction(index);
         
-                /* TODO
-                IItemAction itemAction = inventoryItem as IItemAction;
-                if (itemAction != null)
-                {
-                    pokemonInventoryUi.ShowItemAction(index);
-                    pokemonInventoryUi.AddAction(itemAction.ActionName, () => PerformAction(index));
-                    Debug.Log("HandleItemActionRequest");
-                }*/
-        
-                IDestroyableItem destroyableItem = inventoryItem as IDestroyableItem;
-                if (destroyableItem != null)
-                {
-                    pokemonInventoryUi.AddAction("Free", () => DropItem(index));
-                
-                    // TODO : sfx sound
-                    // audioSource.PlayOneShot(itemAction.actionSFX);
-                
-                    //if (inventoryData.GetItemAt(index).IsEmpty) inventoryUi.ResetSelection();
-                }
+                /*
+                 * 1. Action that allows the player to choose the pokemon as the main one
+                 * 2. Action that allows the player to free a pokemon
+                 *
+                 * TODO : SFX sound
+                 */
+                pokemonInventoryUi.AddAction("Main Pokemon", () => SetMainPokemon(index));
+                pokemonInventoryUi.AddAction("Free", () => DropItem(index));
             }
         }
 
@@ -306,10 +331,20 @@ namespace Inventory
             {
                 pokemonInventoryData.RemoveItem(itemIndex);
                 if (pokemonInventoryData.GetItemAt(itemIndex) == null) pokemonInventoryUi.ResetSelection();
+                UpdateMainPokemon();
             
                 // TODO : drop audio
                 //audioSource.PlayOneShot(dropClip);
             }
+        }
+        
+        /**
+         * Set the main pokemon
+         */
+        private void SetMainPokemon(int index)
+        {
+            pokemonInventoryUi.UpdateMainPokemon(mainPokemonIndex, index);
+            mainPokemonIndex = index;
         }
 
         #endregion

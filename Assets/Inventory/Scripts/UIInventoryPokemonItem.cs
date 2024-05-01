@@ -15,7 +15,7 @@ namespace Inventory.UI
         [SerializeField] private Image itemImage_;
         [SerializeField] private Image borderImage_;
         [SerializeField] private GameObject mainText_;
-
+        
 
         public event Action<UIInventoryPokemonItem>
             OnItemClicked, // Left click => selection of the item to print it's description

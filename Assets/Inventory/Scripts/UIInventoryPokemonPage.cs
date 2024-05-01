@@ -43,7 +43,7 @@ namespace Inventory.UI
 
         #endregion
         
-
+        
         /**
          * Initialize our inventory with a given size
          */
@@ -71,6 +71,18 @@ namespace Inventory.UI
             if (listPokemonItems.Count > itemIndex) // We have this item on our list
             {
                 listPokemonItems[itemIndex].SetData(itemImage);
+            }
+        }
+
+        /**
+         * Update the main pokemon
+         */
+        public void UpdateMainPokemon(int previous, int current)
+        {
+            if (listPokemonItems.Count > current)
+            {
+                listPokemonItems[previous].ResetMainPokemon();
+                listPokemonItems[current].SetMainPokemon();
             }
         }
 
