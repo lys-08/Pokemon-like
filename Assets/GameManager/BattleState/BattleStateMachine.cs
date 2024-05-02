@@ -27,10 +27,10 @@ namespace DesignPattern.State
         public BattleStateMachine(BattleSystem battle)
         {
             // create an instance for each state
-            this.startState = new StartState(battle);
-            this.endState = new EndState(battle);
-            this.enemyMoveState = new EnemyMoveState(battle);
-            this.playerMoveState = new PlayerMoveState(battle);
+            startState = new StartState(battle);
+            endState = new EndState(battle);
+            enemyMoveState = new EnemyMoveState(battle);
+            playerMoveState = new PlayerMoveState(battle);
         }
         
         public void AddStateChangedListener(UnityAction<IState> listener)

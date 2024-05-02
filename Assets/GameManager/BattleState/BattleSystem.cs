@@ -37,6 +37,8 @@ namespace DesignPattern.State
            battleStateMachine_ = new BattleStateMachine(this);
            pokemonInventory = FindObjectOfType<PokemonInventorySO>();
            inventoryController = FindObjectOfType<InventoryController>();
+
+           //this.gameObject.SetActive(false); 
        }
   
        private void Update()
@@ -48,15 +50,15 @@ namespace DesignPattern.State
        /**
        * Initialize the UI for the battle to come
        */
-       public void SetUpBattle()
-       {
-           dialogBox.ToggleAction(false);
-           dialogBox.ToggleDialogText(false);
-           
-           this.gameObject.SetActive(true); 
-           battleHUD.SetData(playerPokemon, wildPokemon);
-           battleStateMachine_.Initialize(battleStateMachine_.startState);
-       }
+    public void SetUpBattle()
+    {
+        dialogBox.ToggleAction(false);
+        dialogBox.ToggleDialogText(false);
+        
+        this.gameObject.SetActive(true); 
+        battleHUD.SetData(playerPokemon, wildPokemon);
+        battleStateMachine_.Initialize(battleStateMachine_.startState);
+    }
 
 
        /**

@@ -5,6 +5,7 @@
     "version": "0.2.0",
     "configurations": [
 
+
         {
             "name": ".NET Core Launch (console)",
             "type": "coreclr",
@@ -42,6 +43,7 @@
         {
             "name": "Unity Editor",
             "type": "unity",
+            "path": "${workspaceFolder}/Library/EditorInstance.json",
             "request": "launch",
         }
     ]

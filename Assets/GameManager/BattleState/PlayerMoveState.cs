@@ -13,10 +13,10 @@ namespace DesignPattern.State
         private BattleSystem battle;
     
         
-        public PlayerMoveState(BattleSystem battle)
+        public PlayerMoveState(BattleSystem battle_)
         {
-            this.battle = battle;
-            battle.inventoryController.OnPerformActionInBattle += PerformActionInBattle;
+            this.battle = battle_;
+            // battle.inventoryController.OnPerformActionInBattle += PerformActionInBattle;
         }
         
         /**
@@ -187,6 +187,7 @@ namespace DesignPattern.State
 
             battle.dialogBox.ToggleDialogText(false);
             battle.dialogBox.ToggleAction(true);
+            battle.inventoryController.OnPerformActionInBattle += PerformActionInBattle;
         }
 
         public void Update()
@@ -196,6 +197,7 @@ namespace DesignPattern.State
 
         public void Exit()
         {
+            battle.inventoryController.OnPerformActionInBattle -= PerformActionInBattle;
             foreach (BattleAction action in battle.dialogBox.actions.gameObject.GetComponentsInChildren<BattleAction>())
             {
                 action.OnItemClicked -= OnRequestedAction;
