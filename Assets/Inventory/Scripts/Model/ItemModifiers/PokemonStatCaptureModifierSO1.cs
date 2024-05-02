@@ -48,7 +48,7 @@ namespace Inventory.Model
         {
             if (value >= 1f) return true;
             
-            // TODO
+            // TODO : attraper un pokemon
             return false;
         }
     }

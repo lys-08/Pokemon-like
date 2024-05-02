@@ -44,7 +44,6 @@ namespace DesignPattern.State
                     break;
                 case ("Bag"):
                     battle.inventoryController.ActionBattle(true);
-                    battle.inventoryController.Show();
                     break;
                 case ("Run"):
                     battle.StartCoroutine(Run());
@@ -86,40 +85,63 @@ namespace DesignPattern.State
                     pressed = true;
                     if (battle.wildPokemon.ko)
                     {
+                        /*
+                         * We get an item
+                         */
+                        battle.inventoryController.GetInventoryItemData().AddItem(battle.wildPokemon.GetObj());
                         battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.endState);
                     }
                     else
                     {
                         battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.enemyMoveState);
                     }
-                    yield return null;
                 }
+                yield return null;
             }
         }
 
         /**
          * Called a coroutine that determine which item had been used
          */
-        private void PerformActionInBattle(InventoryItem item)
+        private void PerformActionInBattle(int index)
         {
             battle.inventoryController.ActionBattle(false);
-            battle.StartCoroutine(PerformActionInBattleCoroutine(item));
+            battle.StartCoroutine(PerformActionInBattleCoroutine(index));
         }
 
-        private IEnumerator PerformActionInBattleCoroutine(InventoryItem item)
+        private IEnumerator PerformActionInBattleCoroutine(int index)
         {
+            InventoryItem item = battle.inventoryController.GetInventoryItemData().GetItemAt(index);
+            
+            
             if (item.IsEmpty) yield return battle.dialogBox.TypeDialog($"You didn't choose an item.");
             bool pressed = false;
             
             EdibleItemSO edibleItemAction = item.item as EdibleItemSO;
             if (edibleItemAction != null)
             {
+                Debug.Log($"avant hp {battle.playerPokemon.hp}");
                 edibleItemAction.Perform(battle.playerPokemon);
+                Debug.Log($"new hp {battle.playerPokemon.hp}");
+                
+                // We destroy one item once used
+                IDestroyableItem destroyableItem = item.item as IDestroyableItem;
+                if (destroyableItem != null)
+                {
+                    if (item.quantity == 1) battle.inventoryController.GetInventoryItem().ResetSelection();
+                    battle.inventoryController.GetInventoryItemData().RemoveItem(index, 1);
+                }
+                
+                yield return battle.battleHUD.UpdatePlayerPokemonBar(battle.playerPokemon.hp);
                 yield return battle.dialogBox.TypeDialog($"You used a {item.item.Name} on {battle.playerPokemon}.");
                 
                 while (!pressed)
                 {
-                    if (Input.GetKey(KeyCode.Mouse0)) pressed = true;
+                    if (Input.GetKey(KeyCode.Mouse0))
+                    {
+                        pressed = true;
+                        battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.enemyMoveState);
+                    }
                     yield return null;
                 }
             }
@@ -128,6 +150,15 @@ namespace DesignPattern.State
             if (captureItemAction != null)
             {
                 var isCaptured = captureItemAction.Perform(battle.wildPokemon);
+                
+                // We destroy one item once used
+                IDestroyableItem destroyableItem = item.item as IDestroyableItem;
+                if (destroyableItem != null)
+                {
+                    if (item.quantity == 1) battle.inventoryController.GetInventoryItem().ResetSelection();
+                    battle.inventoryController.GetInventoryItemData().RemoveItem(index, 1);
+                }
+                
                 yield return battle.dialogBox.TypeDialog($"You launch a {item.item.Name} at {battle.wildPokemon}.");
                 
                 while (!pressed)
@@ -174,6 +205,8 @@ namespace DesignPattern.State
                     yield return null;
                 }
             }
+
+            battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.enemyMoveState);
         }
         
         #region IState

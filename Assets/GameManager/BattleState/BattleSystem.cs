@@ -23,7 +23,6 @@ namespace DesignPattern.State
        private BattleStateMachine battleStateMachine_;
        public BattleStateMachine BattleStateMachine => battleStateMachine_;
 
-       [field: SerializeField] public PokemonInventorySO pokemonInventory;
        [field: SerializeField] public InventoryController inventoryController;
 
        public bool combatEnded = false;
@@ -35,7 +34,6 @@ namespace DesignPattern.State
        {
            // STATE
            battleStateMachine_ = new BattleStateMachine(this);
-           pokemonInventory = FindObjectOfType<PokemonInventorySO>();
            inventoryController = FindObjectOfType<InventoryController>();
 
            //this.gameObject.SetActive(false); 
@@ -66,12 +64,7 @@ namespace DesignPattern.State
        */
        public void OutBattle()
        {
-        //    dialogBox.ToggleAction(false);
-        //    dialogBox.ToggleDialogText(false);
-           
-           this.gameObject.SetActive(false); 
-        //    battleHUD.SetData(playerPokemon, wildPokemon);
-        //    battleStateMachine_.Initialize(battleStateMachine_.startState);
+            this.gameObject.SetActive(false); 
        }
    }
 }

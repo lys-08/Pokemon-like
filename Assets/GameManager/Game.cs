@@ -12,7 +12,6 @@ namespace DesignPattern.State
 {
    public class Game : MonoBehaviour
    {
-       private UnityEvent<bool> onPause = new UnityEvent<bool>();
        [field: SerializeField] public InventoryController inventory;
        [field: SerializeField] public BattleSystem battle;
        [field: SerializeField] public Player player;

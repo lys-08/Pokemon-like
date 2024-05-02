@@ -22,7 +22,7 @@ namespace Inventory
 
         private bool itemUiVisible = true;
         private int mainPokemonIndex = 0;
-        public Action<InventoryItem> OnPerformActionInBattle;
+        public Action<int> OnPerformActionInBattle;
         
         /***
          * TODO : Sound
@@ -44,6 +44,31 @@ namespace Inventory
             PrepareInventoryData();
             
             SetMainPokemon(mainPokemonIndex);
+        }
+
+        #endregion
+
+
+        #region Getters
+
+        public UIInventoryItemPage GetInventoryItem()
+        {
+            return itemInventoryUi;
+        }
+        
+        public ItemInventorySO GetInventoryItemData()
+        {
+            return itemInventoryData;
+        }
+        
+        public UIInventoryPokemonPage GetInventoryPokemon()
+        {
+            return pokemonInventoryUi;
+        }
+        
+        public PokemonInventorySO GetInventoryPokemonData()
+        {
+            return pokemonInventoryData;
         }
 
         #endregion
@@ -295,6 +320,7 @@ namespace Inventory
         {
             if (val)
             {
+                Show();
                 pokemonInventoryButton.SetActive(false);
                 this.itemInventoryUi.OnDescriptionRequested -= HandleDescriptionRequest;
                 this.itemInventoryUi.OnDescriptionRequested += HandleDescriptionRequestInBattle;
@@ -302,6 +328,7 @@ namespace Inventory
             else
             {
                 pokemonInventoryButton.SetActive(true);
+                Hide();
                 this.itemInventoryUi.OnDescriptionRequested -= HandleDescriptionRequestInBattle;
                 this.itemInventoryUi.OnDescriptionRequested += HandleDescriptionRequest;
             }
@@ -334,7 +361,7 @@ namespace Inventory
          */
         private void PerformActionInBattle(int index)
         {
-            OnPerformActionInBattle?.Invoke(itemInventoryData.GetItemAt(index));
+            OnPerformActionInBattle?.Invoke(index);
         }
 
         /**

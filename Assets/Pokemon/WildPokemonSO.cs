@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Inventory.Model;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -17,7 +18,9 @@ public class WildPokemonSO : PokemonSO
     public float focusCoeff_;
     public float runCoeff_;
     
-    public Dictionary<int, GameObject> objs_; // Possible objects that can be given when the pokemon is KO
+    //public Dictionary<int, InventoryItem> objs_; // Possible objects that can be given when the pokemon is KO
+    //[field: SerializeField] public List<InventoryItem> objs_;
+    public InventoryItem objs_;
 
     
     
@@ -25,17 +28,21 @@ public class WildPokemonSO : PokemonSO
      * Function returning the item obtained once the pokémon is KO
      * -> Dictionary objects have a probability of optention
      */
-    public GameObject GetObj()
+    public InventoryItem GetObj()
     {
+        /*
+         * TODO : revoir le random des objets
+         
         int nb = Random.Range(1, 100);
 
         foreach (var obj in objs_)
         {
             if (obj.Key >= nb) return obj.Value;
         }
+        */
 
         // If no object matches, we return a game object null: the player does not retrieve an item
-        return null;
+        return objs_;
     }
 
 

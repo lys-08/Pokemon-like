@@ -28,3 +28,6 @@ MonoBehaviour:
   distractCoeff_: 0
   focusCoeff_: 0
   runCoeff_: 0
+  objs_:
+    quantity: 1
+    item: {fileID: 11400000, guid: c36e38845d9108c429072fc3e2eaf392, type: 2}
