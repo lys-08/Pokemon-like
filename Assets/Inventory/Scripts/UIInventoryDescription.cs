@@ -9,6 +9,7 @@ namespace Inventory.UI
     public class UIInventoryDescription : MonoBehaviour
     {
         [SerializeField] private Image itemImage_;
+        [SerializeField] private UIHealthBar uiHealthBar;
         [SerializeField] private TextMeshProUGUI title_;
         [SerializeField] private TextMeshProUGUI description_;
 
@@ -24,6 +25,7 @@ namespace Inventory.UI
              * We disable the image so the quantity is also disabled
              */
             this.itemImage_.gameObject.SetActive(false);
+            this.uiHealthBar.gameObject.SetActive(false);
             this.title_.text = "";
             this.description_.text = "";
         }
@@ -34,6 +36,7 @@ namespace Inventory.UI
         public void SetDescription(Sprite sprite, string itemName, string itemDescription)
         {
             this.itemImage_.gameObject.SetActive(true);
+            this.uiHealthBar.gameObject.SetActive(false);
             this.itemImage_.sprite = sprite;
             this.title_.text = itemName;
             this.description_.text = itemDescription;
@@ -45,6 +48,8 @@ namespace Inventory.UI
         public void SetPokemonDescription(PokemonSO pokemon)
         {
             this.itemImage_.gameObject.SetActive(true);
+            this.uiHealthBar.gameObject.SetActive(true);
+            this.uiHealthBar.SetPokemon(pokemon);
             this.itemImage_.sprite = pokemon.image;
             this.title_.text = pokemon.name;
             string itemDescription = pokemon.description + "\n\n"
