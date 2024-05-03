@@ -32,7 +32,6 @@ namespace DesignPattern.State
         {
             if (game.battle.combatEnded)
             {
-                Debug.Log("transi");
                 game.battle.combatEnded = false;
                 game.GamestateMachine.TransitionTo(game.GamestateMachine.playState);
             }

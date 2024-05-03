@@ -78,7 +78,11 @@ public class PokemonSO : ScriptableObject
         hp -= (damageInflicted - defense * defenseCoef);
         
         // KO
-        if (hp < 0) ko = true;
+        if (hp <= 0)
+        {
+            ko = true;
+            hp = 0;
+        }
 
         return hp;
     }

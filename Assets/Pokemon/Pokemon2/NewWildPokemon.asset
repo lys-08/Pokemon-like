@@ -16,7 +16,7 @@ MonoBehaviour:
   description: poke 2
   type: 2
   image: {fileID: 21300000, guid: 285c0a20474e8c24798c9742dd53bfa8, type: 3}
-  hp: 345
+  hp: 335
   hpMax: 350
   damage: 40
   defense: 5
