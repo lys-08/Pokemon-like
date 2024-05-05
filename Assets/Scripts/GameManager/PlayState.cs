@@ -9,6 +9,7 @@ namespace DesignPattern.State
     {
         private Game game;
     
+        private LayerMask pokemon = LayerMask.GetMask("Pokemon");
         
         public PlayState(Game game)
         {
@@ -26,18 +27,16 @@ namespace DesignPattern.State
         public void Update()
         {
             game.playerController.HandleUpdate();
-            game.player.HandleUpdate();
+            // game.player.HandleUpdate(); à décommenter si on utilise le script Player.cs
             
             if (Input.GetKeyDown(KeyCode.E))
             {
                 game.GamestateMachine.TransitionTo(game.GamestateMachine.pauseState);
             }
-            
-            if (Input.GetKeyDown(KeyCode.H))
+
+            var colliders = Physics.OverlapSphere(game.player.transform.position, 4f, pokemon);
+            if (colliders.Length != 0)
             {
-                /*
-                 * TODO : à mettre dans le script du player lorsqu'il rencontre un pokémon et qu'il faut lancer le combat
-                 */
                 PokemonSO playerPoke = game.inventory.GetMainPokemon();
                 if (playerPoke.ko) game.inventory.UpdateMainPokemon();
                 game.battle.playerPokemon = game.inventory.GetMainPokemon();
@@ -45,15 +44,6 @@ namespace DesignPattern.State
                 game.battle.wildPokemon = game.poke2;
                 game.GamestateMachine.TransitionTo(game.GamestateMachine.battleState);
             }
-
-
-            /*var colliders = Physics.OverlapSphere(game.player.transform.position, 5f, 6);
-            if (colliders != null)
-            {
-                //game.GamestateMachine.battleState.playerPokemon = game.player.GetMainPokemon();
-                //game.GamestateMachine.battleState.wildPokemon = colliders[0].GetComponent<PokemonSO>();
-                game.GamestateMachine.TransitionTo(game.GamestateMachine.battleState);
-            }*/
         }
 
         public void Exit()
