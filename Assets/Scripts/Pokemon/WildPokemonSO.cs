@@ -50,7 +50,7 @@ public class WildPokemonSO : PokemonSO
      *  Function that generate the coefficients of the attack the pokemon do in a fight
      * -> this function is called at the creation of the pokemon
      */
-    private void GenerateCoeffs()
+    public void GenerateCoeffs()
     {
         attackCoeff_ = Random.Range(50, 70) / 100f;
         focusCoeff_ = Random.Range(5, 1 - attackCoeff_) / 100f;
