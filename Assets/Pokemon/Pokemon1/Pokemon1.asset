@@ -23,4 +23,4 @@ MonoBehaviour:
   speed: 5
   damageCoef: 1
   defenseCoef: 1
-  ko: 0
+  ko: 1

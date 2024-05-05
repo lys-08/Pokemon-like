@@ -86,6 +86,7 @@ namespace Inventory
          */
         public void Hide()
         {
+            ShowItemUI();
             itemInventoryUi.gameObject.SetActive(false);
         }
         
