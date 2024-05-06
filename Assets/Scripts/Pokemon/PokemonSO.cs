@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public enum Type
 {
@@ -15,7 +16,7 @@ public enum Type
 public class PokemonSO : ScriptableObject
 {
     // features
-    public string name;
+    [FormerlySerializedAs("name")] public string Name;
     public string description;
     public Type type;
     public Sprite image;
