@@ -27,12 +27,12 @@ public class BattleHUD : MonoBehaviour
     public void SetData(PokemonSO playerPokemon, PokemonSO wildPokemon)
     {
         // Player pokemon
-        playerPokemonName.text = playerPokemon.name;
+        playerPokemonName.text = playerPokemon.Name;
         playerPokemonBar.SetPokemon(playerPokemon);
         playerPokemonImage.sprite = playerPokemon.image;
         
         // Wild Pokemon
-        pokemonName.text = wildPokemon.name;
+        pokemonName.text = wildPokemon.Name;
         pokemonBar.SetPokemon(wildPokemon);
         pokemonImage.sprite = wildPokemon.image;
     }

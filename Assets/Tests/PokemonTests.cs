@@ -19,7 +19,7 @@ public class PokemonTests
     [UnityTest]
     public IEnumerator PokemonCharacteristicsTest()
     {
-        Assert.True(pokemon.name == "Zircon");
+        Assert.True(pokemon.Name == "Zircon");
         Assert.True(pokemon.description == "ruby pokemon");
         Assert.True(pokemon.type == Type.Ruby);
         Assert.That(pokemon.hp, Is.EqualTo(200f).Within(0.01f));

@@ -21,7 +21,7 @@ namespace DesignPattern.State
          */
         private IEnumerator Run()
         {
-            yield return battle.dialogBox.TypeDialog($"The wild {battle.wildPokemon.name} ran.");
+            yield return battle.dialogBox.TypeDialog($"The wild {battle.wildPokemon.Name} ran.");
 
             bool pressed = false;
             while (!pressed)
@@ -40,7 +40,7 @@ namespace DesignPattern.State
          */
         private IEnumerator PerformAction(string action)
         {
-            yield return battle.dialogBox.TypeDialog($"{battle.wildPokemon.name} used {action}.");
+            yield return battle.dialogBox.TypeDialog($"{battle.wildPokemon.Name} used {action}.");
             yield return new WaitForSeconds(1f);
 
 

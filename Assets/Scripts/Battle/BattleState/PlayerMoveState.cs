@@ -75,7 +75,7 @@ namespace DesignPattern.State
          */
         private IEnumerator PerformAction(string action)
         {
-            yield return battle.dialogBox.TypeDialog($"{battle.playerPokemon.name} used {action}.");
+            yield return battle.dialogBox.TypeDialog($"{battle.playerPokemon.Name} used {action}.");
 
             bool pressed = false;
             while (!pressed)
@@ -170,8 +170,8 @@ namespace DesignPattern.State
                         {
                             battle.wildPokemon.hp = battle.wildPokemon.hpMax; // Th epokemon gets all it's pv back
                             battle.inventoryController.AddPokemonToCollection(battle.wildPokemon);
-                            yield return battle.dialogBox.TypeDialog($"You catched {battle.wildPokemon.name}.");
-                            yield return battle.dialogBox.TypeDialog($"{battle.wildPokemon.name} has been added to your collection.");
+                            yield return battle.dialogBox.TypeDialog($"You catched {battle.wildPokemon.Name}.");
+                            yield return battle.dialogBox.TypeDialog($"{battle.wildPokemon.Name} has been added to your collection.");
 
                             bool pressed2 = false;
                             while (!pressed2)
@@ -187,7 +187,7 @@ namespace DesignPattern.State
                         }
                         else
                         {
-                            yield return battle.dialogBox.TypeDialog($"{battle.wildPokemon.name} broke free.");
+                            yield return battle.dialogBox.TypeDialog($"{battle.wildPokemon.Name} broke free.");
                             
                             bool pressed2 = false;
                             while (!pressed2)

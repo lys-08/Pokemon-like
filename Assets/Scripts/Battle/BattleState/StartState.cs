@@ -20,7 +20,7 @@ namespace DesignPattern.State
 
         private IEnumerator StartStateSetUp()
         {
-            yield return battle.dialogBox.TypeDialog($"A wild {battle.wildPokemon.name} appeared.");
+            yield return battle.dialogBox.TypeDialog($"A wild {battle.wildPokemon.Name} appeared.");
 
             bool pressed = false;
             while (!pressed)

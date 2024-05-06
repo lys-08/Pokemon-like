@@ -51,7 +51,7 @@ namespace Inventory.UI
             this.uiHealthBar.gameObject.SetActive(true);
             this.uiHealthBar.SetPokemon(pokemon);
             this.itemImage_.sprite = pokemon.image;
-            this.title_.text = pokemon.name;
+            this.title_.text = pokemon.Name;
             string itemDescription = pokemon.description + "\n\n"
                                      + "<b>Type</b> : " + pokemon.type + "\n"
                                      + "<b>Damage</b> : " + pokemon.damage + "\n"
