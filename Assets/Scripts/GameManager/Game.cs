@@ -28,8 +28,6 @@ namespace DesignPattern.State
        public StateMachine GamestateMachine => stateMachine_;
 
        
-       // TODO temporary : voir PlayState
-       [field: SerializeField] public WildPokemonSO poke2;
 
        
 

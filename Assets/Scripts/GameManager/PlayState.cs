@@ -38,7 +38,7 @@ namespace DesignPattern.State
         //     if (Input.GetKeyDown(KeyCode.H))
         //     {
         //         /*
-        //          * TODO : à mettre dans le script du player lorsqu'il rencontre un pokémon et qu'il faut lancer le combat
+        //          * DONE : à mettre dans le script du player lorsqu'il rencontre un pokémon et qu'il faut lancer le combat
         //          */
         //         PokemonSO playerPoke = game.inventory.GetMainPokemon();
         //         if (playerPoke.ko) game.inventory.UpdateMainPokemon();

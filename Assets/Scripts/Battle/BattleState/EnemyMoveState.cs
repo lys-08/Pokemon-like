@@ -101,7 +101,7 @@ namespace DesignPattern.State
                 battle.StartCoroutine(PerformAction("Fight"));
             }
 
-            // switch (0) // TODO : temporary
+            // switch (0) //  temporary
             // {
             //     case (0):
             //         float newHp = battle.playerPokemon.TakeDamage(battle.wildPokemon.GetDamage(), battle.wildPokemon.type);
@@ -118,7 +118,7 @@ namespace DesignPattern.State
             //         break;
             //     case (3):
             //         battle.StartCoroutine(Run());
-            //         // TODO run message
+            //         // run message
             //         break;
             // }
 
