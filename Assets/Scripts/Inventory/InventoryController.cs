@@ -27,8 +27,10 @@ namespace Inventory
         /***
          * TODO : Sound
          */
-        //[SerializeField] private AudioClip dropClip;
-        //[SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioSource dropSound;
+        [SerializeField] private AudioSource click;
+        [SerializeField] private AudioSource freeSound;
+        [SerializeField] private AudioSource makePrimarySound;
 
         // TODO : Temporary
         public List<InventoryItem> initialItems = new List<InventoryItem>();
@@ -261,8 +263,8 @@ namespace Inventory
                 {
                     itemInventoryUi.AddAction("Drop", () => DropItem(index, 1));
                 
-                    // TODO : sfx sound
-                    // audioSource.PlayOneShot(itemAction.actionSFX);
+                    // DONE : sfx sound
+                    click.Play();
                 
                     //if (inventoryData.GetItemAt(index).IsEmpty) inventoryUi.ResetSelection();
                 }
@@ -287,6 +289,7 @@ namespace Inventory
                  *
                  * TODO : SFX sound
                  */
+                 click.Play();
                 pokemonInventoryUi.AddAction("Main Pokemon", () => SetMainPokemon(index));
                 pokemonInventoryUi.AddAction("Free", () => DropItem(index));
             }
@@ -384,8 +387,8 @@ namespace Inventory
                 itemInventoryData.RemoveItem(itemIndex, quantity);
                 if (itemInventoryData.GetItemAt(itemIndex).IsEmpty) itemInventoryUi.ResetSelection();
             
-                // TODO : drop audio
-                //audioSource.PlayOneShot(dropClip);
+                // DONE : drop audio
+                dropSound.Play();
             }
 
             else
@@ -394,8 +397,8 @@ namespace Inventory
                 if (pokemonInventoryData.GetItemAt(itemIndex) == null) pokemonInventoryUi.ResetSelection();
                 UpdateMainPokemon();
             
-                // TODO : drop audio
-                //audioSource.PlayOneShot(dropClip);
+                // DONE : drop audio
+                freeSound.Play();
             }
         }
         
@@ -406,6 +409,8 @@ namespace Inventory
         {
             pokemonInventoryUi.UpdateMainPokemon(mainPokemonIndex, index);
             mainPokemonIndex = index;
+
+            makePrimarySound.Play();
         }
 
         #endregion
