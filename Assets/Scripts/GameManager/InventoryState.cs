@@ -6,12 +6,12 @@ using UnityEngine;
 
 namespace DesignPattern.State
 {
-    public class PauseState : IState
+    public class InventoryState : IState
     {
         private Game game;
     
         
-        public PauseState(Game game)
+        public InventoryState(Game game)
         {
             this.game = game;
         }
@@ -24,13 +24,15 @@ namespace DesignPattern.State
             Time.timeScale = 0f;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
-            game.menuPause.OpenMenu();
+            game.inventory.Show();
+            
+            // We set the UI
+            game.player.GetComponent<InventoryController>().SetUpInventoryUI();
         }
 
         public void Update()
         {
-            Debug.Log("test");
-            if (!game.menuPause.GetIsVisible())
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 game.GamestateMachine.TransitionTo(game.GamestateMachine.playState);
             }
@@ -40,6 +42,7 @@ namespace DesignPattern.State
         {
             Time.timeScale = 1f;
             Cursor.visible = false;
+            game.inventory.Hide();
         }
 
         #endregion

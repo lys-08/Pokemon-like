@@ -15,6 +15,7 @@ namespace DesignPattern.State
         [field: SerializeField] public PauseState pauseState;
         [field: SerializeField] public BattleState battleState;
         [field: SerializeField] public LoseState loseState;
+        [field: SerializeField] public InventoryState inventoryState;
        
         // event to notify other objects of the state change
         private UnityEvent<IState> stateChanged;
@@ -31,6 +32,7 @@ namespace DesignPattern.State
             this.loseState = new LoseState(game);
             this.battleState = new BattleState(game);
             this.pauseState = new PauseState(game);
+            this.inventoryState = new InventoryState(game);
         }
         
         /**

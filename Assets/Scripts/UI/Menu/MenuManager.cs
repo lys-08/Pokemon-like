@@ -46,7 +46,7 @@ public class MenuManager : MonoBehaviour
         if (instructionsWindow.gameObject.activeInHierarchy) yield return null;
         
         animator.SetTrigger("isDisappearing");
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         animator.gameObject.SetActive(false);
     }
     

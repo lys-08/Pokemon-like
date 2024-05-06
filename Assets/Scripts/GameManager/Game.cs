@@ -12,6 +12,8 @@ namespace DesignPattern.State
 {
    public class Game : MonoBehaviour
    {
+       [field: SerializeField] public MenuPause menuPause;
+       
        [field: SerializeField] public InventoryController inventory;
        [field: SerializeField] public BattleSystem battle;
        [field: SerializeField] public Player player;

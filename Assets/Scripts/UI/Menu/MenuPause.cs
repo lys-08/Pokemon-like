@@ -4,25 +4,24 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuPause : MenuManager
-{ 
-    [SerializeField] private Animator inGameWindow;
+{
+    private bool isVisible = false;
 
-
-    public void Pause()
+    public bool GetIsVisible()
     {
-        Cursor.visible = true;
-        inGameWindow.SetTrigger("isDisappearing");
-        Time.timeScale = 0;
-        menuWindow.SetTrigger("isAppearing");
+        return isVisible;
     }
 
-
+    public void OpenMenu()
+    {
+        isVisible = true;
+        gameObject.SetActive(true);
+    }
+    
     public void Resume()
     {
-        Cursor.visible = false;
-        inGameWindow.SetTrigger("isAppearing");
-        Time.timeScale = 1;
-        menuWindow.SetTrigger("isDisappearing");
+        isVisible = false;
+        gameObject.SetActive(false);
     }
 
     public void ToMenu()
