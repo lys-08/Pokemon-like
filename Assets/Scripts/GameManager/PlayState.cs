@@ -65,12 +65,6 @@ namespace DesignPattern.State
             
             if (Input.GetKeyDown(KeyCode.E))
             {
-                game.GamestateMachine.TransitionTo(game.GamestateMachine.inventoryState);
-            }
-            
-            if (Input.GetKeyDown(KeyCode.Q)) // A
-            {
-                Debug.Log("ceci est un test");
                 game.GamestateMachine.TransitionTo(game.GamestateMachine.pauseState);
             }
 

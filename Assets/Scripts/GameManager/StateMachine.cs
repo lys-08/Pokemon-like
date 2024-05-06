@@ -13,7 +13,6 @@ namespace DesignPattern.State
         // reference to state objects
         [field: SerializeField] public PlayState playState;
         [field: SerializeField] public PauseState pauseState;
-        [field: SerializeField] public InventoryState inventoryState;
         [field: SerializeField] public BattleState battleState;
         [field: SerializeField] public LoseState loseState;
        
@@ -32,7 +31,6 @@ namespace DesignPattern.State
             this.loseState = new LoseState(game);
             this.battleState = new BattleState(game);
             this.pauseState = new PauseState(game);
-            this.inventoryState = new InventoryState(game);
         }
         
         /**
