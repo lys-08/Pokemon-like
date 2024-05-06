@@ -46,7 +46,7 @@ public class WildPokemonSO : PokemonSO
     }
 
 
-    /**
+    /**TODO coef
      *  Function that generate the coefficients of the attack the pokemon do in a fight
      * -> this function is called at the creation of the pokemon
      */
