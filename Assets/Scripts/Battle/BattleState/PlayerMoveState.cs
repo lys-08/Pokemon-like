@@ -221,6 +221,7 @@ namespace DesignPattern.State
             battle.dialogBox.ToggleDialogText(false);
             battle.dialogBox.ToggleAction(true);
             battle.inventoryController.OnPerformActionInBattle += PerformActionInBattle;
+
         }
 
         public void Update()

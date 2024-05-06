@@ -71,30 +71,56 @@ namespace DesignPattern.State
 
         public void Enter()
         {
-            // TODO : Coefs
-            //Debug.Log($"run {battle.wildPokemon.runCoeff_} fight {battle.wildPokemon.attackCoeff_} " +
-            //          $"disctrac {battle.wildPokemon.distractCoeff_} focus {battle.wildPokemon.focusCoeff_}"); ;
+            // DONE : Coefs
+            // Debug.Log($"run {battle.wildPokemon.runCoeff_} fight {battle.wildPokemon.attackCoeff_} " +
+            //          $"disctrac {battle.wildPokemon.distractCoeff_} focus {battle.wildPokemon.focusCoeff_}");
+            
+            // Debug.Log(battle.wildPokemon.runCoeff_+battle.wildPokemon.attackCoeff_+battle.wildPokemon.distractCoeff_+battle.wildPokemon.focusCoeff_);
 
-            switch (0) // TODO : temporary
+            var random = Random.Range(0f, 1f);
+
+            if (random <= battle.wildPokemon.runCoeff_)
             {
-                case (0):
-                    float newHp = battle.playerPokemon.TakeDamage(battle.wildPokemon.GetDamage(), battle.wildPokemon.type);
-                    battle.StartCoroutine(battle.battleHUD.UpdatePlayerPokemonBar(newHp));
-                    battle.StartCoroutine(PerformAction("Fight"));
-                    break;
-                case (1):
-                    battle.playerPokemon.TakeDistraction();
-                    battle.StartCoroutine(PerformAction("Distract"));
-                    break;
-                case (2):
-                    battle.wildPokemon.Focus();
-                    battle.StartCoroutine(PerformAction("Fight"));
-                    break;
-                case (3):
-                    battle.StartCoroutine(Run());
-                    // TODO run message
-                    break;
+                battle.StartCoroutine(Run());
+                return;
             }
+            else if (random <= battle.wildPokemon.runCoeff_ + battle.wildPokemon.attackCoeff_)
+            {
+                float newHp = battle.playerPokemon.TakeDamage(battle.wildPokemon.GetDamage(), battle.wildPokemon.type);
+                battle.StartCoroutine(battle.battleHUD.UpdatePlayerPokemonBar(newHp));
+                battle.StartCoroutine(PerformAction("Fight"));
+            }
+            else if (random <= battle.wildPokemon.runCoeff_ + battle.wildPokemon.attackCoeff_ + battle.wildPokemon.distractCoeff_)
+            {
+                battle.playerPokemon.TakeDistraction();
+                battle.StartCoroutine(PerformAction("Distract"));
+            }
+            else
+            {
+                battle.wildPokemon.Focus();
+                battle.StartCoroutine(PerformAction("Fight"));
+            }
+
+            // switch (0) // TODO : temporary
+            // {
+            //     case (0):
+            //         float newHp = battle.playerPokemon.TakeDamage(battle.wildPokemon.GetDamage(), battle.wildPokemon.type);
+            //         battle.StartCoroutine(battle.battleHUD.UpdatePlayerPokemonBar(newHp));
+            //         battle.StartCoroutine(PerformAction("Fight"));
+            //         break;
+            //     case (1):
+            //         battle.playerPokemon.TakeDistraction();
+            //         battle.StartCoroutine(PerformAction("Distract"));
+            //         break;
+            //     case (2):
+            //         battle.wildPokemon.Focus();
+            //         battle.StartCoroutine(PerformAction("Fight"));
+            //         break;
+            //     case (3):
+            //         battle.StartCoroutine(Run());
+            //         // TODO run message
+            //         break;
+            // }
 
             
         }

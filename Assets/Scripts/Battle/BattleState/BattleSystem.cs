@@ -56,6 +56,8 @@ namespace DesignPattern.State
         this.gameObject.SetActive(true); 
         battleHUD.SetData(playerPokemon, wildPokemon);
         battleStateMachine_.Initialize(battleStateMachine_.startState);
+
+        wildPokemon.Initialization();
     }
 
 

@@ -34,7 +34,7 @@ public class WildPokemonSO : PokemonSO
      */
     public InventoryItem GetObj()
     {
-        // TODO : revoir le random des objets
+        // DONE : revoir le random des objets
 
         if (objs.Count != coefs.Count) throw new Exception("The number of objects and the number of coefficients must be the same");
 
@@ -77,7 +77,7 @@ public class WildPokemonSO : PokemonSO
 
     #region Unity Event Function
 
-    private void Start()
+    public void Initialization()
     {
         GenerateCoeffs();
         Debug.Log("Awake wild pokemon");
