@@ -168,7 +168,7 @@ namespace DesignPattern.State
                         pressed = true;
                         if (isCaptured)
                         {
-                            battle.wildPokemon.hp = battle.wildPokemon.hpMax; // Th epokemon gets all it's pv back
+                            battle.wildPokemon.hp = battle.wildPokemon.hpMax; // The pokemon gets all it's pv back
                             battle.inventoryController.AddPokemonToCollection(battle.wildPokemon);
                             yield return battle.dialogBox.TypeDialog($"You catched {battle.wildPokemon.Name}.");
                             yield return battle.dialogBox.TypeDialog($"{battle.wildPokemon.Name} has been added to your collection.");

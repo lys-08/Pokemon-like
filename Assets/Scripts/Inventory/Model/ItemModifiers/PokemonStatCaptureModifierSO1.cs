@@ -23,7 +23,7 @@ namespace Inventory.Model
                 {
                     return CatchPokemon(rate * 1.5f);
                 }
-                else if (type == Type.Simple) // The ball doesn't have any type
+                else if (type == Type.Simple) // The ball doesn't   have any type
                 {
                     return CatchPokemon(rate);
                 }
@@ -47,6 +47,10 @@ namespace Inventory.Model
         private bool CatchPokemon(float value)
         {
             if (value >= 1f) return true;
+
+            var random = Random.Range(0f, 1f);
+
+            if (random <= value) return true;
             
             // TODO : attraper un pokemon
             return false;
