@@ -206,7 +206,7 @@ namespace DesignPattern.State
                 }
             }
 
-            battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.enemyMoveState);
+            // battle.BattleStateMachine.TransitionTo(battle.BattleStateMachine.enemyMoveState);
         }
         
         #region IState
