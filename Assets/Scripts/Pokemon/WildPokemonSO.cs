@@ -20,7 +20,11 @@ public class WildPokemonSO : PokemonSO
     
     //public Dictionary<int, InventoryItem> objs_; // Possible objects that can be given when the pokemon is KO
     //[field: SerializeField] public List<InventoryItem> objs_;
-    public InventoryItem objs_;
+    // public InventoryItem NoneObjs_;
+
+    public List<InventoryItem> objs;
+
+    public List<int> coefs;
 
     
     
@@ -30,19 +34,31 @@ public class WildPokemonSO : PokemonSO
      */
     public InventoryItem GetObj()
     {
-        /*
-         * TODO : revoir le random des objets
-         
-        int nb = Random.Range(1, 100);
+        // TODO : revoir le random des objets
 
-        foreach (var obj in objs_)
+        if (objs.Count != coefs.Count) throw new Exception("The number of objects and the number of coefficients must be the same");
+
+        var ListObjs = new List<InventoryItem>();
+
+        foreach (var obj in objs)
         {
-            if (obj.Key >= nb) return obj.Value;
+            for (int i = 0; i < coefs[objs.IndexOf(obj)]; i++)
+            {
+                ListObjs.Add(obj);
+            }
         }
-        */
+
+        return ListObjs[Random.Range(0, ListObjs.Count)];
+         
+        // int nb = Random.Range(1, 100);
+
+        // foreach (var obj in objs)
+        // {
+        //     if (obj.Key >= nb) return obj.Value;
+        // }
 
         // If no object matches, we return a game object null: the player does not retrieve an item
-        return objs_;
+        // return NoneObjs_;
     }
 
 
