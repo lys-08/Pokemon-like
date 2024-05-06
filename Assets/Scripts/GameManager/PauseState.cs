@@ -21,7 +21,6 @@ namespace DesignPattern.State
 
         public void Enter()
         {
-            Time.timeScale = 0f;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
             game.menuPause.OpenMenu();
@@ -37,7 +36,6 @@ namespace DesignPattern.State
 
         public void Exit()
         {
-            Time.timeScale = 1f;
             Cursor.visible = false;
         }
 
