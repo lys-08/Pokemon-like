@@ -48,6 +48,7 @@ public class MenuManager : MonoBehaviour
         animator.SetTrigger("isDisappearing");
         yield return new WaitForSeconds(0.3f);
         animator.gameObject.SetActive(false);
+        yield return null;
     }
     
     private void Appear(Animator animator)

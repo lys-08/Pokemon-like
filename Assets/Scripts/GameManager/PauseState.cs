@@ -29,7 +29,6 @@ namespace DesignPattern.State
 
         public void Update()
         {
-            Debug.Log("test");
             if (!game.menuPause.GetIsVisible())
             {
                 game.GamestateMachine.TransitionTo(game.GamestateMachine.playState);
