@@ -20,8 +20,7 @@ MonoBehaviour:
   - m_GUID: 4afe720c8c7a8364fb7f26f7c51b05ef
     m_Address: Assets/Pokemon/Pokemon2
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - PokemonEmerald
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 02eb04e7fb247d440bc84f3ab81281bf
     m_Address: Assets/Pokemon/Dioptase
@@ -32,8 +31,7 @@ MonoBehaviour:
   - m_GUID: 76fad2ea05daf8d458571d53cd47dde9
     m_Address: Assets/Pokemon/lifeuille
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - PokemonEmerald
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 246bb01076e89d54187be7222dd1ea37, type: 2}

@@ -20,8 +20,7 @@ MonoBehaviour:
   - m_GUID: 579530f5c89aa2d4cbb5eaa73811e574
     m_Address: Assets/Pokemon/Pokemon1
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - PokemonRuby
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1fecbbf74a36788498eb16f73d882fe8
     m_Address: Assets/Pokemon/Zircon
@@ -32,8 +31,7 @@ MonoBehaviour:
   - m_GUID: ae5664218d097f34d9861dcea68248b3
     m_Address: Assets/Pokemon/lirubis
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - PokemonRuby
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 246bb01076e89d54187be7222dd1ea37, type: 2}
