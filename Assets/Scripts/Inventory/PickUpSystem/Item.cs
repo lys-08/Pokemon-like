@@ -11,8 +11,9 @@ public class Item : MonoBehaviour
     [field: SerializeField] public ItemSO InventoryItem { get; private set; }
     [field: SerializeField] public int Quantity { get; set; } = 1;
 
-    //[SerializeField] private AudioSource audioSource;
-    [SerializeField] private float duration = 0.3f;
+    // TODO : sound pick up
+    // [SerializeField] private AudioSource audioSource;
+    private float duration = 0.3f;
     
 
 
@@ -27,7 +28,7 @@ public class Item : MonoBehaviour
 
     private IEnumerator AnimateItemPickUp()
     {
-        //audioSource.Play();
+        // TODO sound : audioSource.Play();
         Vector3 startScale = transform.localScale;
         Vector3 endScale = Vector3.zero;
 

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public enum Type
 {
@@ -32,7 +33,13 @@ public class PokemonSO : ScriptableObject
     public float defenseCoef = 1f;
     
     public bool ko;
+    public bool evol; // if the true, the pokemon is an evolution of a less powerfull pokemon
 
+
+    private void Start()
+    {
+        SetCoefs();
+    }
 
     /**
      * Get the damage done according to the current coefs
@@ -131,5 +138,30 @@ public class PokemonSO : ScriptableObject
     {
         damageCoef = 1f;
         defenseCoef = 1f;
+    }
+
+
+    /**
+     * Set the coefficients of the pokemon
+     * -> called when the pokemon is created
+     */
+    public void SetCoefs()
+    {
+        if (evol)
+        {  
+            hp = Random.Range(250, 300);
+            hpMax = hp;
+            damage = Random.Range(40, 60);
+            defense = Random.Range(25, 35);
+            speed = Random.Range(2, 5);
+        }
+        else
+        {
+            hp = Random.Range(100, 200);
+            hpMax = hp;
+            damage = Random.Range(20, 40);
+            defense = Random.Range(10, 15);
+            speed = Random.Range(7, 15); // smaller pokemon are speedier
+        }
     }
 }

@@ -13,9 +13,11 @@ public class PickUpSystem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Trigger");
         Item item = other.GetComponent<Item>();
         if (item != null)
         {
+            Debug.Log("Ok pas null");
             int remainingAmount = inventoryData.AddItem(item.InventoryItem, item.Quantity);
             
             if (remainingAmount == 0) item.DestroyItem();

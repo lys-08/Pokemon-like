@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d3f892d333973d44adb2543533a732f, type: 3}
+  m_Name: Lifeuille
+  m_EditorClassIdentifier: 
+  Name: Lifeuille
+  description: 'Lifeuille is an emerald snake. It is adorned with shiny leaves, seeming
+    to merge with its body. Its fluid silhouette evokes the majesty of nature. It
+    moves with agility, protecting lush forests with ancestral benevolence. '
+  type: 2
+  image: {fileID: 21300000, guid: 0216863787a994e46b0ee0237071eaf2, type: 3}
+  hp: 139.7083
+  hpMax: 139.7083
+  damage: 30.200672
+  defense: 11.537874
+  speed: 7.318921
+  damageCoef: 1
+  defenseCoef: 1
+  ko: 0
+  evol: 0
+  attackCoeff_: 0
+  distractCoeff_: 0
+  focusCoeff_: 0
+  runCoeff_: 0
+  objs: []
+  coefs: 
