@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 6083386918846167978}
   - component: {fileID: 7318649781751195558}
   m_Layer: 3
-  m_Name: Player
+  m_Name: PLAYER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -406,18 +406,26 @@ MonoBehaviour:
   freeSound: {fileID: 3421143600169006804}
   makePrimarySound: {fileID: 5426518583685137936}
   initialItems:
-  - quantity: 2
+  - quantity: 15
     item: {fileID: 11400000, guid: c647de799dd29c44aa4fd9ae0bc6862e, type: 2}
-  - quantity: 2
-    item: {fileID: 11400000, guid: 2f102277c35b762429db7bd883d5146a, type: 2}
-  - quantity: 2
+  - quantity: 5
     item: {fileID: 11400000, guid: ecbc6d835d9d1a241808deedf8d031ed, type: 2}
   - quantity: 2
-    item: {fileID: 11400000, guid: d663b0537fc710a4c8433fb5727e7ea4, type: 2}
-  - quantity: 2
-    item: {fileID: 11400000, guid: bb5b8dade9828c1448fdd2ada005e073, type: 2}
+    item: {fileID: 11400000, guid: f822d521db545b04b873c60d7d774b86, type: 2}
   - quantity: 2
     item: {fileID: 11400000, guid: 592b2e22ff54c874d8c52c9d2d5955a0, type: 2}
+  - quantity: 5
+    item: {fileID: 11400000, guid: bb5b8dade9828c1448fdd2ada005e073, type: 2}
+  - quantity: 20
+    item: {fileID: 11400000, guid: d663b0537fc710a4c8433fb5727e7ea4, type: 2}
+  - quantity: 5
+    item: {fileID: 11400000, guid: 3c5bbb8ea6784914689caa1368ad6965, type: 2}
+  - quantity: 5
+    item: {fileID: 11400000, guid: 7a4460e2afee9404dbd1991e1e6a651c, type: 2}
+  - quantity: 5
+    item: {fileID: 11400000, guid: 2f102277c35b762429db7bd883d5146a, type: 2}
+  - quantity: 1
+    item: {fileID: 11400000, guid: c36e38845d9108c429072fc3e2eaf392, type: 2}
   initialPokemonItems:
   - {fileID: 11400000, guid: 85074926bb9cb194cacf33691e45d968, type: 2}
 --- !u!114 &9157420118698142773

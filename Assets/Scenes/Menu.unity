@@ -385,6 +385,50 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 419625281616718, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+      propertyPath: m_MinValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 419625281616718, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 419625281616718, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 419625281616718, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6439490017247915298}
+    - target: {fileID: 419625281616718, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 419625281616718, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetMusicVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 419625281616718, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VolumeSettings, PokemonLike
+      objectReference: {fileID: 0}
+    - target: {fileID: 419625281616718, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 74734848898094608, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 74734848898094608, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 74734848898094608, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 472304270526147786, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.487
@@ -432,6 +476,42 @@ PrefabInstance:
     - target: {fileID: 3306969558123777513, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3348283816999987275, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+      propertyPath: m_Value
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 3348283816999987275, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+      propertyPath: m_MaxValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3348283816999987275, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3348283816999987275, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3348283816999987275, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6439490017247915298}
+    - target: {fileID: 3348283816999987275, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3348283816999987275, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetMasterVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 3348283816999987275, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VolumeSettings, PokemonLike
+      objectReference: {fileID: 0}
+    - target: {fileID: 3348283816999987275, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4086099140610620646, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
       propertyPath: m_IsActive
@@ -573,11 +653,62 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8248683057403988113, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+      propertyPath: m_Value
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248683057403988113, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+      propertyPath: m_MinValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248683057403988113, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+      propertyPath: m_WholeNumbers
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248683057403988113, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248683057403988113, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248683057403988113, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6439490017247915298}
+    - target: {fileID: 8248683057403988113, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248683057403988113, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetSFXVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248683057403988113, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VolumeSettings, PokemonLike
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248683057403988113, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+--- !u!114 &6439490017247915298 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4351995676986216841, guid: e4e0017b3efb03a449fd0447317c3ff5, type: 3}
+  m_PrefabInstance: {fileID: 6439490017247915297}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30cd9c8e75e354141846dd439cf172b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -61,6 +61,7 @@ namespace DesignPattern.State
         public void Update()
         {
             game.playerController.HandleUpdate();
+            game.mouseLook.HandleUpdate();
             // game.player.HandleUpdate(); à décommenter si on utilise le script Player.cs
             
             if (Input.GetKeyDown(KeyCode.E))

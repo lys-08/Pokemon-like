@@ -16,35 +16,63 @@ public class VolumeSettings : MonoBehaviour
     [SerializeField] private TextMeshProUGUI masterValue;
     [SerializeField] private TextMeshProUGUI musicValue;
     [SerializeField] private TextMeshProUGUI sfxValue;
+    
 
-    private float volume_ = 0f;
+    #region Unity Events Methods
 
-
-    public void SetMasterVolume()
+    private void Awake()
     {
-        volume_ = Mathf.Log(masterSlider.value) * 20f;
-        mixer.SetFloat("Master", volume_);
-        PlayerPrefs.SetFloat("masterVolume", volume_);
+        /*
+         * TODO : c'est là, à chaque GetFloat il trouve pas
+         */
+        mixer.GetFloat("Master", out float mainVolume);
+        mixer.GetFloat("Music", out float musicVolume);
+        mixer.GetFloat("SFX", out float sfxVolume);
+        
+        masterSlider.value = Mathf.Exp(mainVolume / 20f);
+        musicSlider.value = Mathf.Exp(musicVolume / 20);
+        sfxSlider.value = Mathf.Exp(sfxVolume / 20);
+    }
 
-        masterValue.text = volume_.ToString();
+    private void Start()
+    {
+        if(PlayerPrefs.HasKey("masterVolume") && PlayerPrefs.HasKey("musicVolume") && PlayerPrefs.HasKey("sfxVolume")) LoadVolume();
+        else
+        {
+            masterSlider.onValueChanged.AddListener(OnMasterVolumeChanged);
+            musicSlider.onValueChanged.AddListener(OnMusicVolumeChanged);
+            sfxSlider.onValueChanged.AddListener(OnSFXVolumeChanged);
+        }
+    }
+
+    #endregion
+    
+    
+    public void OnMasterVolumeChanged(float value)
+    {
+        float volume = Mathf.Log10(value) * 20f;
+        mixer.SetFloat("Master", volume);
+        PlayerPrefs.SetFloat("masterVolume", volume);
+
+        masterValue.text = ((int)value).ToString();
     }
     
-    public void SetMusicVolume()
+    public void OnMusicVolumeChanged(float value)
     {
-        volume_ = Mathf.Log(musicSlider.value) * 20f;
-        mixer.SetFloat("Music", volume_);
-        PlayerPrefs.SetFloat("musicVolume", volume_);
+        float volume = Mathf.Log10(value) * 20f;
+        mixer.SetFloat("Music", volume);
+        PlayerPrefs.SetFloat("musicVolume", volume);
         
-        musicValue.text = volume_.ToString();
+        musicValue.text = ((int)value).ToString();
     }
     
-    public void SetSFXVolume()
+    public void OnSFXVolumeChanged(float value)
     {
-        volume_ = Mathf.Log(sfxSlider.value) * 20f;
-        mixer.SetFloat("SFX", volume_);
-        PlayerPrefs.SetFloat("sfxVolume", volume_);
+        float volume = Mathf.Log10(value) * 20f;
+        mixer.SetFloat("SFX", volume);
+        PlayerPrefs.SetFloat("sfxVolume", volume);
         
-        sfxValue.text = volume_.ToString();
+        sfxValue.text = ((int)value).ToString();
     }
 
     public void LoadVolume()
@@ -56,11 +84,5 @@ public class VolumeSettings : MonoBehaviour
         masterValue.text = masterSlider.value.ToString();
         musicValue.text = musicSlider.value.ToString();
         sfxValue.text = sfxSlider.value.ToString();
-    }
-
-    private void Start()
-    {
-        if(PlayerPrefs.HasKey("masterVolume") && PlayerPrefs.HasKey("musicVolume") && PlayerPrefs.HasKey("sfxVolume")) LoadVolume();
-        else SetMusicVolume();
     }
 }

@@ -19,6 +19,7 @@ namespace DesignPattern.State
        [field: SerializeField] public Player player;
        [field: SerializeField] public PlayerController playerController;
        [field: SerializeField] public Camera mainCamera;
+       [field: SerializeField] public MouseLook mouseLook;
        
        // SINGLETON
        private static Game instance_;
