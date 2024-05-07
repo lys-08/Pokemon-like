@@ -23,6 +23,18 @@ MonoBehaviour:
     m_SerializedLabels:
     - PokemonSapphire
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3b938154d7f493a49a882254a027ea2e
+    m_Address: Assets/Pokemon/Larimar
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PokemonSapphire
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9b702d9a25949204194858b1b2c31e32
+    m_Address: Assets/Pokemon/limagie
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PokemonSapphire
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 246bb01076e89d54187be7222dd1ea37, type: 2}
   m_SchemaSet:

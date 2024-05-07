@@ -7,7 +7,13 @@ using UnityEngine.AddressableAssets;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField, Range(1, 3)] private int Zone = 1;
+    public enum ZoneType {
+    Ruby,
+    Saphire,
+    Émeraude
+};
+
+    [SerializeField] ZoneType zoneType;
 
     private float timeToSpawn = 30.0f;
 
@@ -18,16 +24,18 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         timeToSpawn = Random.Range(25.0f, 30.0f);
+
+        timeToSpawn = 1f;
         
-        if (Zone == 1)
+        if (zoneType == ZoneType.Ruby)
         {
             loadHandle = Addressables.LoadAssetsAsync<GameObject>("PokemonRuby", null);
         }
-        else if (Zone == 2)
+        else if (zoneType == ZoneType.Émeraude)
         {
             loadHandle = Addressables.LoadAssetsAsync<GameObject>("PokemonEmerald", null);
         }
-        else if (Zone == 3)
+        else if (zoneType == ZoneType.Saphire)
         {
             loadHandle = Addressables.LoadAssetsAsync<GameObject>("PokemonSapphire", null);
         }
@@ -52,7 +60,7 @@ public class Spawner : MonoBehaviour
         {
             yield return new WaitForSeconds(timeToSpawn);
 
-            timeToSpawn = Random.Range(30.0f, 35.0f);
+            // timeToSpawn = Random.Range(30.0f, 35.0f);
 
             var increment = Random.insideUnitCircle * 5;
             var spawnPosition = new Vector3(transform.position.x + increment.x, transform.position.y, transform.position.z + increment.y);

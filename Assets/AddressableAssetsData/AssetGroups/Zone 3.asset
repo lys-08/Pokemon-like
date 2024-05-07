@@ -23,6 +23,18 @@ MonoBehaviour:
     m_SerializedLabels:
     - PokemonEmerald
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 02eb04e7fb247d440bc84f3ab81281bf
+    m_Address: Assets/Pokemon/Dioptase
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PokemonEmerald
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 76fad2ea05daf8d458571d53cd47dde9
+    m_Address: Assets/Pokemon/lifeuille
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PokemonEmerald
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 246bb01076e89d54187be7222dd1ea37, type: 2}
   m_SchemaSet:

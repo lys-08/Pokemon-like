@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1358006579780579466}
   - component: {fileID: 5902569834646231788}
   - component: {fileID: 456708462330367757}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Limagie
   m_TagString: Untagged
   m_Icon: {fileID: 0}

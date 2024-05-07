@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7184503692300583053}
   - component: {fileID: 5367852193088205656}
   - component: {fileID: 7477813271437174928}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Lirubis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
