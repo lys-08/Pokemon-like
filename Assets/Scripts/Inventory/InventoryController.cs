@@ -5,8 +5,6 @@ using System.Net.Mail;
 using UnityEngine;
 using Inventory.UI; // for UiInventoryPage
 using Inventory.Model;
-using UnityEditor.IMGUI.Controls;
-using UnityEngine.SocialPlatforms; // for ItemSO
 
 
 namespace Inventory

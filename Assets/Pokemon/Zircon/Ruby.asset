@@ -18,12 +18,12 @@ MonoBehaviour:
     day admiring them.
   type: 1
   image: {fileID: 21300000, guid: c7a9442961c3f064ab16ee0eed4230e0, type: 3}
-  hp: 542.99994
+  hp: 100
   hpMax: 100
-  damage: 200
-  defense: 100
+  damage: 100
+  defense: 0
   speed: 1
-  damageCoef: 0.4999999
-  defenseCoef: 0.4999999
+  damageCoef: 0.5
+  defenseCoef: 0.5
   ko: 0
   evol: 1
