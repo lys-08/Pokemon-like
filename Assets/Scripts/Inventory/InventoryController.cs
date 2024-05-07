@@ -5,6 +5,7 @@ using System.Net.Mail;
 using UnityEngine;
 using Inventory.UI; // for UiInventoryPage
 using Inventory.Model;
+using UnityEngine.SceneManagement;
 
 
 namespace Inventory
@@ -105,12 +106,14 @@ namespace Inventory
                     if (!item.Value.ko)
                     {
                         SetMainPokemon(item.Key);
-                        break;
+                        return;
                     }
 
                     i++;
                 }
             }
+
+            SceneManager.LoadScene("Menu");
         }
 
         /**
