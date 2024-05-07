@@ -2495,7 +2495,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1325480490762338856, guid: 711b9b1c6ad8562478bf75deac611b54, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 301.09726
       objectReference: {fileID: 0}
     - target: {fileID: 1325480490762338856, guid: 711b9b1c6ad8562478bf75deac611b54, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2651,7 +2651,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5924198601587701005, guid: 711b9b1c6ad8562478bf75deac611b54, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 301.09726
       objectReference: {fileID: 0}
     - target: {fileID: 5924198601587701005, guid: 711b9b1c6ad8562478bf75deac611b54, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2929,6 +2929,14 @@ PrefabInstance:
       propertyPath: pokemonInventoryButton
       value: 
       objectReference: {fileID: 1109443733}
+    - target: {fileID: 5215081435042482132, guid: ca94924da190b03458cdbbe6439876fd, type: 3}
+      propertyPath: initialPokemonItems.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215081435042482132, guid: ca94924da190b03458cdbbe6439876fd, type: 3}
+      propertyPath: initialPokemonItems.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 85074926bb9cb194cacf33691e45d968, type: 2}
     - target: {fileID: 5629886692734953165, guid: ca94924da190b03458cdbbe6439876fd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
