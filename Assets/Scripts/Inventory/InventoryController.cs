@@ -45,6 +45,7 @@ namespace Inventory
             
             SetMainPokemon(mainPokemonIndex);
         }
+        
 
         #endregion
 

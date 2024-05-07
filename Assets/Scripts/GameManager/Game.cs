@@ -93,7 +93,7 @@ namespace DesignPattern.State
            player = FindObjectOfType<Player>();
            playerController = player.gameObject.GetComponent<PlayerController>();
            mainCamera = Camera.main;
-           inventory.Hide();
+        //    inventory.Hide();
 
            player.OnEncountered += StartBattle;
        }
@@ -102,6 +102,8 @@ namespace DesignPattern.State
        {
            //STATE
            stateMachine_.Initialize(stateMachine_.playState);
+
+           inventory.Hide();
        }
   
        private void Update()
