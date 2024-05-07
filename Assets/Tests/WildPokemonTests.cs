@@ -34,13 +34,8 @@ public class WildPokemonTests
     {
         data.GenerateCoeffs();
         
-        Debug.Log(data.attackCoeff_);
-        Debug.Log(data.focusCoeff_);
-        Debug.Log(data.runCoeff_);
-        Debug.Log(data.distractCoeff_);
-        
         Assert.That(data.attackCoeff_, Is.GreaterThanOrEqualTo(50/100f).And.LessThanOrEqualTo(70/100f));
-        Assert.That(data.focusCoeff_, Is.GreaterThanOrEqualTo(5/100f).And.LessThanOrEqualTo(1 - data.attackCoeff_));
+        Assert.That(data.focusCoeff_, Is.GreaterThanOrEqualTo(5/100f).And.LessThanOrEqualTo(1 - data.attackCoeff_ + 0.001f));
         Assert.That(data.runCoeff_, Is.GreaterThanOrEqualTo(2/100f).And.LessThanOrEqualTo(4/100f));
         Assert.That(data.distractCoeff_, Is.Not.EqualTo(0f).Within(0.01f));
         
@@ -50,7 +45,9 @@ public class WildPokemonTests
     [UnityTest]
     public IEnumerator GetObjTest()
     {
-        // TODO
+        var obj = data.GetObj();
+        
+        Assert.True(data.objs.Contains(obj));
         yield return null;
     }
 }

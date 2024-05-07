@@ -32,14 +32,7 @@ public class PlayerTests
             yield return null;
         }
   
-        Assert.That(player.transform.position.z, Is.GreaterThan(10f));
-        yield return null;
-    }
-
-    [UnityTest]
-    public IEnumerator PlayerPokemonEncounterTest()
-    {
-        // TODO
+        Assert.That(player.transform.position.z, Is.EqualTo(50f).Within(0.01));
         yield return null;
     }
 }

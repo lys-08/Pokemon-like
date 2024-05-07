@@ -10,7 +10,7 @@ public class UIHealthBar : MonoBehaviour
     [SerializeField] private Image fillImage;
     [SerializeField] private TextMeshProUGUI hpText;
     
-    private PokemonSO pokemonData;
+    public PokemonSO pokemonData; // public for the test
 
 
     /**
