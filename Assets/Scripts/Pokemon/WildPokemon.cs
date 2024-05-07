@@ -29,6 +29,8 @@ public class WildPokemon : MonoBehaviour
         timeToMove = Random.Range(4.0f, 8.0f);
         timeToMove = 1f;
 
+        SetCoefs();
+
         StartCoroutine(RadomMovement());
 
 
@@ -76,5 +78,25 @@ public class WildPokemon : MonoBehaviour
 
         result = Vector3.zero;
         return false;
+    }
+
+    public void SetCoefs()
+    {
+        if (data.evol)
+        {  
+            data.hp = Random.Range(250, 300);
+            data.hpMax = data.hp;
+            data.damage = Random.Range(40, 60);
+            data.defense = Random.Range(25, 35);
+            data.speed = Random.Range(2, 5);
+        }
+        else
+        {
+            data.hp = Random.Range(100, 200);
+            data.hpMax = data.hp;
+            data.damage = Random.Range(20, 40);
+            data.defense = Random.Range(10, 15);
+            data.speed = Random.Range(7, 15); // smaller pokemon are speedier
+        }
     }
 }

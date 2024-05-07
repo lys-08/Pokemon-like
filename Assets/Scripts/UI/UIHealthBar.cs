@@ -31,9 +31,10 @@ public class UIHealthBar : MonoBehaviour
     public IEnumerator UpdateBar(float newHp)
     {
         var duration = fillImage.fillAmount - newHp / pokemonData.hpMax;
+        duration = Mathf.Abs(duration);
         var timeLeft = duration;
         
-        while (timeLeft > 0)
+            while (timeLeft > 0)
         {
             fillImage.fillAmount = Mathf.Lerp(fillImage.fillAmount, newHp / pokemonData.hpMax, duration - timeLeft);
             fillImage.color = Color.Lerp(Color.red, Color.green, fillImage.fillAmount);

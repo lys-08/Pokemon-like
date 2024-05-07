@@ -32,7 +32,7 @@ public class BattleHUD : MonoBehaviour
         playerPokemonImage.sprite = playerPokemon.image;
         
         // Wild Pokemon
-        pokemonName.text = wildPokemon.Name;
+        pokemonName.text = wildPokemon.Name;    
         pokemonBar.SetPokemon(wildPokemon);
         pokemonImage.sprite = wildPokemon.image;
     }

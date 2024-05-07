@@ -38,7 +38,7 @@ public class PokemonSO : ScriptableObject
 
     private void Start()
     {
-        SetCoefs();
+        // SetCoefs();
     }
 
     /**
@@ -145,23 +145,23 @@ public class PokemonSO : ScriptableObject
      * Set the coefficients of the pokemon
      * -> called when the pokemon is created
      */
-    public void SetCoefs()
-    {
-        if (evol)
-        {  
-            hp = Random.Range(250, 300);
-            hpMax = hp;
-            damage = Random.Range(40, 60);
-            defense = Random.Range(25, 35);
-            speed = Random.Range(2, 5);
-        }
-        else
-        {
-            hp = Random.Range(100, 200);
-            hpMax = hp;
-            damage = Random.Range(20, 40);
-            defense = Random.Range(10, 15);
-            speed = Random.Range(7, 15); // smaller pokemon are speedier
-        }
-    }
+    // public void SetCoefs()
+    // {
+    //     if (evol)
+    //     {  
+    //         hp = Random.Range(250, 300);
+    //         hpMax = hp;
+    //         damage = Random.Range(40, 60);
+    //         defense = Random.Range(25, 35);
+    //         speed = Random.Range(2, 5);
+    //     }
+    //     else
+    //     {
+    //         hp = Random.Range(100, 200);
+    //         hpMax = hp;
+    //         damage = Random.Range(20, 40);
+    //         defense = Random.Range(10, 15);
+    //         speed = Random.Range(7, 15); // smaller pokemon are speedier
+    //     }
+    // }
 }
