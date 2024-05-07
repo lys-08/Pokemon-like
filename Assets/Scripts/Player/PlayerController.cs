@@ -27,15 +27,15 @@ public class PlayerController : MonoBehaviour
 
         mover.Move(movement.normalized * timeScaledSpeed);
 
-        var mousePosition = Input.mousePosition;
-        if (mousePosition.x < 0 || mousePosition.x > Screen.width || mousePosition.y < 0 ||
-            mousePosition.y > Screen.height)
-        {
-            return;
-        }
+        // var mousePosition = Input.mousePosition;
+        // if (mousePosition.x < 0 || mousePosition.x > Screen.width || mousePosition.y < 0 ||
+        //     mousePosition.y > Screen.height)
+        // {
+        //     return;
+        // }
         
 
-        transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X")*3f, 0)); // Input.GetAxis("Mouse Y")*3f
+        // transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X")*3f, 0)); // Input.GetAxis("Mouse Y")*3f
     }
 
     private void DestroyOnDeath()

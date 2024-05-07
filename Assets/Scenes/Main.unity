@@ -3552,8 +3552,13 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!4 &1448964006 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5629886692734953165, guid: ca94924da190b03458cdbbe6439876fd, type: 3}
+  m_PrefabInstance: {fileID: 1851584559}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1458500072
 GameObject:
   m_ObjectHideFlags: 0
@@ -3867,6 +3872,25 @@ Transform:
   - {fileID: 619966379}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1662994045 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6063809127254529910, guid: ca94924da190b03458cdbbe6439876fd, type: 3}
+  m_PrefabInstance: {fileID: 1851584559}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1662994049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662994045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51763bafdae3792488a76927e0169d7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseSensitivity: 100
+  playerBody: {fileID: 1448964006}
 --- !u!1 &1806882786
 GameObject:
   m_ObjectHideFlags: 0
@@ -4297,6 +4321,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4131479647228420674, guid: ca94924da190b03458cdbbe6439876fd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1448964000}
+    - targetCorrespondingSourceObject: {fileID: 6063809127254529910, guid: ca94924da190b03458cdbbe6439876fd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1662994049}
   m_SourcePrefab: {fileID: 100100000, guid: ca94924da190b03458cdbbe6439876fd, type: 3}
 --- !u!224 &1896432696 stripped
 RectTransform:
