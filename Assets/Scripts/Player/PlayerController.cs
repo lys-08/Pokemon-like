@@ -22,6 +22,15 @@ public class PlayerController : MonoBehaviour
 
     public void HandleUpdate()
     {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            speed *= 10f;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            speed = 5f;
+        }
+
         var timeScaledSpeed = speed * Time.deltaTime;
         var movement  =  transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical");
 

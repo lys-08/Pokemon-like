@@ -60,7 +60,7 @@ public class Spawner : MonoBehaviour
         {
             yield return new WaitForSeconds(timeToSpawn);
 
-            // timeToSpawn = Random.Range(30.0f, 35.0f);
+            timeToSpawn = Random.Range(30.0f, 35.0f);
 
             var increment = Random.insideUnitCircle * 5;
             var spawnPosition = new Vector3(transform.position.x + increment.x, transform.position.y, transform.position.z + increment.y);
