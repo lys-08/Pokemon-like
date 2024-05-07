@@ -17,7 +17,7 @@ MonoBehaviour:
     to merge with its body. Its fluid silhouette evokes the majesty of nature. It
     moves with agility, protecting lush forests with ancestral benevolence. '
   type: 2
-  image: {fileID: 21300000, guid: 0216863787a994e46b0ee0237071eaf2, type: 3}
+  image: {fileID: 21300000, guid: bc1621645970c7a4191b8e988b981bf5, type: 3}
   hp: 139.7083
   hpMax: 139.7083
   damage: 30.200672
