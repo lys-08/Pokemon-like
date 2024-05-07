@@ -237,7 +237,7 @@ Transform:
   m_GameObject: {fileID: 4026183348501085895}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.098629594, y: 0.67105293, z: 9.500604}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -354,6 +354,7 @@ GameObject:
   - component: {fileID: 2836072026759341473}
   - component: {fileID: 8798048899543453169}
   - component: {fileID: 6083386918846167978}
+  - component: {fileID: 7318649781751195558}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -417,8 +418,7 @@ MonoBehaviour:
   - quantity: 2
     item: {fileID: 11400000, guid: 592b2e22ff54c874d8c52c9d2d5955a0, type: 2}
   initialPokemonItems:
-  - {fileID: 11400000, guid: f5b91638a079cf44794d419e8b5ee226, type: 2}
-  - {fileID: 11400000, guid: d663c0c2d8a83534f8e2d278ec89887d, type: 2}
+  - {fileID: 11400000, guid: 85074926bb9cb194cacf33691e45d968, type: 2}
 --- !u!114 &9157420118698142773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,7 +491,34 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!54 &7318649781751195558
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4131479647228420674}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &6063809127254529910
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,6 +530,7 @@ GameObject:
   - component: {fileID: 2835834508447588127}
   - component: {fileID: 452397536713700912}
   - component: {fileID: 6448514921288199920}
+  - component: {fileID: 7967764290181175499}
   m_Layer: 3
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -584,6 +612,20 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6063809127254529910}
   m_Enabled: 1
+--- !u!114 &7967764290181175499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6063809127254529910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51763bafdae3792488a76927e0169d7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseSensitivity: 100
+  playerBody: {fileID: 5629886692734953165}
 --- !u!1 &8410456768742147678
 GameObject:
   m_ObjectHideFlags: 0

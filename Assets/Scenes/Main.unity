@@ -2390,7 +2390,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5181868915635278556, guid: ca94924da190b03458cdbbe6439876fd, type: 3}
   m_PrefabInstance: {fileID: 1851584559}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1448963999}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 494394de9c21fdb4bb3d85a0199a594b, type: 3}
@@ -2401,7 +2401,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5215081435042482132, guid: ca94924da190b03458cdbbe6439876fd, type: 3}
   m_PrefabInstance: {fileID: 1851584559}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1448963999}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5c59a5f8d9bdc84fbb96537d26d4663, type: 3}
@@ -2598,7 +2598,7 @@ GameObject:
   - component: {fileID: 1168363681}
   - component: {fileID: 1168363680}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3627,43 +3627,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74df99a046d9a404795a866030f177e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1448963999 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4131479647228420674, guid: ca94924da190b03458cdbbe6439876fd, type: 3}
-  m_PrefabInstance: {fileID: 1851584559}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &1448964000
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1448963999}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
---- !u!4 &1448964006 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5629886692734953165, guid: ca94924da190b03458cdbbe6439876fd, type: 3}
-  m_PrefabInstance: {fileID: 1851584559}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1458500072
 GameObject:
   m_ObjectHideFlags: 0
@@ -3977,25 +3940,6 @@ Transform:
   - {fileID: 619966379}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1662994045 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6063809127254529910, guid: ca94924da190b03458cdbbe6439876fd, type: 3}
-  m_PrefabInstance: {fileID: 1851584559}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1662994049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1662994045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51763bafdae3792488a76927e0169d7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mouseSensitivity: 100
-  playerBody: {fileID: 1448964006}
 --- !u!1 &1806882786
 GameObject:
   m_ObjectHideFlags: 0
@@ -4336,17 +4280,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 452397536713700912, guid: ca94924da190b03458cdbbe6439876fd, type: 3}
-      propertyPath: m_ClearFlags
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4131479647228420674, guid: ca94924da190b03458cdbbe6439876fd, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 4131479647228420674, guid: ca94924da190b03458cdbbe6439876fd, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5215081435042482132, guid: ca94924da190b03458cdbbe6439876fd, type: 3}
       propertyPath: itemInventoryUi
@@ -4360,14 +4296,6 @@ PrefabInstance:
       propertyPath: pokemonInventoryButton
       value: 
       objectReference: {fileID: 1350201731}
-    - target: {fileID: 5215081435042482132, guid: ca94924da190b03458cdbbe6439876fd, type: 3}
-      propertyPath: initialPokemonItems.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5215081435042482132, guid: ca94924da190b03458cdbbe6439876fd, type: 3}
-      propertyPath: initialPokemonItems.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 85074926bb9cb194cacf33691e45d968, type: 2}
     - target: {fileID: 5629886692734953165, guid: ca94924da190b03458cdbbe6439876fd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 63.11
@@ -4408,32 +4336,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6083386918846167978, guid: ca94924da190b03458cdbbe6439876fd, type: 3}
-      propertyPath: m_Center.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7859435520111943943, guid: ca94924da190b03458cdbbe6439876fd, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7859435520111943943, guid: ca94924da190b03458cdbbe6439876fd, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7859435520111943943, guid: ca94924da190b03458cdbbe6439876fd, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4131479647228420674, guid: ca94924da190b03458cdbbe6439876fd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1448964000}
-    - targetCorrespondingSourceObject: {fileID: 6063809127254529910, guid: ca94924da190b03458cdbbe6439876fd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1662994049}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca94924da190b03458cdbbe6439876fd, type: 3}
 --- !u!224 &1896432696 stripped
 RectTransform:
