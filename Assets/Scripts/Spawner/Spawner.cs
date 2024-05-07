@@ -23,9 +23,8 @@ public class Spawner : MonoBehaviour
 
     void Start()
     {
-        timeToSpawn = Random.Range(25.0f, 30.0f);
+        timeToSpawn = Random.Range(5.0f, 10.0f);
 
-        timeToSpawn = 1f;
         
         if (zoneType == ZoneType.Ruby)
         {
